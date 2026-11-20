@@ -1,0 +1,22 @@
+{
+  "customer": "patel mobiles",
+  "delivery_city": "surat",
+  "deadline": null,
+  "items": [
+    {
+      "product_name": "Pebble Buds",
+      "product_code": "EAR-01",
+      "requested": 25,
+      "available": 350
+    },
+    {
+      "product_name": "Astra A5",
+      "product_code": "PHN-A5",
+      "requested": 10,
+      "available": 40
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Patel Mobiles,\n\nWe can supply your order in full as requested: 25 Pebble Buds and 10 Astra A5. Our team will arrange delivery to Surat.\n\nThank you for your order.\n\nOrder Desk"
+}

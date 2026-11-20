@@ -1,0 +1,22 @@
+{
+  "customer": "Sahyadri Tech Solutions",
+  "delivery_city": "Pune",
+  "deadline": "2026-11-24",
+  "items": [
+    {
+      "product_name": "Corelink Book 14",
+      "product_code": "LAP-14",
+      "requested": 10,
+      "available": 12
+    },
+    {
+      "product_name": "Volt 65W Charger",
+      "product_code": "CHG-65",
+      "requested": 10,
+      "available": 200
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Meera Kulkarni,\n\nWe are pleased to confirm that we can supply your full order for the following items: 10 units of Corelink Book 14 and 10 units of Volt 65W Charger. Our team will arrange delivery to Pune by 24 November 2026.\n\nThank you for choosing us.\n\nBest regards,  \nOrder Desk"
+}

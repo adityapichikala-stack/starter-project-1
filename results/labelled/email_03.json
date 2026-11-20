@@ -1,0 +1,16 @@
+{
+  "customer": "Coastline Telecom",
+  "delivery_city": "Kochi",
+  "deadline": null,
+  "items": [
+    {
+      "product_name": "Meshwave AX3000 Router",
+      "product_code": "RTR-AX3",
+      "requested": 20,
+      "available": 30
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Thomas Varghese,\n\nWe confirm that we can supply Coastline Telecom with 20 units of Meshwave AX3000 Router. Our team will arrange delivery to Kochi as requested.\n\nBest regards,  \nOrder Desk"
+}

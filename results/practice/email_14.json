@@ -1,0 +1,22 @@
+{
+  "customer": "Skyreach Broadband",
+  "delivery_city": "Visakhapatnam",
+  "deadline": "2026-11-27",
+  "items": [
+    {
+      "product_name": "Meshwave 5G Home Router",
+      "product_code": "RTR-5G",
+      "requested": 10,
+      "available": 15
+    },
+    {
+      "product_name": "Quietline Headset",
+      "product_code": "HDS-10",
+      "requested": 10,
+      "available": 45
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Sai Teja,\n\nThank you for your order from Skyreach Broadband. We can supply the requested 10 Meshwave 5G Home Routers and 10 Quietline Headsets. Our team will arrange delivery to Visakhapatnam by 27 November 2026.\n\nBest regards,\nOrder Desk"
+}

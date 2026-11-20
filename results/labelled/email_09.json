@@ -1,0 +1,24 @@
+{
+  "customer": "Riverstone Cafes",
+  "delivery_city": "Mumbai",
+  "deadline": "2026-12-05",
+  "items": [
+    {
+      "product_name": "Clearview 24 Monitor",
+      "product_code": "MON-24",
+      "requested": null,
+      "available": 18
+    },
+    {
+      "product_name": "Volt 65W Charger",
+      "product_code": "CHG-65",
+      "requested": 6,
+      "available": 200
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Invalid quantity for Clearview 24 Monitor: 'a few'"
+  ],
+  "reply": "Dear Rohan Mehta,\n\nThank you for your order from Riverstone Cafes. We notice the quantity for Clearview 24 Monitor is unclear. Could you please specify the exact number of units you need? Also, you requested 6 units of Volt 65W Charger, which we can supply.\n\nLooking forward to your clarification.\n\nBest regards,  \nOrder Desk"
+}

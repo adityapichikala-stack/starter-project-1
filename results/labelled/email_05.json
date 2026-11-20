@@ -1,0 +1,18 @@
+{
+  "customer": "Orbit Retail",
+  "delivery_city": "Chennai",
+  "deadline": "2026-12-01",
+  "items": [
+    {
+      "product_name": "Astra X9",
+      "product_code": "PHN-X9",
+      "requested": 10,
+      "available": 6
+    }
+  ],
+  "status": "Partial",
+  "issues": [
+    "Astra X9: requested 10, only 6 in stock"
+  ],
+  "reply": "Dear Karthik S,\n\nFor Orbit Retail's order to Chennai by 1 December 2026, you requested 10 units of Astra X9. We currently have 6 in stock. Would you like to receive the 6 now, or prefer to wait or modify the order?\n\nPlease let us know how you wish to proceed.\n\nBest regards,  \nOrder Desk"
+}

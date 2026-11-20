@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:16
+    container_name: sp1-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-orders}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-orders}
+      POSTGRES_DB: ${POSTGRES_DB:-orders}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"   # 5432 on this machine is taken by another project
+    volumes:
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql:ro
+      - sp1_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  sp1_pgdata:

@@ -1,0 +1,12 @@
+{
+  "customer": "Northgate Logistics",
+  "delivery_city": "Nagpur",
+  "deadline": "2026-12-02",
+  "items": [],
+  "status": "Need info",
+  "issues": [
+    "Refers to a previous order",
+    "No items listed"
+  ],
+  "reply": "Dear Prakash Jain,\n\nThank you for your order request. We noticed that no products or quantities were listed. Could you please provide the details of the items and amounts you wish to order? This will help us to process your request properly.\n\nWe look forward to your reply.\n\nBest regards,\nOrder Desk"
+}

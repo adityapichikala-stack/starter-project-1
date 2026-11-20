@@ -1,0 +1,18 @@
+{
+  "customer": null,
+  "delivery_city": "Indore",
+  "deadline": "2026-12-01",
+  "items": [
+    {
+      "product_name": "Astra A5",
+      "product_code": "PHN-A5",
+      "requested": 20,
+      "available": 40
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Missing customer"
+  ],
+  "reply": "Dear Rahul, \n\nThank you for your order. We noticed the customer name is missing. Please provide the name of the organisation or company placing the order so we can proceed. \n\nKind regards,  \nOrder Desk"
+}

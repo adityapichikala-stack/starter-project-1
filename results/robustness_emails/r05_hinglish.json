@@ -1,0 +1,16 @@
+{
+  "customer": "Sharma Traders",
+  "delivery_city": "Lucknow",
+  "deadline": "2026-12-10",
+  "items": [
+    {
+      "product_name": "Quietline Headset",
+      "product_code": "HDS-10",
+      "requested": 30,
+      "available": 45
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Mohit Sharma,\n\nWe confirm that we can supply your order of 30 Quietline Headset (HDS-10) units in full. Our team will arrange delivery to Lucknow by 10 December 2026 as requested.\n\nThank you for choosing Sharma Traders.\n\nBest regards,  \nOrder Desk"
+}

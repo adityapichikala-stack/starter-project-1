@@ -1,0 +1,11 @@
+{
+  "customer": "Bluefin Analytics",
+  "delivery_city": "Pune",
+  "deadline": null,
+  "items": [],
+  "status": "Need info",
+  "issues": [
+    "No items listed"
+  ],
+  "reply": "Dear Asha Nair,\n\nThank you for your message. We noticed that no items were listed in your order. Could you please provide the products and quantities you wish to order?\n\nWe look forward to your reply.\n\nBest regards,  \nOrder Desk"
+}

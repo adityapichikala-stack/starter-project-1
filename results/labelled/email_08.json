@@ -1,0 +1,18 @@
+{
+  "customer": "Maple & Co Events",
+  "delivery_city": null,
+  "deadline": "2026-11-28",
+  "items": [
+    {
+      "product_name": "Volt 20000 Power Bank",
+      "product_code": "PWB-20",
+      "requested": 50,
+      "available": 120
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Missing delivery city"
+  ],
+  "reply": "Dear Ananya Iyer,\n\nThank you for your order from Maple & Co Events. To proceed, could you please provide the city for delivery? We have the 50 Volt 20000 Power Banks available as requested.\n\nLooking forward to your reply.\n\nOrder Desk"
+}

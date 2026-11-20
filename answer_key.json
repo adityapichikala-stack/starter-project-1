@@ -1,0 +1,184 @@
+{
+  "email_01": {
+    "customer": "Sahyadri Tech Solutions",
+    "delivery_city": "Pune",
+    "deadline": "2026-11-24",
+    "items": [
+      {
+        "product_name": "Corelink Book 14",
+        "product_code": "LAP-14",
+        "requested": 10,
+        "available": 12
+      },
+      {
+        "product_name": "Volt 65W Charger",
+        "product_code": "CHG-65",
+        "requested": 10,
+        "available": 200
+      }
+    ],
+    "status": "Ready",
+    "issues": []
+  },
+  "email_02": {
+    "customer": "Brightpath Coaching Centre",
+    "delivery_city": "Hyderabad",
+    "deadline": "2026-11-23",
+    "items": [
+      {
+        "product_name": "Nimbus Tab 8 Lite",
+        "product_code": "TAB-08",
+        "requested": 15,
+        "available": 60
+      },
+      {
+        "product_name": "Pebble Buds",
+        "product_code": "EAR-01",
+        "requested": 15,
+        "available": 350
+      }
+    ],
+    "status": "Ready",
+    "issues": []
+  },
+  "email_03": {
+    "customer": "Coastline Telecom",
+    "delivery_city": "Kochi",
+    "deadline": null,
+    "items": [
+      {
+        "product_name": "Meshwave AX3000 Router",
+        "product_code": "RTR-AX3",
+        "requested": 20,
+        "available": 30
+      }
+    ],
+    "status": "Ready",
+    "issues": []
+  },
+  "email_04": {
+    "customer": "Greenfield Public School",
+    "delivery_city": "Nagpur",
+    "deadline": "2026-11-30",
+    "items": [
+      {
+        "product_name": "Nimbus Tab 10",
+        "product_code": "TAB-10",
+        "requested": 40,
+        "available": 25
+      },
+      {
+        "product_name": "Pebble Buds",
+        "product_code": "EAR-01",
+        "requested": 40,
+        "available": 350
+      }
+    ],
+    "status": "Partial",
+    "issues": [
+      "Nimbus Tab 10: requested 40, only 25 in stock"
+    ]
+  },
+  "email_05": {
+    "customer": "Orbit Retail",
+    "delivery_city": "Chennai",
+    "deadline": "2026-12-01",
+    "items": [
+      {
+        "product_name": "Astra X9",
+        "product_code": "PHN-X9",
+        "requested": 10,
+        "available": 6
+      }
+    ],
+    "status": "Partial",
+    "issues": [
+      "Astra X9: requested 10, only 6 in stock"
+    ]
+  },
+  "email_06": {
+    "customer": "Lakeview Hospital",
+    "delivery_city": "Bhopal",
+    "deadline": "2026-12-04",
+    "items": [
+      {
+        "product_name": "Nimbus Tab 12",
+        "product_code": null,
+        "requested": 30,
+        "available": null
+      }
+    ],
+    "status": "Need info",
+    "issues": [
+      "Unknown product: Nimbus Tab 12"
+    ]
+  },
+  "email_07": {
+    "customer": "Quickship Labs",
+    "delivery_city": "Bengaluru",
+    "deadline": "2026-11-19",
+    "items": [
+      {
+        "product_name": "Corelink Book 14",
+        "product_code": "LAP-14",
+        "requested": 8,
+        "available": 12
+      }
+    ],
+    "status": "Need info",
+    "issues": [
+      "Deadline 2026-11-19 is less than 3 days after the email date 2026-11-17"
+    ]
+  },
+  "email_08": {
+    "customer": "Maple & Co Events",
+    "delivery_city": null,
+    "deadline": "2026-11-28",
+    "items": [
+      {
+        "product_name": "Volt 20000 Power Bank",
+        "product_code": "PWB-20",
+        "requested": 50,
+        "available": 120
+      }
+    ],
+    "status": "Need info",
+    "issues": [
+      "Missing delivery city"
+    ]
+  },
+  "email_09": {
+    "customer": "Riverstone Cafes",
+    "delivery_city": "Mumbai",
+    "deadline": "2026-12-05",
+    "items": [
+      {
+        "product_name": "Clearview 24 Monitor",
+        "product_code": "MON-24",
+        "requested": null,
+        "available": 18
+      },
+      {
+        "product_name": "Volt 65W Charger",
+        "product_code": "CHG-65",
+        "requested": 6,
+        "available": 200
+      }
+    ],
+    "status": "Need info",
+    "issues": [
+      "Invalid quantity for Clearview 24 Monitor: 'a few'"
+    ]
+  },
+  "email_10": {
+    "customer": "Northgate Logistics",
+    "delivery_city": "Nagpur",
+    "deadline": "2026-12-02",
+    "items": [],
+    "status": "Need info",
+    "issues": [
+      "Refers to a previous order",
+      "No items listed"
+    ]
+  }
+}

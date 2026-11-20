@@ -1,0 +1,18 @@
+{
+  "customer": "Quickship Labs",
+  "delivery_city": "Bengaluru",
+  "deadline": "2026-11-19",
+  "items": [
+    {
+      "product_name": "Corelink Book 14",
+      "product_code": "LAP-14",
+      "requested": 8,
+      "available": 12
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Deadline 2026-11-19 is less than 3 days after the email date 2026-11-17"
+  ],
+  "reply": "Dear Vikram Hegde,\n\nThank you for your order from Quickship Labs. We note your deadline is 19 November 2026, which is less than 3 days from today. Could you please confirm if a later delivery date would work for you?\n\nWe look forward to your reply.\n\nBest regards,  \nOrder Desk"
+}

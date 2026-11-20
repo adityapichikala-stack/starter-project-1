@@ -1,0 +1,16 @@
+{
+  "customer": "Shubh Vivah Weddings",
+  "delivery_city": "Jaipur",
+  "deadline": "2026-12-05",
+  "items": [
+    {
+      "product_name": "Pebble Buds",
+      "product_code": "EAR-01",
+      "requested": 200,
+      "available": 350
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Kavya Sharma,\n\nWe confirm that we can supply 200 units of Pebble Buds for Shubh Vivah Weddings. Our team will arrange delivery to Jaipur by 5 December 2026.\n\nThank you for your order.\n\nOrder Desk"
+}

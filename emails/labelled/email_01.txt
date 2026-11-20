@@ -1,0 +1,16 @@
+From: Meera Kulkarni <meera.k@sahyadritech.example>
+Date: Mon, 16 Nov 2026 10:12:00 +0530
+Subject: Laptop order for new joiners
+
+Hi,
+
+We have ten engineers joining on the 25th and they need machines on day one. Please send:
+
+- 10 x Corelink Book 14
+- 10 x Volt 65W Charger
+
+Delivery to our Pune office on Baner Road. We need everything by 24 November 2026.
+
+Thanks,
+Meera Kulkarni
+Procurement, Sahyadri Tech Solutions

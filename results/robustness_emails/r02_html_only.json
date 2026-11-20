@@ -1,0 +1,24 @@
+{
+  "customer": "Harbour Clinic",
+  "delivery_city": "Kochi",
+  "deadline": "2026-12-10",
+  "items": [
+    {
+      "product_name": "Pulse Watch S2",
+      "product_code": "WCH-S2",
+      "requested": 12,
+      "available": 0
+    },
+    {
+      "product_name": "Volt 65W Charger",
+      "product_code": "CHG-65",
+      "requested": 12,
+      "available": 200
+    }
+  ],
+  "status": "Partial",
+  "issues": [
+    "Pulse Watch S2: requested 12, only 0 in stock"
+  ],
+  "reply": "Dear Leena Paul,\n\nThank you for your order from Harbour Clinic. We can supply 12 units of Volt 65W Charger as requested. However, for Pulse Watch S2, you asked for 12 units, but we currently have none available.\n\nWould you prefer to receive the Volt 65W Chargers now and wait for the Pulse Watch S2, or would you like to adjust your order?\n\nPlease let us know how you wish to proceed. We will arrange delivery to Kochi by 10 December 2026 as applicable.\n\nBest regards,  \nOrder Desk"
+}

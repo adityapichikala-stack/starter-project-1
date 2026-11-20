@@ -1,0 +1,18 @@
+{
+  "customer": "PixelForge Studios",
+  "delivery_city": "Bengaluru",
+  "deadline": "2026-11-30",
+  "items": [
+    {
+      "product_name": "Corelink Bok 14",
+      "product_code": null,
+      "requested": 5,
+      "available": null
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Unknown product: Corelink Bok 14"
+  ],
+  "reply": "Dear Dev Anand,\n\nThank you for your order from PixelForge Studios. The product \"Corelink Bok 14\" is not in our catalogue. Could you please check the product name and send us the correct details? This will help us process your order smoothly.\n\nLooking forward to your reply.\n\nBest regards,  \nOrder Desk"
+}

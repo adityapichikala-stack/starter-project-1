@@ -1,0 +1,22 @@
+{
+  "customer": "Brightpath Coaching Centre",
+  "delivery_city": "Hyderabad",
+  "deadline": "2026-11-23",
+  "items": [
+    {
+      "product_name": "Nimbus Tab 8 Lite",
+      "product_code": "TAB-08",
+      "requested": 15,
+      "available": 60
+    },
+    {
+      "product_name": "Pebble Buds",
+      "product_code": "EAR-01",
+      "requested": 15,
+      "available": 350
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Arjun Rao,\n\nWe confirm that we can supply your order for Brightpath Coaching Centre in full. This includes 15 Nimbus Tab 8 Lite and 15 Pebble Buds. Our team will arrange delivery to Hyderabad by 23 November 2026.\n\nThank you for your order.\n\nBest regards,  \nOrder Desk"
+}

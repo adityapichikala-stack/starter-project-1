@@ -1,0 +1,18 @@
+{
+  "customer": "Lakeview Hospital",
+  "delivery_city": "Bhopal",
+  "deadline": "2026-12-04",
+  "items": [
+    {
+      "product_name": "Nimbus Tab 12",
+      "product_code": null,
+      "requested": 30,
+      "available": null
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Unknown product: Nimbus Tab 12"
+  ],
+  "reply": "Dear Dr. Farah Siddiqui,\n\nThank you for your order inquiry. The product \"Nimbus Tab 12\" is not in our catalogue. Could you please verify the product name or provide an alternative?\n\nWe look forward to your reply.\n\nBest regards,  \nOrder Desk"
+}

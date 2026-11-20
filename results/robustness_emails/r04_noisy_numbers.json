@@ -1,0 +1,16 @@
+{
+  "customer": "Three Peaks Consulting",
+  "delivery_city": "Chandigarh",
+  "deadline": "2026-12-04",
+  "items": [
+    {
+      "product_name": "Pebble Buds Pro",
+      "product_code": "EAR-02",
+      "requested": 12,
+      "available": 80
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Ritu Malhotra,\n\nWe can supply your order in full: 12 units of Pebble Buds Pro. Our team will arrange delivery to Chandigarh by 4 December 2026.\n\nThank you for choosing Three Peaks Consulting.\n\nBest regards,  \nOrder Desk"
+}

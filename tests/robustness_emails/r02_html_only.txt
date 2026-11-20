@@ -1,0 +1,8 @@
+From: Leena Paul <leena@harbourclinic.example>
+Date: Mon, 16 Nov 2026 09:00:00 +0530
+Subject: Order
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><p>Dear team,</p><p>Please supply <b>12 x Pulse Watch S2</b> and <b>12 x Volt 65W Charger</b>.</p>
+<p>Deliver to Harbour Clinic, Fort Kochi, Kochi by <i>10 December 2026</i>.</p><p>Leena Paul<br>Harbour Clinic</p></body></html>
