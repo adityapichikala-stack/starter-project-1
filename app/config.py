@@ -1,4 +1,5 @@
 """All settings come from environment variables (.env). Nothing is hardcoded."""
+import math
 import os
 from dataclasses import dataclass
 from functools import lru_cache
@@ -25,6 +26,18 @@ class Settings:
     llm_timeout_s: float
     llm_max_attempts: int
     log_level: str
+    llm_input_cost_per_million_tokens: float | None = None
+    llm_output_cost_per_million_tokens: float | None = None
+
+
+def _optional_float(name: str) -> float | None:
+    value = os.getenv(name)
+    if value is None or not value.strip():
+        return None
+    parsed = float(value)
+    if not math.isfinite(parsed) or parsed < 0:
+        raise ValueError(f"{name} must be a non-negative finite number")
+    return parsed
 
 
 @lru_cache
@@ -44,4 +57,6 @@ def get_settings() -> Settings:
         llm_timeout_s=float(os.getenv("LLM_TIMEOUT_S", "60")),
         llm_max_attempts=int(os.getenv("LLM_MAX_ATTEMPTS", "4")),
         log_level=os.getenv("LOG_LEVEL", "INFO"),
+        llm_input_cost_per_million_tokens=_optional_float("LLM_INPUT_COST_PER_1M_TOKENS"),
+        llm_output_cost_per_million_tokens=_optional_float("LLM_OUTPUT_COST_PER_1M_TOKENS"),
     )

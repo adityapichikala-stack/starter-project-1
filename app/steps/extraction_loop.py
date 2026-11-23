@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from app.email_parser import ParsedEmail
 from app.llm_client import LLMClient
 from app.models import ExtractedOrder, Verdict, Verification
+from app.observability import current_metrics, measured_step
 from app.steps.extract import extract_order
 from app.steps.grounding import appears_in, check_grounding
 from app.steps.verify import verify_extraction
@@ -60,22 +61,45 @@ def run_extraction(llm: LLMClient, parsed: ParsedEmail, max_iterations: int) -> 
     feedback: list[str] = []
 
     for i in range(1, max_iterations + 1):
-        order = extract_order(llm, parsed, previous, feedback)
+        metrics = current_metrics()
+        if metrics:
+            metrics.extraction_iterations = i
+        request_id = metrics.request_id if metrics else "-"
+        log.info("event=extraction_iteration_started request_id=%s iteration=%d", request_id, i)
+        with measured_step("extraction_iteration"):
+            order = extract_order(llm, parsed, previous, feedback)
 
-        if previous is not None and order == previous:
-            log.warning("iteration=%d no progress, stopping. open problems=%s", i, feedback)
-            return ExtractionOutcome(order, i, "no_progress", _as_issues(feedback))
+            if previous is not None and order == previous:
+                log.info(
+                    "event=extraction_iteration_completed request_id=%s iteration=%d "
+                    "outcome=no_progress open_problem_count=%d",
+                    request_id, i, len(feedback),
+                )
+                return ExtractionOutcome(order, i, "no_progress", _as_issues(feedback))
 
-        grounding = check_grounding(order, text)
-        verification = verify_extraction(llm, parsed, order)
-        problems = grounding + verification_problems(verification, order, text)
-        log.info("iteration=%d grounding=%s verifier=%s", i, grounding, problems[len(grounding):])
+            grounding = check_grounding(order, text)
+            verification = verify_extraction(llm, parsed, order)
+            problems = grounding + verification_problems(verification, order, text)
+            log.info(
+                "event=extraction_iteration_completed request_id=%s iteration=%d "
+                "outcome=%s grounding_problem_count=%d verifier_problem_count=%d",
+                request_id,
+                i,
+                "verified" if not problems else "needs_revision",
+                len(grounding),
+                len(problems) - len(grounding),
+            )
 
-        if not problems:
-            return ExtractionOutcome(order, i, "verified")
-        previous, feedback = order, problems
+            if not problems:
+                return ExtractionOutcome(order, i, "verified")
+            previous, feedback = order, problems
 
-    log.warning("max_iterations=%d reached. open problems=%s", max_iterations, feedback)
+    log.warning(
+        "event=extraction_stopped request_id=%s outcome=max_iterations iterations=%d open_problem_count=%d",
+        current_metrics().request_id if current_metrics() else "-",
+        max_iterations,
+        len(feedback),
+    )
     return ExtractionOutcome(order, max_iterations, "max_iterations", _as_issues(feedback))
 
 

@@ -4,12 +4,14 @@ The database query (StockRepository) is kept separate from the comparison (check
 so the comparison can be tested without a database. Stock is read-only.
 """
 import logging
+import time
 from typing import Protocol
 
 import pg8000.dbapi
 
 from app.config import Settings
 from app.models import CatalogueEntry, StockResult, OrderItem, ValidatedItem
+from app.observability import current_metrics
 
 log = logging.getLogger("stock")
 
@@ -56,17 +58,49 @@ class StockRepository:
 
     def find_by_names(self, names: list[str]) -> dict[str, CatalogueEntry]:
         """Returns {normalized name: entry} for the names that exist in the catalogue."""
+        metrics = current_metrics()
+        request_id = metrics.request_id if metrics else "-"
+        started = time.perf_counter()
         keys = sorted({normalize_name(n) for n in names})
         if not keys:
+            if metrics:
+                metrics.add_step_duration("stock_query", 0)
+            log.info(
+                "event=stock_query_completed request_id=%s outcome=skipped duration_ms=0 names=0 matched=0",
+                request_id,
+            )
             return {}
-        conn = self._connect()
         try:
-            cur = conn.cursor()
-            cur.execute(self._SQL, (keys,))
-            rows = cur.fetchall()
-        finally:
-            conn.close()
-        log.info("stock lookup names=%d matched=%d", len(keys), len(rows))
+            conn = self._connect()
+            try:
+                cur = conn.cursor()
+                cur.execute(self._SQL, (keys,))
+                rows = cur.fetchall()
+            finally:
+                conn.close()
+        except Exception as exc:
+            duration_ms = (time.perf_counter() - started) * 1000
+            if metrics:
+                metrics.add_step_duration("stock_query", duration_ms)
+            log.error(
+                "event=stock_query_failed request_id=%s outcome=failed duration_ms=%.3f "
+                "error_category=database error_type=%s",
+                request_id,
+                duration_ms,
+                type(exc).__name__,
+            )
+            raise
+        duration_ms = (time.perf_counter() - started) * 1000
+        if metrics:
+            metrics.add_step_duration("stock_query", duration_ms)
+        log.info(
+            "event=stock_query_completed request_id=%s outcome=success duration_ms=%.3f "
+            "names=%d matched=%d",
+            request_id,
+            duration_ms,
+            len(keys),
+            len(rows),
+        )
         return {
             normalize_name(name): CatalogueEntry(product_code=code, name=name, quantity_available=qty)
             for code, name, qty in rows

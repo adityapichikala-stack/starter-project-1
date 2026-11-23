@@ -57,6 +57,19 @@ If tables are missing you're on an old volume: `docker compose down -v`, then `u
 
 ## Tests and evaluation
 
+Each evaluation writes per-email results and a deterministic `summary.json` beside them. The
+summary includes exact whole-order accuracy, accuracy for each scored field, failure categories,
+latency percentiles, order-level LLM calls/attempts/retries, token totals, extraction iterations,
+fallback/reply-check counts, and error categories. Local evaluations also include estimated costs
+when token usage and configured rates are available. Use
+`--group-errors` to include counts and reasons grouped by category. For an empty email folder, the
+evaluator writes a valid summary with null accuracy values and does not start the workflow.
+
+Estimated cost rates are optional: set `LLM_INPUT_COST_PER_1M_TOKENS` and
+`LLM_OUTPUT_COST_PER_1M_TOKENS` from your Azure deployment/pricing source. There are deliberately
+no default prices. Costs are estimates from provider-reported token counts, not billed amounts;
+missing token usage makes that order's cost unavailable.
+
 ```powershell
 .venv\Scripts\python -m pytest                                    # code steps, no LLM or DB needed
 .venv\Scripts\python evaluate.py                                  # 10 labelled emails, scored
@@ -68,8 +81,13 @@ If tables are missing you're on an old volume: `docker compose down -v`, then `u
 
 ### Latest result
 
-Labelled: **10/10 emails, 50/50 fields correct**. Practice and `tests/robustness_emails` give the expected statuses.
-All 21 emails verified on the first extraction iteration.
+Labelled evaluation run **2026-11-23**: **10/10 emails and 50/50 fields correct**.
+All 10 orders completed with **30 LLM calls** (30 attempts, 0 retries), **33,171 prompt
+tokens** and **2,814 completion tokens**. Extraction averaged **1 iteration** per order; no
+fallback replies, reply-check failures, or recorded errors occurred. End-to-end latency averaged
+**6,022 ms** (P95: **9,797 ms**). Estimated cost is unavailable because pricing rates are not
+configured. The machine-readable per-order and aggregate report is in
+[`results/labelled/summary.json`](./results/labelled/summary.json).
 
 ## Reliability: cross-checking and the iteration limit
 

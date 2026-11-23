@@ -2,6 +2,7 @@
 model's output can't set the status or leak into the reply input."""
 from app.llm_client import LLMError
 from app.models import CatalogueEntry, ExtractedItem, ExtractedOrder, Verification
+from app.observability import OrderMetrics
 from tests.helpers import all_correct
 from app.steps.stock import normalize_name
 from app.workflow import OrderWorkflow
@@ -58,6 +59,40 @@ def test_reply_fallback_when_llm_down():
     r = OrderWorkflow(FakeLLM(extracted(), reply_fails=True), FakeCatalogue(), 3).run(EMAIL)
     assert r.status == "Partial"
     assert "only 6 in stock" in r.reply
+
+
+def test_workflow_records_iteration_fallback_and_step_timings():
+    metrics = OrderMetrics()
+    llm = FakeLLM(extracted(), reply_fails=True)
+
+    r = OrderWorkflow(llm, FakeCatalogue(), 3).run(EMAIL, metrics)
+
+    assert r.status == "Partial"
+    assert metrics.extraction_iterations == 1
+    assert metrics.fallback_reply_used is True
+    assert metrics.reply_check_failures == 0
+    assert metrics.total_duration_ms is not None and metrics.total_duration_ms >= 0
+    assert metrics.step_metrics["email_parse"]["count"] == 1
+    assert metrics.step_metrics["extraction_iteration"]["count"] == 1
+    assert metrics.step_metrics["reply_generation"]["count"] == 1
+    assert all(value["total_ms"] >= 0 for value in metrics.step_metrics.values())
+
+
+def test_rejected_reply_attempts_are_counted_before_fallback():
+    class BadReplyLLM(FakeLLM):
+        def complete(self, step, messages, **_):
+            return "We provide a 50% discount."
+
+    metrics = OrderMetrics()
+    workflow = OrderWorkflow(BadReplyLLM(extracted()), FakeCatalogue(), 3)
+
+    result = workflow.run(EMAIL, metrics)
+
+    assert result.reply != "We provide a 50% discount."
+    assert metrics.reply_check_failures == 2
+    assert metrics.fallback_reply_used is True
+    assert metrics.error_counts["reply_check"] == 2
+    assert metrics.step_metrics["reply_check"]["count"] == 2
 
 
 def test_contract_has_every_field():
