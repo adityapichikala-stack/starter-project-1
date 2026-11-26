@@ -20,5 +20,27 @@
   "issues": [
     "Nimbus Tab 10: requested 40, only 25 in stock"
   ],
-  "reply": "Dear Ms. Deshpande,\n\nThank you for your order from Greenfield Public School. We can supply the Pebble Buds in the requested quantity of 40. For the Nimbus Tab 10, you asked for 40 units, but we currently have 25 available. Would you like to receive the 25 units now, or prefer to wait or change your order for this item? We will arrange delivery to Nagpur by 30 November 2026 for the confirmed quantities.\n\nKind regards,  \nOrder Desk"
+  "reply": "Dear Sunita Deshpande,\n\nThank you for your order from Greenfield Public School. We can supply 25 Nimbus Tab 10 units (you requested 40, we currently have 25) and the full 40 Pebble Buds. Please let us know if you prefer to receive the available 25 Tabs now or wait for more, or if you want to adjust the order.\n\nThe quoted price in INR is:  \n- 25 Nimbus Tab 10 at ₹14,999 each with 5% discount, total ₹356,226.25  \n- 40 Pebble Buds at ₹1,299 each with 5% discount, total ₹49,362.00  \nSubtotal ₹405,588.25; Delivery ₹0; Grand total ₹405,588.25  \nThe quote is valid until 24 November 2026.\n\nOur team will arrange delivery to Nagpur by 30 November 2026 once you confirm.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "TAB-10",
+        "quantity": 25,
+        "unit_price_inr": 14999.0,
+        "discount_percent": 5,
+        "line_total_inr": 356226.25
+      },
+      {
+        "product_code": "EAR-01",
+        "quantity": 40,
+        "unit_price_inr": 1299.0,
+        "discount_percent": 5,
+        "line_total_inr": 49362.0
+      }
+    ],
+    "subtotal_inr": 405588.25,
+    "delivery_inr": 0.0,
+    "total_inr": 405588.25,
+    "valid_until": "2026-11-24"
+  }
 }

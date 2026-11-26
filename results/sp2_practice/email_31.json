@@ -1,0 +1,19 @@
+{
+  "customer": "Framehouse Studios",
+  "delivery_city": "Mumbai",
+  "deadline": "2026-12-09",
+  "items": [
+    {
+      "product_name": "15.6-inch laptops with dedicated graphics",
+      "product_code": "LAP-15",
+      "requested": 2,
+      "available": 0
+    }
+  ],
+  "status": "Partial",
+  "issues": [
+    "15.6-inch laptops with dedicated graphics: requested 2, only 0 in stock"
+  ],
+  "reply": "Dear Arvind Sen,\n\nThank you for your order from Framehouse Studios. Currently, we have no stock of the 15.6-inch laptops with dedicated graphics you requested (2 units). Could you please advise if you would like to wait for this product to become available, or if you prefer alternate options?\n\nThe 15.6-inch Corelink Book 15 Pro features 32 GB RAM, a 1 TB SSD, dedicated GPU, and space grey color, ideal for video editors and designers.\n\nWe await your guidance on how to proceed.\n\nBest regards,  \nOrder Desk",
+  "quote": null
+}

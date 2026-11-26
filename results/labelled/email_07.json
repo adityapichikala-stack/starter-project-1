@@ -14,5 +14,6 @@
   "issues": [
     "Deadline 2026-11-19 is less than 3 days after the email date 2026-11-17"
   ],
-  "reply": "Dear Vikram Hegde,\n\nThank you for your order from Quickship Labs. The deadline you requested, 19 November 2026, is less than 3 days from today, which is too soon for us to deliver. Could you please confirm if a later delivery date would work for you?\n\nWe look forward to your response.\n\nBest regards,  \nOrder Desk"
+  "reply": "Dear Vikram Hegde,\n\nThank you for your order from Quickship Labs. The requested delivery deadline of 19 November 2026 is too soon for us to arrange. Could you please confirm if a later delivery date would work for you?\n\nWe look forward to your reply.\n\nBest regards,  \nOrder Desk",
+  "quote": null
 }

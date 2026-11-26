@@ -13,14 +13,16 @@ from contextvars import ContextVar
 import json
 import logging
 import math
+import os
 import statistics
+import sys
 import time
 from decimal import Decimal
 from pathlib import Path
 from typing import Callable
 
 DATA = Path(__file__).resolve().parent
-SP2_DATA = DATA / "starter-project-2-data"
+SP2_DATA = Path(os.getenv("SP2_DATA_DIR") or DATA / "starter-project-2-data").resolve()
 FIELDS = ["status", "items", "customer", "delivery_city", "deadline"]
 EXTRACTION_FIELDS = {"items", "customer", "delivery_city", "deadline"}
 ERROR_CATEGORIES = ("extraction_related", "business_rule_status", "workflow")
@@ -553,6 +555,9 @@ def main(argv: list[str] | None = None):
     ap.add_argument("--verbose", action="store_true", help="Show workflow logs")
     ap.add_argument("--group-errors", action="store_true", help="Include error counts grouped by category")
     args = ap.parse_args(argv)
+    for stream in (sys.stdout, sys.stderr):  # replies contain characters a Windows console cannot encode
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(errors="replace")
 
     logging.basicConfig(
         level=logging.INFO if args.verbose else logging.WARNING,

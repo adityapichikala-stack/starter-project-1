@@ -1,0 +1,31 @@
+{
+  "customer": "Deccan Fiber",
+  "delivery_city": "Nashik",
+  "deadline": "2026-12-10",
+  "items": [
+    {
+      "product_name": "Meshwave AX3000 Router",
+      "product_code": "RTR-AX3",
+      "requested": 12,
+      "available": 30
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Sneha Joshi,\n\nWe confirm we can supply 12 units of the Meshwave AX3000 Router as requested. Our team will arrange delivery to Nashik by 10 December 2026.\n\nThe quote is in INR: unit price is 6499.0 with a 5% discount, making the total 74088.6. Delivery is free. This quote is valid until 27 November 2026.\n\nWarranty starts on delivery date; unopened products can be returned within 7 days. Payment terms are 50% in advance and the balance on delivery.\n\nThank you for choosing Deccan Fiber.\n\nKind regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "RTR-AX3",
+        "quantity": 12,
+        "unit_price_inr": 6499.0,
+        "discount_percent": 5,
+        "line_total_inr": 74088.6
+      }
+    ],
+    "subtotal_inr": 74088.6,
+    "delivery_inr": 0.0,
+    "total_inr": 74088.6,
+    "valid_until": "2026-11-27"
+  }
+}

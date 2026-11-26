@@ -5,6 +5,7 @@ Every chunk is stored (and embedded) with a context prefix:
   pricing_policy.md:   "Pricing policy — <heading>"
 Run twice safely: the documents table is emptied and refilled in one transaction.
 """
+import os
 import re
 from pathlib import Path
 from typing import Iterator
@@ -17,7 +18,8 @@ from app.rag import vector_literal
 
 pg8000.dbapi.paramstyle = "pyformat"  # named %(x)s parameters
 
-DOCS_DIR = Path(__file__).resolve().parents[1] / "starter-project-2-data" / "docs"
+SP2_DATA_DIR = Path(os.getenv("SP2_DATA_DIR") or Path(__file__).resolve().parents[1] / "starter-project-2-data")
+DOCS_DIR = SP2_DATA_DIR / "docs"
 EMBEDDING_DIMENSIONS = 1536
 BATCH_SIZE = 64
 

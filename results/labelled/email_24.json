@@ -1,0 +1,46 @@
+{
+  "customer": "Coastline Telecom",
+  "delivery_city": "Kochi",
+  "deadline": "2026-12-15",
+  "items": [
+    {
+      "product_name": "Corelink Book 14",
+      "product_code": "LAP-14",
+      "requested": 30,
+      "available": 12
+    },
+    {
+      "product_name": "Volt 65W Charger",
+      "product_code": "CHG-65",
+      "requested": 20,
+      "available": 200
+    }
+  ],
+  "status": "Partial",
+  "issues": [
+    "Corelink Book 14: requested 30, only 12 in stock"
+  ],
+  "reply": "Dear Thomas Varghese,\n\nWe can supply 12 units of Corelink Book 14 and 20 units of Volt 65W Charger as requested. For Corelink Book 14, you asked for 30 units, but we currently have only 12 available. Please let us know if you want to proceed with 12 units now or prefer to wait or modify your order.\n\nThe total quote for this supply is INR 621,281, valid until 27 November 2026. We will arrange delivery to Kochi by 15 December 2026 once confirmed.\n\nKind regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "LAP-14",
+        "quantity": 12,
+        "unit_price_inr": 52000.0,
+        "discount_percent": 5,
+        "line_total_inr": 592800.0
+      },
+      {
+        "product_code": "CHG-65",
+        "quantity": 20,
+        "unit_price_inr": 1499.0,
+        "discount_percent": 5,
+        "line_total_inr": 28481.0
+      }
+    ],
+    "subtotal_inr": 621281.0,
+    "delivery_inr": 0.0,
+    "total_inr": 621281.0,
+    "valid_until": "2026-11-27"
+  }
+}

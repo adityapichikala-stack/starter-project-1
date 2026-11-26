@@ -1,0 +1,19 @@
+{
+  "customer": "QuickLearn Academy",
+  "delivery_city": "Chennai",
+  "deadline": "2026-11-24",
+  "items": [
+    {
+      "product_name": "10-inch grey tablets",
+      "product_code": "TAB-10",
+      "requested": 15,
+      "available": 25
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Deadline 2026-11-24 is less than 3 days after the email date 2026-11-23"
+  ],
+  "reply": "Dear Deepa Iyer,\n\nThank you for your order of 15 units of Nimbus Tab 10 tablets for QuickLearn Academy. We can supply the full quantity requested. However, the requested delivery deadline of 24 November 2026 is less than 3 days from today, which is too soon for us to deliver. Could you please let us know if a later delivery date would work for you?\n\nWe look forward to your confirmation.\n\nBest regards,  \nOrder Desk",
+  "quote": null
+}

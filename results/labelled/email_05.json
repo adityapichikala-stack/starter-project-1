@@ -14,5 +14,20 @@
   "issues": [
     "Astra X9: requested 10, only 6 in stock"
   ],
-  "reply": "Dear Karthik S,\n\nFor your order from Orbit Retail to be delivered in Chennai by 1 December 2026, you asked for 10 units of Astra X9. We currently have 6 units available. Would you prefer to receive the 6 units now, or would you like to wait or change your order?\n\nPlease let us know how you wish to proceed.\n\nBest regards,  \nOrder Desk"
+  "reply": "Dear Karthik S,\n\nThank you for your order from Orbit Retail. We can supply 6 units of Astra X9 as currently available, while you requested 10 units. Would you like to proceed with the 6 units now, or prefer to wait or modify your order?\n\nThe quote for 6 units is INR 209,994, with no delivery charge. This quote is valid until 24 November 2026. Once you confirm, our team will arrange delivery to Chennai by 1 December 2026.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "PHN-X9",
+        "quantity": 6,
+        "unit_price_inr": 34999.0,
+        "discount_percent": 0,
+        "line_total_inr": 209994.0
+      }
+    ],
+    "subtotal_inr": 209994.0,
+    "delivery_inr": 0.0,
+    "total_inr": 209994.0,
+    "valid_until": "2026-11-24"
+  }
 }

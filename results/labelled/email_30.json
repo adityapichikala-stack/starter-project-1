@@ -1,0 +1,31 @@
+{
+  "customer": "Shubh Vivah Weddings",
+  "delivery_city": "Jaipur",
+  "deadline": "2026-12-18",
+  "items": [
+    {
+      "product_name": "Pebble Buds",
+      "product_code": "EAR-01",
+      "requested": 250,
+      "available": 350
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Kavya Sharma,\n\nWe can supply your full order of 250 Pebble Buds to Jaipur by 18 December 2026. The quote is INR 1299 per unit with a 12% discount, totaling INR 285780. Delivery is free. This quote is valid until 28 November 2026. Our team will arrange the delivery as requested.\n\nThank you for choosing us.\n\nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "EAR-01",
+        "quantity": 250,
+        "unit_price_inr": 1299.0,
+        "discount_percent": 12,
+        "line_total_inr": 285780.0
+      }
+    ],
+    "subtotal_inr": 285780.0,
+    "delivery_inr": 0.0,
+    "total_inr": 285780.0,
+    "valid_until": "2026-11-28"
+  }
+}

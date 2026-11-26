@@ -1,0 +1,44 @@
+{
+  "customer": "Greenfield Public School",
+  "delivery_city": "Nagpur",
+  "deadline": "2026-12-14",
+  "items": [
+    {
+      "product_name": "Nimbus Tab 8 Lite",
+      "product_code": "TAB-08",
+      "requested": 20,
+      "available": 60
+    },
+    {
+      "product_name": "Pebble Buds",
+      "product_code": "EAR-01",
+      "requested": 20,
+      "available": 350
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Sunita Deshpande,\n\nWe confirm that we can supply your complete order for Greenfield Public School: 20 units of Nimbus Tab 8 Lite and 20 units of Pebble Buds. The total quoted price is INR 205,162, inclusive of a 5% discount on each item, with free delivery to Nagpur. This quote is valid until 28 November 2026. Our team will arrange delivery by 14 December 2026 as requested.\n\nThank you for your order.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "TAB-08",
+        "quantity": 20,
+        "unit_price_inr": 9499.0,
+        "discount_percent": 5,
+        "line_total_inr": 180481.0
+      },
+      {
+        "product_code": "EAR-01",
+        "quantity": 20,
+        "unit_price_inr": 1299.0,
+        "discount_percent": 5,
+        "line_total_inr": 24681.0
+      }
+    ],
+    "subtotal_inr": 205162.0,
+    "delivery_inr": 0.0,
+    "total_inr": 205162.0,
+    "valid_until": "2026-11-28"
+  }
+}

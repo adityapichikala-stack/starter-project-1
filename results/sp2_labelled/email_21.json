@@ -1,0 +1,44 @@
+{
+  "customer": "Sunbeam International School",
+  "delivery_city": "Pune",
+  "deadline": "2026-12-11",
+  "items": [
+    {
+      "product_name": "Nimbus Tab 8 Lite",
+      "product_code": "TAB-08",
+      "requested": 60,
+      "available": 60
+    },
+    {
+      "product_name": "Pebble Buds",
+      "product_code": "EAR-01",
+      "requested": 60,
+      "available": 350
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Nandini Rao,\n\nWe confirm that we can supply 60 units of Nimbus Tab 8 Lite and 60 units of Pebble Buds as requested. The total quoted price is INR 596,049.6 with an 8% discount on both items, and delivery is free. This quote is valid until 27 November 2026. Our team will arrange delivery to Pune by 11 December 2026 as indicated.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "TAB-08",
+        "quantity": 60,
+        "unit_price_inr": 9499.0,
+        "discount_percent": 8,
+        "line_total_inr": 524344.8
+      },
+      {
+        "product_code": "EAR-01",
+        "quantity": 60,
+        "unit_price_inr": 1299.0,
+        "discount_percent": 8,
+        "line_total_inr": 71704.8
+      }
+    ],
+    "subtotal_inr": 596049.6,
+    "delivery_inr": 0.0,
+    "total_inr": 596049.6,
+    "valid_until": "2026-11-27"
+  }
+}

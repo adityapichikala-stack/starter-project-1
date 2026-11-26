@@ -1,0 +1,19 @@
+{
+  "customer": "Eventora",
+  "delivery_city": "Kolkata",
+  "deadline": "2026-12-09",
+  "items": [
+    {
+      "product_name": "wireless earbuds",
+      "product_code": null,
+      "requested": 20,
+      "available": null
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Ambiguous product: wireless earbuds (Pebble Buds or Pebble Buds Pro)"
+  ],
+  "reply": "Dear Ritu Agarwal,\n\nThank you for your order from Eventora. We noticed your request for \"wireless earbuds\" is ambiguous between Pebble Buds (white, no noise cancelling) and Pebble Buds Pro (black, active noise cancelling). Please confirm which product you would like to order so we can proceed.\n\nWe look forward to your clarification.\n\nBest regards,  \nOrder Desk",
+  "quote": null
+}

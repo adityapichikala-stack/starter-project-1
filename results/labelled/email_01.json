@@ -18,5 +18,27 @@
   ],
   "status": "Ready",
   "issues": [],
-  "reply": "Dear Meera Kulkarni,\n\nThank you for your order from Sahyadri Tech Solutions. We confirm that we can supply the following items in the quantities requested: 10 Corelink Book 14 laptops and 10 Volt 65W Chargers. Our team will arrange delivery to Pune by 24 November 2026.\n\nPlease let us know if you have any further requirements.\n\nBest regards,  \nOrder Desk"
+  "reply": "Dear Meera Kulkarni,\n\nWe confirm we can supply your full order for 10 Corelink Book 14 units and 10 Volt 65W Chargers. The team will arrange delivery to Pune by 24 November 2026.\n\nYour quote in INR is:  \nCorelink Book 14: 10 units at 52,000 each, 5% discount, line total 494,000.0  \nVolt 65W Charger: 10 units at 1,499 each, 5% discount, line total 14,240.5  \nSubtotal: 508,240.5  \nDelivery charge: 0.0  \nTotal: 508,240.5  \nQuote is valid until 23 November 2026.\n\nThank you for choosing us.\n\nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "LAP-14",
+        "quantity": 10,
+        "unit_price_inr": 52000.0,
+        "discount_percent": 5,
+        "line_total_inr": 494000.0
+      },
+      {
+        "product_code": "CHG-65",
+        "quantity": 10,
+        "unit_price_inr": 1499.0,
+        "discount_percent": 5,
+        "line_total_inr": 14240.5
+      }
+    ],
+    "subtotal_inr": 508240.5,
+    "delivery_inr": 0.0,
+    "total_inr": 508240.5,
+    "valid_until": "2026-11-23"
+  }
 }

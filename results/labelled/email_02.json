@@ -4,13 +4,13 @@
   "deadline": "2026-11-23",
   "items": [
     {
-      "product_name": "Nimbus Tab 8 Lite",
+      "product_name": "nimbus tab 8 lite",
       "product_code": "TAB-08",
       "requested": 15,
       "available": 60
     },
     {
-      "product_name": "Pebble Buds",
+      "product_name": "PEBBLE BUDS",
       "product_code": "EAR-01",
       "requested": 15,
       "available": 350
@@ -18,5 +18,27 @@
   ],
   "status": "Ready",
   "issues": [],
-  "reply": "Dear Arjun Rao,\n\nWe confirm that Brightpath Coaching Centre's order for 15 Nimbus Tab 8 Lite and 15 Pebble Buds can be supplied in full. Our team will arrange delivery to Hyderabad by 23 November 2026.\n\nThank you for your order.\n\nBest regards,  \nOrder Desk"
+  "reply": "Dear Arjun Rao,\n\nWe confirm we can supply your full order for 15 Nimbus Tab 8 Lite and 15 Pebble Buds. The total quote is INR 153,871.50 with a 5% discount included. Delivery to Hyderabad is arranged by the deadline, 23 November 2026. The quote is valid until that date.\n\nThank you for choosing us.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "TAB-08",
+        "quantity": 15,
+        "unit_price_inr": 9499.0,
+        "discount_percent": 5,
+        "line_total_inr": 135360.75
+      },
+      {
+        "product_code": "EAR-01",
+        "quantity": 15,
+        "unit_price_inr": 1299.0,
+        "discount_percent": 5,
+        "line_total_inr": 18510.75
+      }
+    ],
+    "subtotal_inr": 153871.5,
+    "delivery_inr": 0.0,
+    "total_inr": 153871.5,
+    "valid_until": "2026-11-23"
+  }
 }

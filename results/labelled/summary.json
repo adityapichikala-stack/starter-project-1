@@ -2,23 +2,9 @@
   "email_counts": {
     "answer_keys_without_email": [],
     "failed": 0,
-    "processed": 10,
+    "processed": 20,
     "scored": 10,
-    "unscored": 0
-  },
-  "errors_by_category": {
-    "business_rule_status": {
-      "count": 0,
-      "reasons": {}
-    },
-    "extraction_related": {
-      "count": 0,
-      "reasons": {}
-    },
-    "workflow": {
-      "count": 0,
-      "reasons": {}
-    }
+    "unscored": 10
   },
   "exact_order_match": {
     "accuracy": 1.0,
@@ -64,19 +50,19 @@
     }
   },
   "latency_ms": {
-    "count": 10,
-    "max": 9799.628,
-    "mean": 6032.757,
-    "median": 6081.293,
-    "min": 3620.614,
-    "p95": 9799.628
+    "count": 20,
+    "max": 9982.983,
+    "mean": 5952.345,
+    "median": 5507.387,
+    "min": 4476.098,
+    "p95": 8840.893
   },
   "observability": {
     "error_counts": {},
     "estimated_cost": {
       "basis": "sum of available per-order estimates; orders with unavailable costs are excluded",
       "orders_with_estimate": 0,
-      "orders_without_estimate": 10,
+      "orders_without_estimate": 20,
       "status": "not_available",
       "unit": "same currency/unit as configured rates",
       "value": null
@@ -84,140 +70,186 @@
     "extraction_iterations": {
       "max": 1,
       "mean": 1,
-      "total": 10
+      "total": 20
     },
     "fallback_reply_orders": 0,
     "latency_ms": {
-      "count": 10,
-      "max": 9796.888,
-      "mean": 6022.097,
-      "median": 6058.559,
-      "min": 3618.461,
-      "p95": 9796.888
+      "count": 20,
+      "max": 9982.005,
+      "mean": 5951.376,
+      "median": 5505.862,
+      "min": 4474.993,
+      "p95": 8839.081
     },
     "llm": {
-      "attempts": 30,
-      "calls": 30,
+      "attempts": 73,
+      "calls": 73,
       "retries": 0,
-      "successful_calls": 30,
+      "successful_calls": 73,
       "tokens": {
         "attempts_missing_usage": 0,
-        "calls_missing_usage": 0,
-        "calls_with_usage": 30,
-        "completion_tokens": 2814,
-        "prompt_tokens": 33171,
-        "total_tokens": 35985
+        "calls_missing_usage": 9,
+        "calls_with_usage": 64,
+        "completion_tokens": 6244,
+        "prompt_tokens": 78849,
+        "total_tokens": 85093
       }
     },
     "llm_steps": {
-      "extract": {
-        "attempts": 10,
-        "calls": 10,
-        "calls_missing_usage": 0,
-        "calls_with_usage": 10,
-        "completion_tokens": 682,
-        "prompt_tokens": 12009,
+      "embedding": {
+        "attempts": 9,
+        "calls": 9,
+        "calls_missing_usage": 9,
+        "calls_with_usage": 0,
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
         "retries": 0,
-        "successful_calls": 10,
-        "total_tokens": 12691
+        "successful_calls": 9,
+        "total_tokens": 0
+      },
+      "extract": {
+        "attempts": 20,
+        "calls": 20,
+        "calls_missing_usage": 0,
+        "calls_with_usage": 20,
+        "completion_tokens": 1346,
+        "prompt_tokens": 24769,
+        "retries": 0,
+        "successful_calls": 20,
+        "total_tokens": 26115
       },
       "reply": {
-        "attempts": 10,
-        "calls": 10,
+        "attempts": 20,
+        "calls": 20,
         "calls_missing_usage": 0,
-        "calls_with_usage": 10,
-        "completion_tokens": 714,
-        "prompt_tokens": 6117,
+        "calls_with_usage": 20,
+        "completion_tokens": 2064,
+        "prompt_tokens": 21494,
         "retries": 0,
-        "successful_calls": 10,
-        "total_tokens": 6831
+        "successful_calls": 20,
+        "total_tokens": 23558
+      },
+      "resolve_product": {
+        "attempts": 4,
+        "calls": 4,
+        "calls_missing_usage": 0,
+        "calls_with_usage": 4,
+        "completion_tokens": 33,
+        "prompt_tokens": 1786,
+        "retries": 0,
+        "successful_calls": 4,
+        "total_tokens": 1819
       },
       "verify": {
-        "attempts": 10,
-        "calls": 10,
+        "attempts": 20,
+        "calls": 20,
         "calls_missing_usage": 0,
-        "calls_with_usage": 10,
-        "completion_tokens": 1418,
-        "prompt_tokens": 15045,
+        "calls_with_usage": 20,
+        "completion_tokens": 2801,
+        "prompt_tokens": 30800,
         "retries": 0,
-        "successful_calls": 10,
-        "total_tokens": 16463
+        "successful_calls": 20,
+        "total_tokens": 33601
       }
     },
-    "orders_with_metrics": 10,
+    "orders_with_metrics": 20,
     "reply_check_failures": 0,
     "step_latency_ms": {
       "email_parse": {
-        "count": 10,
-        "max_ms": 0.656,
-        "mean_ms": 0.554,
-        "total_ms": 5.544
+        "count": 20,
+        "max_ms": 1.362,
+        "mean_ms": 0.435,
+        "total_ms": 8.702
       },
       "extraction": {
-        "count": 10,
-        "max_ms": 7626.864,
-        "mean_ms": 4484.221,
-        "total_ms": 44842.212
+        "count": 20,
+        "max_ms": 6430.537,
+        "mean_ms": 3740.037,
+        "total_ms": 74800.733
       },
       "extraction_iteration": {
-        "count": 10,
-        "max_ms": 7626.8,
-        "mean_ms": 4484.179,
-        "total_ms": 44841.788
+        "count": 20,
+        "max_ms": 6430.491,
+        "mean_ms": 3740.006,
+        "total_ms": 74800.111
+      },
+      "llm_embedding": {
+        "count": 9,
+        "max_ms": 1207.928,
+        "mean_ms": 618.043,
+        "total_ms": 5562.388
       },
       "llm_extract": {
-        "count": 10,
-        "max_ms": 4987.679,
-        "mean_ms": 2239.969,
-        "total_ms": 22399.686
+        "count": 20,
+        "max_ms": 3736.077,
+        "mean_ms": 1609.803,
+        "total_ms": 32196.054
       },
       "llm_reply": {
-        "count": 10,
-        "max_ms": 2306.44,
-        "mean_ms": 1464.528,
-        "total_ms": 14645.284
+        "count": 20,
+        "max_ms": 2569.757,
+        "mean_ms": 1654.142,
+        "total_ms": 33082.83
+      },
+      "llm_resolve_product": {
+        "count": 4,
+        "max_ms": 1089.319,
+        "mean_ms": 833.832,
+        "total_ms": 3335.327
       },
       "llm_verify": {
-        "count": 10,
-        "max_ms": 3018.106,
-        "mean_ms": 2242.91,
-        "total_ms": 22429.1
+        "count": 20,
+        "max_ms": 3286.968,
+        "mean_ms": 2129.368,
+        "total_ms": 42587.367
+      },
+      "quote_build": {
+        "count": 20,
+        "max_ms": 0.388,
+        "mean_ms": 0.109,
+        "total_ms": 2.182
+      },
+      "rag_resolution": {
+        "count": 20,
+        "max_ms": 2508.924,
+        "mean_ms": 476.993,
+        "total_ms": 9539.851
       },
       "reply_check": {
-        "count": 10,
-        "max_ms": 1.541,
-        "mean_ms": 0.436,
-        "total_ms": 4.359
+        "count": 20,
+        "max_ms": 2.082,
+        "mean_ms": 0.515,
+        "total_ms": 10.307
       },
       "reply_generation": {
-        "count": 10,
-        "max_ms": 2307.605,
-        "mean_ms": 1464.804,
-        "total_ms": 14648.042
+        "count": 20,
+        "max_ms": 2569.938,
+        "mean_ms": 1654.378,
+        "total_ms": 33087.568
       },
       "status": {
-        "count": 10,
-        "max_ms": 0.162,
-        "mean_ms": 0.058,
-        "total_ms": 0.579
+        "count": 20,
+        "max_ms": 0.117,
+        "mean_ms": 0.028,
+        "total_ms": 0.56
       },
       "stock_lookup": {
-        "count": 10,
-        "max_ms": 154.824,
-        "mean_ms": 71.687,
-        "total_ms": 716.874
+        "count": 20,
+        "max_ms": 114.822,
+        "mean_ms": 78.587,
+        "total_ms": 1571.741
       },
       "stock_query": {
-        "count": 10,
-        "max_ms": 154.62,
-        "mean_ms": 71.526,
-        "total_ms": 715.257
+        "count": 20,
+        "max_ms": 63.04,
+        "mean_ms": 38.651,
+        "total_ms": 773.011
       },
       "validation": {
-        "count": 10,
-        "max_ms": 0.155,
-        "mean_ms": 0.079,
-        "total_ms": 0.794
+        "count": 20,
+        "max_ms": 0.117,
+        "mean_ms": 0.06,
+        "total_ms": 1.191
       }
     }
   },
@@ -233,7 +265,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 9799.628,
+      "latency_ms": 8840.893,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -255,9 +287,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 337,
-            "prompt_tokens": 3398,
-            "total_tokens": 3735
+            "completion_tokens": 416,
+            "prompt_tokens": 3895,
+            "total_tokens": 4311
           }
         },
         "llm_steps": {
@@ -267,117 +299,129 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 84,
-            "prompt_tokens": 1215,
+            "prompt_tokens": 1260,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1299
+            "total_tokens": 1344
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 83,
-            "prompt_tokens": 639,
+            "completion_tokens": 160,
+            "prompt_tokens": 1046,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 722
+            "total_tokens": 1206
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 170,
-            "prompt_tokens": 1544,
+            "completion_tokens": 172,
+            "prompt_tokens": 1589,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1714
+            "total_tokens": 1761
           }
         },
         "reply_check_failures": 0,
-        "request_id": "7497a98e6bfe4f3d9a96b874232a48ad",
+        "request_id": "163cf9f409e64d66be812d54083cb930",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.636,
-            "mean_ms": 0.636,
-            "total_ms": 0.636
+            "max_ms": 1.362,
+            "mean_ms": 1.362,
+            "total_ms": 1.362
           },
           "extraction": {
             "count": 1,
-            "max_ms": 7626.864,
-            "mean_ms": 7626.864,
-            "total_ms": 7626.864
+            "max_ms": 6430.537,
+            "mean_ms": 6430.537,
+            "total_ms": 6430.537
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 7626.8,
-            "mean_ms": 7626.8,
-            "total_ms": 7626.8
+            "max_ms": 6430.491,
+            "mean_ms": 6430.491,
+            "total_ms": 6430.491
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 4987.679,
-            "mean_ms": 4987.679,
-            "total_ms": 4987.679
+            "max_ms": 3736.077,
+            "mean_ms": 3736.077,
+            "total_ms": 3736.077
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 2012.178,
-            "mean_ms": 2012.178,
-            "total_ms": 2012.178
+            "max_ms": 2318.183,
+            "mean_ms": 2318.183,
+            "total_ms": 2318.183
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2635.774,
-            "mean_ms": 2635.774,
-            "total_ms": 2635.774
+            "max_ms": 2692.711,
+            "mean_ms": 2692.711,
+            "total_ms": 2692.711
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.136,
+            "mean_ms": 0.136,
+            "total_ms": 0.136
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.61,
+            "mean_ms": 0.61,
+            "total_ms": 0.61
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 1.541,
-            "mean_ms": 1.541,
-            "total_ms": 1.541
+            "max_ms": 0.471,
+            "mean_ms": 0.471,
+            "total_ms": 0.471
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 2012.361,
-            "mean_ms": 2012.361,
-            "total_ms": 2012.361
+            "max_ms": 2318.394,
+            "mean_ms": 2318.394,
+            "total_ms": 2318.394
           },
           "status": {
             "count": 1,
-            "max_ms": 0.162,
-            "mean_ms": 0.162,
-            "total_ms": 0.162
+            "max_ms": 0.015,
+            "mean_ms": 0.015,
+            "total_ms": 0.015
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 154.824,
-            "mean_ms": 154.824,
-            "total_ms": 154.824
+            "max_ms": 87.162,
+            "mean_ms": 87.162,
+            "total_ms": 87.162
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 154.62,
-            "mean_ms": 154.62,
-            "total_ms": 154.62
+            "max_ms": 61.642,
+            "mean_ms": 61.642,
+            "total_ms": 61.642
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.155,
-            "mean_ms": 0.155,
-            "total_ms": 0.155
+            "max_ms": 0.083,
+            "mean_ms": 0.083,
+            "total_ms": 0.083
           }
         },
-        "total_duration_ms": 9796.888
+        "total_duration_ms": 8839.081
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 337,
-        "prompt_tokens": 3398,
-        "total_tokens": 3735
+        "completion_tokens": 416,
+        "prompt_tokens": 3895,
+        "total_tokens": 4311
       }
     },
     {
@@ -391,7 +435,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 5668.01,
+      "latency_ms": 6192.442,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -413,9 +457,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 354,
-            "prompt_tokens": 3380,
-            "total_tokens": 3734
+            "completion_tokens": 322,
+            "prompt_tokens": 3878,
+            "total_tokens": 4200
           }
         },
         "llm_steps": {
@@ -425,117 +469,129 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 81,
-            "prompt_tokens": 1211,
+            "prompt_tokens": 1256,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1292
+            "total_tokens": 1337
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 62,
-            "prompt_tokens": 632,
+            "completion_tokens": 84,
+            "prompt_tokens": 1040,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 694
+            "total_tokens": 1124
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 211,
-            "prompt_tokens": 1537,
+            "completion_tokens": 157,
+            "prompt_tokens": 1582,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1748
+            "total_tokens": 1739
           }
         },
         "reply_check_failures": 0,
-        "request_id": "adbe933cafac498ba33008b347e237d0",
+        "request_id": "de58cdcb72d247bbbfea60764524caa3",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.509,
-            "mean_ms": 0.509,
-            "total_ms": 0.509
+            "max_ms": 0.406,
+            "mean_ms": 0.406,
+            "total_ms": 0.406
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3569.131,
-            "mean_ms": 3569.131,
-            "total_ms": 3569.131
+            "max_ms": 4744.289,
+            "mean_ms": 4744.289,
+            "total_ms": 4744.289
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3569.081,
-            "mean_ms": 3569.081,
-            "total_ms": 3569.081
+            "max_ms": 4744.255,
+            "mean_ms": 4744.255,
+            "total_ms": 4744.255
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1246.994,
-            "mean_ms": 1246.994,
-            "total_ms": 1246.994
+            "max_ms": 2105.395,
+            "mean_ms": 2105.395,
+            "total_ms": 2105.395
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 2024.691,
-            "mean_ms": 2024.691,
-            "total_ms": 2024.691
+            "max_ms": 1357.425,
+            "mean_ms": 1357.425,
+            "total_ms": 1357.425
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2320.037,
-            "mean_ms": 2320.037,
-            "total_ms": 2320.037
+            "max_ms": 2637.095,
+            "mean_ms": 2637.095,
+            "total_ms": 2637.095
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.159,
+            "mean_ms": 0.159,
+            "total_ms": 0.159
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.119,
+            "mean_ms": 0.119,
+            "total_ms": 0.119
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.289,
-            "mean_ms": 0.289,
-            "total_ms": 0.289
+            "max_ms": 0.382,
+            "mean_ms": 0.382,
+            "total_ms": 0.382
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 2024.865,
-            "mean_ms": 2024.865,
-            "total_ms": 2024.865
+            "max_ms": 1357.803,
+            "mean_ms": 1357.803,
+            "total_ms": 1357.803
           },
           "status": {
             "count": 1,
-            "max_ms": 0.046,
-            "mean_ms": 0.046,
-            "total_ms": 0.046
+            "max_ms": 0.1,
+            "mean_ms": 0.1,
+            "total_ms": 0.1
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 70.999,
-            "mean_ms": 70.999,
-            "total_ms": 70.999
+            "max_ms": 87.738,
+            "mean_ms": 87.738,
+            "total_ms": 87.738
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 70.856,
-            "mean_ms": 70.856,
-            "total_ms": 70.856
+            "max_ms": 37.282,
+            "mean_ms": 37.282,
+            "total_ms": 37.282
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.066,
-            "mean_ms": 0.066,
-            "total_ms": 0.066
+            "max_ms": 0.074,
+            "mean_ms": 0.074,
+            "total_ms": 0.074
           }
         },
-        "total_duration_ms": 5666.203
+        "total_duration_ms": 6191.3
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 354,
-        "prompt_tokens": 3380,
-        "total_tokens": 3734
+        "completion_tokens": 322,
+        "prompt_tokens": 3878,
+        "total_tokens": 4200
       }
     },
     {
@@ -549,7 +605,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 3620.614,
+      "latency_ms": 4684.238,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -571,9 +627,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 217,
-            "prompt_tokens": 3247,
-            "total_tokens": 3464
+            "completion_tokens": 285,
+            "prompt_tokens": 3688,
+            "total_tokens": 3973
           }
         },
         "llm_steps": {
@@ -583,117 +639,129 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 55,
-            "prompt_tokens": 1190,
+            "prompt_tokens": 1235,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1245
+            "total_tokens": 1290
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 50,
-            "prompt_tokens": 582,
+            "completion_tokens": 109,
+            "prompt_tokens": 933,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 632
+            "total_tokens": 1042
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 112,
-            "prompt_tokens": 1475,
+            "completion_tokens": 121,
+            "prompt_tokens": 1520,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1587
+            "total_tokens": 1641
           }
         },
         "reply_check_failures": 0,
-        "request_id": "01ad82bccc944603a7a52519acfd6566",
+        "request_id": "6bfd3d1f027a47f0a513744a122e1e52",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.614,
-            "mean_ms": 0.614,
-            "total_ms": 0.614
+            "max_ms": 0.348,
+            "mean_ms": 0.348,
+            "total_ms": 0.348
           },
           "extraction": {
             "count": 1,
-            "max_ms": 2493.434,
-            "mean_ms": 2493.434,
-            "total_ms": 2493.434
+            "max_ms": 3194.015,
+            "mean_ms": 3194.015,
+            "total_ms": 3194.015
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 2493.399,
-            "mean_ms": 2493.399,
-            "total_ms": 2493.399
+            "max_ms": 3193.971,
+            "mean_ms": 3193.971,
+            "total_ms": 3193.971
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 967.345,
-            "mean_ms": 967.345,
-            "total_ms": 967.345
+            "max_ms": 1627.063,
+            "mean_ms": 1627.063,
+            "total_ms": 1627.063
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1039.495,
-            "mean_ms": 1039.495,
-            "total_ms": 1039.495
+            "max_ms": 1420.941,
+            "mean_ms": 1420.941,
+            "total_ms": 1420.941
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1525.193,
-            "mean_ms": 1525.193,
-            "total_ms": 1525.193
+            "max_ms": 1566.224,
+            "mean_ms": 1566.224,
+            "total_ms": 1566.224
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.094,
+            "mean_ms": 0.094,
+            "total_ms": 0.094
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.148,
+            "mean_ms": 0.148,
+            "total_ms": 0.148
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.229,
-            "mean_ms": 0.229,
-            "total_ms": 0.229
+            "max_ms": 0.349,
+            "mean_ms": 0.349,
+            "total_ms": 0.349
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1039.664,
-            "mean_ms": 1039.664,
-            "total_ms": 1039.664
+            "max_ms": 1421.357,
+            "mean_ms": 1421.357,
+            "total_ms": 1421.357
           },
           "status": {
             "count": 1,
-            "max_ms": 0.053,
-            "mean_ms": 0.053,
-            "total_ms": 0.053
+            "max_ms": 0.028,
+            "mean_ms": 0.028,
+            "total_ms": 0.028
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 84.198,
-            "mean_ms": 84.198,
-            "total_ms": 84.198
+            "max_ms": 66.871,
+            "mean_ms": 66.871,
+            "total_ms": 66.871
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 84.03,
-            "mean_ms": 84.03,
-            "total_ms": 84.03
+            "max_ms": 39.018,
+            "mean_ms": 39.018,
+            "total_ms": 39.018
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.042,
-            "mean_ms": 0.042,
-            "total_ms": 0.042
+            "max_ms": 0.052,
+            "mean_ms": 0.052,
+            "total_ms": 0.052
           }
         },
-        "total_duration_ms": 3618.461
+        "total_duration_ms": 4683.53
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 217,
-        "prompt_tokens": 3247,
-        "total_tokens": 3464
+        "completion_tokens": 285,
+        "prompt_tokens": 3688,
+        "total_tokens": 3973
       }
     },
     {
@@ -707,7 +775,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 6947.725,
+      "latency_ms": 6245.678,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -729,9 +797,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 335,
-            "prompt_tokens": 3470,
-            "total_tokens": 3805
+            "completion_tokens": 430,
+            "prompt_tokens": 3965,
+            "total_tokens": 4395
           }
         },
         "llm_steps": {
@@ -741,21 +809,21 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 84,
-            "prompt_tokens": 1245,
+            "prompt_tokens": 1290,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1329
+            "total_tokens": 1374
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 104,
-            "prompt_tokens": 651,
+            "completion_tokens": 199,
+            "prompt_tokens": 1056,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 755
+            "total_tokens": 1255
           },
           "verify": {
             "attempts": 1,
@@ -763,95 +831,107 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 147,
-            "prompt_tokens": 1574,
+            "prompt_tokens": 1619,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1721
+            "total_tokens": 1766
           }
         },
         "reply_check_failures": 0,
-        "request_id": "e25438187727449190e91701bfad0a07",
+        "request_id": "11c2c00c142143798fcc441057019714",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.656,
-            "mean_ms": 0.656,
-            "total_ms": 0.656
+            "max_ms": 0.316,
+            "mean_ms": 0.316,
+            "total_ms": 0.316
           },
           "extraction": {
             "count": 1,
-            "max_ms": 5518.684,
-            "mean_ms": 5518.684,
-            "total_ms": 5518.684
+            "max_ms": 3887.925,
+            "mean_ms": 3887.925,
+            "total_ms": 3887.925
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 5518.637,
-            "mean_ms": 5518.637,
-            "total_ms": 5518.637
+            "max_ms": 3887.895,
+            "mean_ms": 3887.895,
+            "total_ms": 3887.895
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 2499.584,
-            "mean_ms": 2499.584,
-            "total_ms": 2499.584
+            "max_ms": 1441.7,
+            "mean_ms": 1441.7,
+            "total_ms": 1441.7
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1355.972,
-            "mean_ms": 1355.972,
-            "total_ms": 1355.972
+            "max_ms": 2254.774,
+            "mean_ms": 2254.774,
+            "total_ms": 2254.774
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 3018.106,
-            "mean_ms": 3018.106,
-            "total_ms": 3018.106
+            "max_ms": 2444.946,
+            "mean_ms": 2444.946,
+            "total_ms": 2444.946
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.141,
+            "mean_ms": 0.141,
+            "total_ms": 0.141
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.128,
+            "mean_ms": 0.128,
+            "total_ms": 0.128
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.323,
-            "mean_ms": 0.323,
-            "total_ms": 0.323
+            "max_ms": 1.223,
+            "mean_ms": 1.223,
+            "total_ms": 1.223
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1356.144,
-            "mean_ms": 1356.144,
-            "total_ms": 1356.144
+            "max_ms": 2254.978,
+            "mean_ms": 2254.978,
+            "total_ms": 2254.978
           },
           "status": {
             "count": 1,
-            "max_ms": 0.05,
-            "mean_ms": 0.05,
-            "total_ms": 0.05
+            "max_ms": 0.117,
+            "mean_ms": 0.117,
+            "total_ms": 0.117
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 68.806,
-            "mean_ms": 68.806,
-            "total_ms": 68.806
+            "max_ms": 99.615,
+            "mean_ms": 99.615,
+            "total_ms": 99.615
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 68.482,
-            "mean_ms": 68.482,
-            "total_ms": 68.482
+            "max_ms": 61.042,
+            "mean_ms": 61.042,
+            "total_ms": 61.042
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.086,
-            "mean_ms": 0.086,
-            "total_ms": 0.086
+            "max_ms": 0.063,
+            "mean_ms": 0.063,
+            "total_ms": 0.063
           }
         },
-        "total_duration_ms": 6944.997
+        "total_duration_ms": 6244.761
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 335,
-        "prompt_tokens": 3470,
-        "total_tokens": 3805
+        "completion_tokens": 430,
+        "prompt_tokens": 3965,
+        "total_tokens": 4395
       }
     },
     {
@@ -865,7 +945,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 6664.129,
+      "latency_ms": 5011.898,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -887,9 +967,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 255,
-            "prompt_tokens": 3290,
-            "total_tokens": 3545
+            "completion_tokens": 306,
+            "prompt_tokens": 3731,
+            "total_tokens": 4037
           }
         },
         "llm_steps": {
@@ -899,117 +979,129 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 61,
-            "prompt_tokens": 1198,
+            "prompt_tokens": 1243,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1259
+            "total_tokens": 1304
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 82,
-            "prompt_tokens": 601,
+            "completion_tokens": 112,
+            "prompt_tokens": 952,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 683
+            "total_tokens": 1064
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 112,
-            "prompt_tokens": 1491,
+            "completion_tokens": 133,
+            "prompt_tokens": 1536,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1603
+            "total_tokens": 1669
           }
         },
         "reply_check_failures": 0,
-        "request_id": "6fb211061c494045b13fb3a969742d9c",
+        "request_id": "039eb591781049b8b9912bb348d024f6",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.492,
-            "mean_ms": 0.492,
-            "total_ms": 0.492
+            "max_ms": 0.265,
+            "mean_ms": 0.265,
+            "total_ms": 0.265
           },
           "extraction": {
             "count": 1,
-            "max_ms": 4268.03,
-            "mean_ms": 4268.03,
-            "total_ms": 4268.03
+            "max_ms": 3372.621,
+            "mean_ms": 3372.621,
+            "total_ms": 3372.621
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 4267.999,
-            "mean_ms": 4267.999,
-            "total_ms": 4267.999
+            "max_ms": 3372.597,
+            "mean_ms": 3372.597,
+            "total_ms": 3372.597
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 2567.551,
-            "mean_ms": 2567.551,
-            "total_ms": 2567.551
+            "max_ms": 1264.037,
+            "mean_ms": 1264.037,
+            "total_ms": 1264.037
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 2306.44,
-            "mean_ms": 2306.44,
-            "total_ms": 2306.44
+            "max_ms": 1555.038,
+            "mean_ms": 1555.038,
+            "total_ms": 1555.038
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1699.515,
-            "mean_ms": 1699.515,
-            "total_ms": 1699.515
+            "max_ms": 2108.026,
+            "mean_ms": 2108.026,
+            "total_ms": 2108.026
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.068,
+            "mean_ms": 0.068,
+            "total_ms": 0.068
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.076,
+            "mean_ms": 0.076,
+            "total_ms": 0.076
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.561,
-            "mean_ms": 0.561,
-            "total_ms": 0.561
+            "max_ms": 0.303,
+            "mean_ms": 0.303,
+            "total_ms": 0.303
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 2307.605,
-            "mean_ms": 2307.605,
-            "total_ms": 2307.605
+            "max_ms": 1555.203,
+            "mean_ms": 1555.203,
+            "total_ms": 1555.203
           },
           "status": {
             "count": 1,
-            "max_ms": 0.056,
-            "mean_ms": 0.056,
-            "total_ms": 0.056
+            "max_ms": 0.012,
+            "mean_ms": 0.012,
+            "total_ms": 0.012
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 85.408,
-            "mean_ms": 85.408,
-            "total_ms": 85.408
+            "max_ms": 82.472,
+            "mean_ms": 82.472,
+            "total_ms": 82.472
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 85.231,
-            "mean_ms": 85.231,
-            "total_ms": 85.231
+            "max_ms": 37.373,
+            "mean_ms": 37.373,
+            "total_ms": 37.373
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.072,
-            "mean_ms": 0.072,
-            "total_ms": 0.072
+            "max_ms": 0.058,
+            "mean_ms": 0.058,
+            "total_ms": 0.058
           }
         },
-        "total_duration_ms": 6662.472
+        "total_duration_ms": 5011.23
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 255,
-        "prompt_tokens": 3290,
-        "total_tokens": 3545
+        "completion_tokens": 306,
+        "prompt_tokens": 3731,
+        "total_tokens": 4037
       }
     },
     {
@@ -1023,7 +1115,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 4275.991,
+      "latency_ms": 7943.776,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1037,137 +1129,183 @@
         "extraction_iterations": 1,
         "fallback_reply_used": false,
         "llm": {
-          "attempts": 3,
-          "calls": 3,
+          "attempts": 6,
+          "calls": 6,
           "retries": 0,
-          "successful_calls": 3,
+          "successful_calls": 6,
           "tokens": {
             "attempts_missing_usage": 0,
-            "calls_missing_usage": 0,
-            "calls_with_usage": 3,
-            "completion_tokens": 261,
-            "prompt_tokens": 3285,
-            "total_tokens": 3546
+            "calls_missing_usage": 2,
+            "calls_with_usage": 4,
+            "completion_tokens": 270,
+            "prompt_tokens": 4746,
+            "total_tokens": 5016
           }
         },
         "llm_steps": {
+          "embedding": {
+            "attempts": 2,
+            "calls": 2,
+            "calls_missing_usage": 2,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 2,
+            "total_tokens": 0
+          },
           "extract": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 63,
-            "prompt_tokens": 1197,
+            "prompt_tokens": 1242,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1260
+            "total_tokens": 1305
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 57,
-            "prompt_tokens": 596,
+            "completion_tokens": 72,
+            "prompt_tokens": 1508,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 653
+            "total_tokens": 1580
+          },
+          "resolve_product": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 5,
+            "prompt_tokens": 459,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 464
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 141,
-            "prompt_tokens": 1492,
+            "completion_tokens": 130,
+            "prompt_tokens": 1537,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1633
+            "total_tokens": 1667
           }
         },
         "reply_check_failures": 0,
-        "request_id": "eb09e6d627e041089dbea79f079b5171",
+        "request_id": "982e36e02d814dc6bb44909f77354675",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.523,
-            "mean_ms": 0.523,
-            "total_ms": 0.523
+            "max_ms": 0.345,
+            "mean_ms": 0.345,
+            "total_ms": 0.345
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3191.201,
-            "mean_ms": 3191.201,
-            "total_ms": 3191.201
+            "max_ms": 3715.991,
+            "mean_ms": 3715.991,
+            "total_ms": 3715.991
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3191.163,
-            "mean_ms": 3191.163,
-            "total_ms": 3191.163
+            "max_ms": 3715.961,
+            "mean_ms": 3715.961,
+            "total_ms": 3715.961
+          },
+          "llm_embedding": {
+            "count": 2,
+            "max_ms": 1207.928,
+            "mean_ms": 832.877,
+            "total_ms": 1665.753
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1838.525,
-            "mean_ms": 1838.525,
-            "total_ms": 1838.525
+            "max_ms": 2054.438,
+            "mean_ms": 2054.438,
+            "total_ms": 2054.438
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1005.588,
-            "mean_ms": 1005.588,
-            "total_ms": 1005.588
+            "max_ms": 1639.297,
+            "mean_ms": 1639.297,
+            "total_ms": 1639.297
+          },
+          "llm_resolve_product": {
+            "count": 1,
+            "max_ms": 710.808,
+            "mean_ms": 710.808,
+            "total_ms": 710.808
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1351.627,
-            "mean_ms": 1351.627,
-            "total_ms": 1351.627
+            "max_ms": 1660.617,
+            "mean_ms": 1660.617,
+            "total_ms": 1660.617
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.016,
+            "mean_ms": 0.016,
+            "total_ms": 0.016
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 2508.924,
+            "mean_ms": 2508.924,
+            "total_ms": 2508.924
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.232,
-            "mean_ms": 0.232,
-            "total_ms": 0.232
+            "max_ms": 2.082,
+            "mean_ms": 2.082,
+            "total_ms": 2.082
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1005.765,
-            "mean_ms": 1005.765,
-            "total_ms": 1005.765
+            "max_ms": 1639.507,
+            "mean_ms": 1639.507,
+            "total_ms": 1639.507
           },
           "status": {
             "count": 1,
-            "max_ms": 0.046,
-            "mean_ms": 0.046,
-            "total_ms": 0.046
+            "max_ms": 0.01,
+            "mean_ms": 0.01,
+            "total_ms": 0.01
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 76.206,
-            "mean_ms": 76.206,
-            "total_ms": 76.206
+            "max_ms": 75.362,
+            "mean_ms": 75.362,
+            "total_ms": 75.362
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 76.082,
-            "mean_ms": 76.082,
-            "total_ms": 76.082
+            "max_ms": 40.004,
+            "mean_ms": 40.004,
+            "total_ms": 40.004
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.075,
-            "mean_ms": 0.075,
-            "total_ms": 0.075
+            "max_ms": 0.058,
+            "mean_ms": 0.058,
+            "total_ms": 0.058
           }
         },
-        "total_duration_ms": 4274.282
+        "total_duration_ms": 7942.553
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 261,
-        "prompt_tokens": 3285,
-        "total_tokens": 3546
+        "completion_tokens": 270,
+        "prompt_tokens": 4746,
+        "total_tokens": 5016
       }
     },
     {
@@ -1181,7 +1319,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 4706.865,
+      "latency_ms": 4624.357,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1203,9 +1341,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 260,
-            "prompt_tokens": 3302,
-            "total_tokens": 3562
+            "completion_tokens": 256,
+            "prompt_tokens": 3631,
+            "total_tokens": 3887
           }
         },
         "llm_steps": {
@@ -1215,117 +1353,129 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 63,
-            "prompt_tokens": 1194,
+            "prompt_tokens": 1239,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1257
+            "total_tokens": 1302
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 73,
-            "prompt_tokens": 619,
+            "completion_tokens": 62,
+            "prompt_tokens": 858,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 692
+            "total_tokens": 920
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 124,
-            "prompt_tokens": 1489,
+            "completion_tokens": 131,
+            "prompt_tokens": 1534,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1613
+            "total_tokens": 1665
           }
         },
         "reply_check_failures": 0,
-        "request_id": "f41b55f13ff2454a94b47ea188cdac3e",
+        "request_id": "d57c5469950e4faa9afdadf9116c381a",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.561,
-            "mean_ms": 0.561,
-            "total_ms": 0.561
+            "max_ms": 0.384,
+            "mean_ms": 0.384,
+            "total_ms": 0.384
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3496.045,
-            "mean_ms": 3496.045,
-            "total_ms": 3496.045
+            "max_ms": 3411.315,
+            "mean_ms": 3411.315,
+            "total_ms": 3411.315
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3496.006,
-            "mean_ms": 3496.006,
-            "total_ms": 3496.006
+            "max_ms": 3411.293,
+            "mean_ms": 3411.293,
+            "total_ms": 3411.293
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1811.425,
-            "mean_ms": 1811.425,
-            "total_ms": 1811.425
+            "max_ms": 1136.269,
+            "mean_ms": 1136.269,
+            "total_ms": 1136.269
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1153.736,
-            "mean_ms": 1153.736,
-            "total_ms": 1153.736
+            "max_ms": 1138.93,
+            "mean_ms": 1138.93,
+            "total_ms": 1138.93
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1683.595,
-            "mean_ms": 1683.595,
-            "total_ms": 1683.595
+            "max_ms": 2274.505,
+            "mean_ms": 2274.505,
+            "total_ms": 2274.505
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.088,
+            "mean_ms": 0.088,
+            "total_ms": 0.088
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.115,
+            "mean_ms": 0.115,
+            "total_ms": 0.115
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.307,
-            "mean_ms": 0.307,
-            "total_ms": 0.307
+            "max_ms": 0.187,
+            "mean_ms": 0.187,
+            "total_ms": 0.187
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1153.951,
-            "mean_ms": 1153.951,
-            "total_ms": 1153.951
+            "max_ms": 1139.049,
+            "mean_ms": 1139.049,
+            "total_ms": 1139.049
           },
           "status": {
             "count": 1,
-            "max_ms": 0.05,
-            "mean_ms": 0.05,
-            "total_ms": 0.05
+            "max_ms": 0.012,
+            "mean_ms": 0.012,
+            "total_ms": 0.012
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 51.754,
-            "mean_ms": 51.754,
-            "total_ms": 51.754
+            "max_ms": 72.261,
+            "mean_ms": 72.261,
+            "total_ms": 72.261
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 51.617,
-            "mean_ms": 51.617,
-            "total_ms": 51.617
+            "max_ms": 26.922,
+            "mean_ms": 26.922,
+            "total_ms": 26.922
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.075,
-            "mean_ms": 0.075,
-            "total_ms": 0.075
+            "max_ms": 0.043,
+            "mean_ms": 0.043,
+            "total_ms": 0.043
           }
         },
-        "total_duration_ms": 4703.019
+        "total_duration_ms": 4623.682
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 260,
-        "prompt_tokens": 3302,
-        "total_tokens": 3562
+        "completion_tokens": 256,
+        "prompt_tokens": 3631,
+        "total_tokens": 3887
       }
     },
     {
@@ -1339,7 +1489,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 6651.919,
+      "latency_ms": 6276.388,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1353,137 +1503,166 @@
         "extraction_iterations": 1,
         "fallback_reply_used": false,
         "llm": {
-          "attempts": 3,
-          "calls": 3,
+          "attempts": 4,
+          "calls": 4,
           "retries": 0,
-          "successful_calls": 3,
+          "successful_calls": 4,
           "tokens": {
             "attempts_missing_usage": 0,
-            "calls_missing_usage": 0,
+            "calls_missing_usage": 1,
             "calls_with_usage": 3,
-            "completion_tokens": 259,
-            "prompt_tokens": 3277,
-            "total_tokens": 3536
+            "completion_tokens": 263,
+            "prompt_tokens": 3896,
+            "total_tokens": 4159
           }
         },
         "llm_steps": {
+          "embedding": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 0
+          },
           "extract": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 65,
-            "prompt_tokens": 1193,
+            "prompt_tokens": 1238,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1258
+            "total_tokens": 1303
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 66,
-            "prompt_tokens": 595,
+            "completion_tokens": 72,
+            "prompt_tokens": 1124,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 661
+            "total_tokens": 1196
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 128,
-            "prompt_tokens": 1489,
+            "completion_tokens": 126,
+            "prompt_tokens": 1534,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1617
+            "total_tokens": 1660
           }
         },
         "reply_check_failures": 0,
-        "request_id": "1be15c3fe81146b9a2d92705547848e8",
+        "request_id": "4bb9375cb68a48ed94a934aa48b0ce7e",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.442,
-            "mean_ms": 0.442,
-            "total_ms": 0.442
+            "max_ms": 0.343,
+            "mean_ms": 0.343,
+            "total_ms": 0.343
           },
           "extraction": {
             "count": 1,
-            "max_ms": 5543.459,
-            "mean_ms": 5543.459,
-            "total_ms": 5543.459
+            "max_ms": 4198.392,
+            "mean_ms": 4198.392,
+            "total_ms": 4198.392
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 5543.426,
-            "mean_ms": 5543.426,
-            "total_ms": 5543.426
+            "max_ms": 4198.363,
+            "mean_ms": 4198.363,
+            "total_ms": 4198.363
+          },
+          "llm_embedding": {
+            "count": 1,
+            "max_ms": 745.207,
+            "mean_ms": 745.207,
+            "total_ms": 745.207
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 2970.385,
-            "mean_ms": 2970.385,
-            "total_ms": 2970.385
+            "max_ms": 1719.288,
+            "mean_ms": 1719.288,
+            "total_ms": 1719.288
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1044.277,
-            "mean_ms": 1044.277,
-            "total_ms": 1044.277
+            "max_ms": 1194.028,
+            "mean_ms": 1194.028,
+            "total_ms": 1194.028
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2572.023,
-            "mean_ms": 2572.023,
-            "total_ms": 2572.023
+            "max_ms": 2478.297,
+            "mean_ms": 2478.297,
+            "total_ms": 2478.297
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.052,
+            "mean_ms": 0.052,
+            "total_ms": 0.052
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 793.203,
+            "mean_ms": 793.203,
+            "total_ms": 793.203
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.267,
-            "mean_ms": 0.267,
-            "total_ms": 0.267
+            "max_ms": 0.355,
+            "mean_ms": 0.355,
+            "total_ms": 0.355
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1044.467,
-            "mean_ms": 1044.467,
-            "total_ms": 1044.467
+            "max_ms": 1194.143,
+            "mean_ms": 1194.143,
+            "total_ms": 1194.143
           },
           "status": {
             "count": 1,
-            "max_ms": 0.055,
-            "mean_ms": 0.055,
-            "total_ms": 0.055
+            "max_ms": 0.009,
+            "mean_ms": 0.009,
+            "total_ms": 0.009
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 60.904,
-            "mean_ms": 60.904,
-            "total_ms": 60.904
+            "max_ms": 88.728,
+            "mean_ms": 88.728,
+            "total_ms": 88.728
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 60.751,
-            "mean_ms": 60.751,
-            "total_ms": 60.751
+            "max_ms": 39.274,
+            "mean_ms": 39.274,
+            "total_ms": 39.274
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.07,
-            "mean_ms": 0.07,
-            "total_ms": 0.07
+            "max_ms": 0.058,
+            "mean_ms": 0.058,
+            "total_ms": 0.058
           }
         },
-        "total_duration_ms": 6649.891
+        "total_duration_ms": 6275.476
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 259,
-        "prompt_tokens": 3277,
-        "total_tokens": 3536
+        "completion_tokens": 263,
+        "prompt_tokens": 3896,
+        "total_tokens": 4159
       }
     },
     {
@@ -1497,7 +1676,7 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 6494.576,
+      "latency_ms": 4898.535,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1519,9 +1698,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 326,
-            "prompt_tokens": 3366,
-            "total_tokens": 3692
+            "completion_tokens": 343,
+            "prompt_tokens": 3695,
+            "total_tokens": 4038
           }
         },
         "llm_steps": {
@@ -1531,117 +1710,129 @@
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
             "completion_tokens": 82,
-            "prompt_tokens": 1194,
+            "prompt_tokens": 1239,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1276
+            "total_tokens": 1321
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 71,
-            "prompt_tokens": 652,
+            "completion_tokens": 90,
+            "prompt_tokens": 891,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 723
+            "total_tokens": 981
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 173,
-            "prompt_tokens": 1520,
+            "completion_tokens": 171,
+            "prompt_tokens": 1565,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1693
+            "total_tokens": 1736
           }
         },
         "reply_check_failures": 0,
-        "request_id": "a205027212f240d2934edaf218e857f3",
+        "request_id": "b4da8e56ef584699b196e4bc1ca58e9c",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.584,
-            "mean_ms": 0.584,
-            "total_ms": 0.584
+            "max_ms": 0.444,
+            "mean_ms": 0.444,
+            "total_ms": 0.444
           },
           "extraction": {
             "count": 1,
-            "max_ms": 5326.221,
-            "mean_ms": 5326.221,
-            "total_ms": 5326.221
+            "max_ms": 3467.689,
+            "mean_ms": 3467.689,
+            "total_ms": 3467.689
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 5326.179,
-            "mean_ms": 5326.179,
-            "total_ms": 5326.179
+            "max_ms": 3467.659,
+            "mean_ms": 3467.659,
+            "total_ms": 3467.659
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 2594.476,
-            "mean_ms": 2594.476,
-            "total_ms": 2594.476
+            "max_ms": 1521.277,
+            "mean_ms": 1521.277,
+            "total_ms": 1521.277
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1059.428,
-            "mean_ms": 1059.428,
-            "total_ms": 1059.428
+            "max_ms": 1350.351,
+            "mean_ms": 1350.351,
+            "total_ms": 1350.351
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2730.734,
-            "mean_ms": 2730.734,
-            "total_ms": 2730.734
+            "max_ms": 1945.422,
+            "mean_ms": 1945.422,
+            "total_ms": 1945.422
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.222,
+            "mean_ms": 0.222,
+            "total_ms": 0.222
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.108,
+            "mean_ms": 0.108,
+            "total_ms": 0.108
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.36,
-            "mean_ms": 0.36,
-            "total_ms": 0.36
+            "max_ms": 0.234,
+            "mean_ms": 0.234,
+            "total_ms": 0.234
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1059.609,
-            "mean_ms": 1059.609,
-            "total_ms": 1059.609
+            "max_ms": 1350.496,
+            "mean_ms": 1350.496,
+            "total_ms": 1350.496
           },
           "status": {
             "count": 1,
-            "max_ms": 0.052,
-            "mean_ms": 0.052,
-            "total_ms": 0.052
+            "max_ms": 0.06,
+            "mean_ms": 0.06,
+            "total_ms": 0.06
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 63.745,
-            "mean_ms": 63.745,
-            "total_ms": 63.745
+            "max_ms": 78.332,
+            "mean_ms": 78.332,
+            "total_ms": 78.332
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 63.588,
-            "mean_ms": 63.588,
-            "total_ms": 63.588
+            "max_ms": 39.978,
+            "mean_ms": 39.978,
+            "total_ms": 39.978
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.088,
-            "mean_ms": 0.088,
-            "total_ms": 0.088
+            "max_ms": 0.061,
+            "mean_ms": 0.061,
+            "total_ms": 0.061
           }
         },
-        "total_duration_ms": 6450.915
+        "total_duration_ms": 4897.835
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 326,
-        "prompt_tokens": 3366,
-        "total_tokens": 3692
+        "completion_tokens": 343,
+        "prompt_tokens": 3695,
+        "total_tokens": 4038
       }
     },
     {
@@ -1655,7 +1846,188 @@
         "items": true,
         "status": true
       },
-      "latency_ms": 5498.114,
+      "latency_ms": 4633.148,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 4,
+          "calls": 4,
+          "retries": 0,
+          "successful_calls": 4,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 3,
+            "completion_tokens": 206,
+            "prompt_tokens": 3749,
+            "total_tokens": 3955
+          }
+        },
+        "llm_steps": {
+          "embedding": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 0
+          },
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 44,
+            "prompt_tokens": 1217,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1261
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 62,
+            "prompt_tokens": 1053,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1115
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 100,
+            "prompt_tokens": 1479,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1579
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "32d9fb6acdb24bab9748564d8fdd47f7",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.478,
+            "mean_ms": 0.478,
+            "total_ms": 0.478
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 2793.981,
+            "mean_ms": 2793.981,
+            "total_ms": 2793.981
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 2793.952,
+            "mean_ms": 2793.952,
+            "total_ms": 2793.952
+          },
+          "llm_embedding": {
+            "count": 1,
+            "max_ms": 395.105,
+            "mean_ms": 395.105,
+            "total_ms": 395.105
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1361.396,
+            "mean_ms": 1361.396,
+            "total_ms": 1361.396
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1295.994,
+            "mean_ms": 1295.994,
+            "total_ms": 1295.994
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 1431.973,
+            "mean_ms": 1431.973,
+            "total_ms": 1431.973
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.021,
+            "mean_ms": 0.021,
+            "total_ms": 0.021
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 498.724,
+            "mean_ms": 498.724,
+            "total_ms": 498.724
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.446,
+            "mean_ms": 0.446,
+            "total_ms": 0.446
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1296.134,
+            "mean_ms": 1296.134,
+            "total_ms": 1296.134
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.02,
+            "mean_ms": 0.02,
+            "total_ms": 0.02
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 42.063,
+            "mean_ms": 42.063,
+            "total_ms": 42.063
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 0.0,
+            "mean_ms": 0.0,
+            "total_ms": 0.0
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.03,
+            "mean_ms": 0.03,
+            "total_ms": 0.03
+          }
+        },
+        "total_duration_ms": 4632.221
+      },
+      "scored": true,
+      "token_usage": {
+        "completion_tokens": 206,
+        "prompt_tokens": 3749,
+        "total_tokens": 3955
+      }
+    },
+    {
+      "email": "email_21",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 5241.637,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1677,9 +2049,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 210,
-            "prompt_tokens": 3156,
-            "total_tokens": 3366
+            "completion_tokens": 377,
+            "prompt_tokens": 3860,
+            "total_tokens": 4237
           }
         },
         "llm_steps": {
@@ -1688,97 +2060,471 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 44,
-            "prompt_tokens": 1172,
+            "completion_tokens": 81,
+            "prompt_tokens": 1248,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1216
+            "total_tokens": 1329
           },
           "reply": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 66,
-            "prompt_tokens": 550,
+            "completion_tokens": 157,
+            "prompt_tokens": 1038,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 616
+            "total_tokens": 1195
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 100,
-            "prompt_tokens": 1434,
+            "completion_tokens": 139,
+            "prompt_tokens": 1574,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1534
+            "total_tokens": 1713
           }
         },
         "reply_check_failures": 0,
-        "request_id": "6baf8e5a31db4e8fbd1262409a199847",
+        "request_id": "4de13c42202a4dce81166aa4a6715257",
         "steps": {
           "email_parse": {
             "count": 1,
-            "max_ms": 0.527,
-            "mean_ms": 0.527,
-            "total_ms": 0.527
+            "max_ms": 0.389,
+            "mean_ms": 0.389,
+            "total_ms": 0.389
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3809.143,
-            "mean_ms": 3809.143,
-            "total_ms": 3809.143
+            "max_ms": 3221.742,
+            "mean_ms": 3221.742,
+            "total_ms": 3221.742
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3809.098,
-            "mean_ms": 3809.098,
-            "total_ms": 3809.098
+            "max_ms": 3221.714,
+            "mean_ms": 3221.714,
+            "total_ms": 3221.714
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 915.722,
-            "mean_ms": 915.722,
-            "total_ms": 915.722
+            "max_ms": 1316.236,
+            "mean_ms": 1316.236,
+            "total_ms": 1316.236
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1643.479,
-            "mean_ms": 1643.479,
-            "total_ms": 1643.479
+            "max_ms": 1952.408,
+            "mean_ms": 1952.408,
+            "total_ms": 1952.408
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2892.496,
-            "mean_ms": 2892.496,
-            "total_ms": 2892.496
+            "max_ms": 1904.818,
+            "mean_ms": 1904.818,
+            "total_ms": 1904.818
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.098,
+            "mean_ms": 0.098,
+            "total_ms": 0.098
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.146,
+            "mean_ms": 0.146,
+            "total_ms": 0.146
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.25,
-            "mean_ms": 0.25,
-            "total_ms": 0.25
+            "max_ms": 0.28,
+            "mean_ms": 0.28,
+            "total_ms": 0.28
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1643.611,
-            "mean_ms": 1643.611,
-            "total_ms": 1643.611
+            "max_ms": 1952.573,
+            "mean_ms": 1952.573,
+            "total_ms": 1952.573
           },
           "status": {
             "count": 1,
-            "max_ms": 0.009,
-            "mean_ms": 0.009,
-            "total_ms": 0.009
+            "max_ms": 0.014,
+            "mean_ms": 0.014,
+            "total_ms": 0.014
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 0.03,
-            "mean_ms": 0.03,
-            "total_ms": 0.03
+            "max_ms": 65.361,
+            "mean_ms": 65.361,
+            "total_ms": 65.361
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 37.632,
+            "mean_ms": 37.632,
+            "total_ms": 37.632
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.062,
+            "mean_ms": 0.062,
+            "total_ms": 0.062
+          }
+        },
+        "total_duration_ms": 5240.853
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 377,
+        "prompt_tokens": 3860,
+        "total_tokens": 4237
+      }
+    },
+    {
+      "email": "email_22",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 7500.202,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 6,
+          "calls": 6,
+          "retries": 0,
+          "successful_calls": 6,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 2,
+            "calls_with_usage": 4,
+            "completion_tokens": 364,
+            "prompt_tokens": 4891,
+            "total_tokens": 5255
+          }
+        },
+        "llm_steps": {
+          "embedding": {
+            "attempts": 2,
+            "calls": 2,
+            "calls_missing_usage": 2,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 2,
+            "total_tokens": 0
+          },
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 68,
+            "prompt_tokens": 1232,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1300
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 105,
+            "prompt_tokens": 1638,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1743
+          },
+          "resolve_product": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 10,
+            "prompt_tokens": 489,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 499
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 181,
+            "prompt_tokens": 1532,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1713
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "8509b04a423f46e981182b27fb14bb89",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.259,
+            "mean_ms": 0.259,
+            "total_ms": 0.259
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 3606.679,
+            "mean_ms": 3606.679,
+            "total_ms": 3606.679
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 3606.655,
+            "mean_ms": 3606.655,
+            "total_ms": 3606.655
+          },
+          "llm_embedding": {
+            "count": 2,
+            "max_ms": 613.432,
+            "mean_ms": 494.938,
+            "total_ms": 989.876
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1175.131,
+            "mean_ms": 1175.131,
+            "total_ms": 1175.131
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1984.423,
+            "mean_ms": 1984.423,
+            "total_ms": 1984.423
+          },
+          "llm_resolve_product": {
+            "count": 1,
+            "max_ms": 677.281,
+            "mean_ms": 677.281,
+            "total_ms": 677.281
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 2430.848,
+            "mean_ms": 2430.848,
+            "total_ms": 2430.848
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.101,
+            "mean_ms": 0.101,
+            "total_ms": 0.101
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 1791.946,
+            "mean_ms": 1791.946,
+            "total_ms": 1791.946
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.618,
+            "mean_ms": 0.618,
+            "total_ms": 0.618
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1984.841,
+            "mean_ms": 1984.841,
+            "total_ms": 1984.841
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.014,
+            "mean_ms": 0.014,
+            "total_ms": 0.014
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 114.822,
+            "mean_ms": 114.822,
+            "total_ms": 114.822
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 63.04,
+            "mean_ms": 63.04,
+            "total_ms": 63.04
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.055,
+            "mean_ms": 0.055,
+            "total_ms": 0.055
+          }
+        },
+        "total_duration_ms": 7499.554
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 364,
+        "prompt_tokens": 4891,
+        "total_tokens": 5255
+      }
+    },
+    {
+      "email": "email_23",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 4476.098,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 3,
+          "calls": 3,
+          "retries": 0,
+          "successful_calls": 3,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 3,
+            "completion_tokens": 281,
+            "prompt_tokens": 3765,
+            "total_tokens": 4046
+          }
+        },
+        "llm_steps": {
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 47,
+            "prompt_tokens": 1227,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1274
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 138,
+            "prompt_tokens": 1046,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1184
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 96,
+            "prompt_tokens": 1492,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1588
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "5dbd1cf0611f4a43b8e95068061d0d5f",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.4,
+            "mean_ms": 0.4,
+            "total_ms": 0.4
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 2838.023,
+            "mean_ms": 2838.023,
+            "total_ms": 2838.023
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 2837.988,
+            "mean_ms": 2837.988,
+            "total_ms": 2837.988
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1197.507,
+            "mean_ms": 1197.507,
+            "total_ms": 1197.507
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1547.074,
+            "mean_ms": 1547.074,
+            "total_ms": 1547.074
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 1639.661,
+            "mean_ms": 1639.661,
+            "total_ms": 1639.661
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.102,
+            "mean_ms": 0.102,
+            "total_ms": 0.102
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 42.136,
+            "mean_ms": 42.136,
+            "total_ms": 42.136
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.405,
+            "mean_ms": 0.405,
+            "total_ms": 0.405
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1547.461,
+            "mean_ms": 1547.461,
+            "total_ms": 1547.461
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.013,
+            "mean_ms": 0.013,
+            "total_ms": 0.013
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 46.161,
+            "mean_ms": 46.161,
+            "total_ms": 46.161
           },
           "stock_query": {
             "count": 1,
@@ -1788,37 +2534,1270 @@
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.065,
-            "mean_ms": 0.065,
-            "total_ms": 0.065
+            "max_ms": 0.062,
+            "mean_ms": 0.062,
+            "total_ms": 0.062
           }
         },
-        "total_duration_ms": 5453.839
+        "total_duration_ms": 4474.993
       },
-      "scored": true,
+      "scored": false,
       "token_usage": {
-        "completion_tokens": 210,
-        "prompt_tokens": 3156,
-        "total_tokens": 3366
+        "completion_tokens": 281,
+        "prompt_tokens": 3765,
+        "total_tokens": 4046
+      }
+    },
+    {
+      "email": "email_24",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 6173.103,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 3,
+          "calls": 3,
+          "retries": 0,
+          "successful_calls": 3,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 3,
+            "completion_tokens": 364,
+            "prompt_tokens": 3863,
+            "total_tokens": 4227
+          }
+        },
+        "llm_steps": {
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 83,
+            "prompt_tokens": 1236,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1319
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 122,
+            "prompt_tokens": 1063,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1185
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 159,
+            "prompt_tokens": 1564,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1723
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "10944df82b0c47f2af11afbbd479879d",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.376,
+            "mean_ms": 0.376,
+            "total_ms": 0.376
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 3913.221,
+            "mean_ms": 3913.221,
+            "total_ms": 3913.221
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 3913.191,
+            "mean_ms": 3913.191,
+            "total_ms": 3913.191
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1316.272,
+            "mean_ms": 1316.272,
+            "total_ms": 1316.272
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 2159.786,
+            "mean_ms": 2159.786,
+            "total_ms": 2159.786
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 2596.063,
+            "mean_ms": 2596.063,
+            "total_ms": 2596.063
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.388,
+            "mean_ms": 0.388,
+            "total_ms": 0.388
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.104,
+            "mean_ms": 0.104,
+            "total_ms": 0.104
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.444,
+            "mean_ms": 0.444,
+            "total_ms": 0.444
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 2160.054,
+            "mean_ms": 2160.054,
+            "total_ms": 2160.054
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.031,
+            "mean_ms": 0.031,
+            "total_ms": 0.031
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 97.313,
+            "mean_ms": 97.313,
+            "total_ms": 97.313
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 60.854,
+            "mean_ms": 60.854,
+            "total_ms": 60.854
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.066,
+            "mean_ms": 0.066,
+            "total_ms": 0.066
+          }
+        },
+        "total_duration_ms": 6172.258
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 364,
+        "prompt_tokens": 3863,
+        "total_tokens": 4227
+      }
+    },
+    {
+      "email": "email_25",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 5575.328,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 5,
+          "calls": 5,
+          "retries": 0,
+          "successful_calls": 5,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 4,
+            "completion_tokens": 277,
+            "prompt_tokens": 4329,
+            "total_tokens": 4606
+          }
+        },
+        "llm_steps": {
+          "embedding": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 0
+          },
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 61,
+            "prompt_tokens": 1215,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1276
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 84,
+            "prompt_tokens": 1182,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1266
+          },
+          "resolve_product": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 13,
+            "prompt_tokens": 424,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 437
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 119,
+            "prompt_tokens": 1508,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1627
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "4208b1b8c325484f98902b34e0a0b205",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.376,
+            "mean_ms": 0.376,
+            "total_ms": 0.376
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 2967.871,
+            "mean_ms": 2967.871,
+            "total_ms": 2967.871
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 2967.847,
+            "mean_ms": 2967.847,
+            "total_ms": 2967.847
+          },
+          "llm_embedding": {
+            "count": 1,
+            "max_ms": 400.336,
+            "mean_ms": 400.336,
+            "total_ms": 400.336
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1500.227,
+            "mean_ms": 1500.227,
+            "total_ms": 1500.227
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1233.496,
+            "mean_ms": 1233.496,
+            "total_ms": 1233.496
+          },
+          "llm_resolve_product": {
+            "count": 1,
+            "max_ms": 857.919,
+            "mean_ms": 857.919,
+            "total_ms": 857.919
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 1467.05,
+            "mean_ms": 1467.05,
+            "total_ms": 1467.05
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.02,
+            "mean_ms": 0.02,
+            "total_ms": 0.02
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 1295.561,
+            "mean_ms": 1295.561,
+            "total_ms": 1295.561
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.472,
+            "mean_ms": 0.472,
+            "total_ms": 0.472
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1233.657,
+            "mean_ms": 1233.657,
+            "total_ms": 1233.657
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.012,
+            "mean_ms": 0.012,
+            "total_ms": 0.012
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 76.006,
+            "mean_ms": 76.006,
+            "total_ms": 76.006
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 43.329,
+            "mean_ms": 43.329,
+            "total_ms": 43.329
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.045,
+            "mean_ms": 0.045,
+            "total_ms": 0.045
+          }
+        },
+        "total_duration_ms": 5574.212
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 277,
+        "prompt_tokens": 4329,
+        "total_tokens": 4606
+      }
+    },
+    {
+      "email": "email_26",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 5439.446,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 3,
+          "calls": 3,
+          "retries": 0,
+          "successful_calls": 3,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 3,
+            "completion_tokens": 304,
+            "prompt_tokens": 3716,
+            "total_tokens": 4020
+          }
+        },
+        "llm_steps": {
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 67,
+            "prompt_tokens": 1238,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1305
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 90,
+            "prompt_tokens": 941,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1031
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 147,
+            "prompt_tokens": 1537,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1684
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "37921f6ab5f14df6b9fb82f241086759",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.769,
+            "mean_ms": 0.769,
+            "total_ms": 0.769
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 4013.106,
+            "mean_ms": 4013.106,
+            "total_ms": 4013.106
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 4013.074,
+            "mean_ms": 4013.074,
+            "total_ms": 4013.074
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1758.575,
+            "mean_ms": 1758.575,
+            "total_ms": 1758.575
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1323.722,
+            "mean_ms": 1323.722,
+            "total_ms": 1323.722
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 2253.713,
+            "mean_ms": 2253.713,
+            "total_ms": 2253.713
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.134,
+            "mean_ms": 0.134,
+            "total_ms": 0.134
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.109,
+            "mean_ms": 0.109,
+            "total_ms": 0.109
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.352,
+            "mean_ms": 0.352,
+            "total_ms": 0.352
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1324.158,
+            "mean_ms": 1324.158,
+            "total_ms": 1324.158
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.012,
+            "mean_ms": 0.012,
+            "total_ms": 0.012
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 98.568,
+            "mean_ms": 98.568,
+            "total_ms": 98.568
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 57.849,
+            "mean_ms": 57.849,
+            "total_ms": 57.849
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.06,
+            "mean_ms": 0.06,
+            "total_ms": 0.06
+          }
+        },
+        "total_duration_ms": 5437.511
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 304,
+        "prompt_tokens": 3716,
+        "total_tokens": 4020
+      }
+    },
+    {
+      "email": "email_27",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 5858.988,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 4,
+          "calls": 4,
+          "retries": 0,
+          "successful_calls": 4,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 3,
+            "completion_tokens": 335,
+            "prompt_tokens": 3954,
+            "total_tokens": 4289
+          }
+        },
+        "llm_steps": {
+          "embedding": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 0
+          },
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 65,
+            "prompt_tokens": 1240,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1305
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 131,
+            "prompt_tokens": 1177,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1308
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 139,
+            "prompt_tokens": 1537,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1676
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "7b24dde316b248c9a42e41111fb40483",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.368,
+            "mean_ms": 0.368,
+            "total_ms": 0.368
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 3016.797,
+            "mean_ms": 3016.797,
+            "total_ms": 3016.797
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 3016.771,
+            "mean_ms": 3016.771,
+            "total_ms": 3016.771
+          },
+          "llm_embedding": {
+            "count": 1,
+            "max_ms": 727.285,
+            "mean_ms": 727.285,
+            "total_ms": 727.285
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1132.931,
+            "mean_ms": 1132.931,
+            "total_ms": 1132.931
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 2006.399,
+            "mean_ms": 2006.399,
+            "total_ms": 2006.399
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 1883.125,
+            "mean_ms": 1883.125,
+            "total_ms": 1883.125
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.138,
+            "mean_ms": 0.138,
+            "total_ms": 0.138
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 769.233,
+            "mean_ms": 769.233,
+            "total_ms": 769.233
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.852,
+            "mean_ms": 0.852,
+            "total_ms": 0.852
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 2006.716,
+            "mean_ms": 2006.716,
+            "total_ms": 2006.716
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.023,
+            "mean_ms": 0.023,
+            "total_ms": 0.023
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 63.694,
+            "mean_ms": 63.694,
+            "total_ms": 63.694
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 37.858,
+            "mean_ms": 37.858,
+            "total_ms": 37.858
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.049,
+            "mean_ms": 0.049,
+            "total_ms": 0.049
+          }
+        },
+        "total_duration_ms": 5858.13
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 335,
+        "prompt_tokens": 3954,
+        "total_tokens": 4289
+      }
+    },
+    {
+      "email": "email_28",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 4795.114,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 3,
+          "calls": 3,
+          "retries": 0,
+          "successful_calls": 3,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 3,
+            "completion_tokens": 194,
+            "prompt_tokens": 3514,
+            "total_tokens": 3708
+          }
+        },
+        "llm_steps": {
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 47,
+            "prompt_tokens": 1225,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1272
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 45,
+            "prompt_tokens": 799,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 844
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 102,
+            "prompt_tokens": 1490,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1592
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "965eb9d667c842188b6d36fe6a2b50d5",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.35,
+            "mean_ms": 0.35,
+            "total_ms": 0.35
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 3361.152,
+            "mean_ms": 3361.152,
+            "total_ms": 3361.152
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 3361.133,
+            "mean_ms": 3361.133,
+            "total_ms": 3361.133
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1429.118,
+            "mean_ms": 1429.118,
+            "total_ms": 1429.118
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1332.871,
+            "mean_ms": 1332.871,
+            "total_ms": 1332.871
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 1931.5,
+            "mean_ms": 1931.5,
+            "total_ms": 1931.5
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.027,
+            "mean_ms": 0.027,
+            "total_ms": 0.027
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 51.174,
+            "mean_ms": 51.174,
+            "total_ms": 51.174
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.205,
+            "mean_ms": 0.205,
+            "total_ms": 0.205
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1333.013,
+            "mean_ms": 1333.013,
+            "total_ms": 1333.013
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.024,
+            "mean_ms": 0.024,
+            "total_ms": 0.024
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 48.141,
+            "mean_ms": 48.141,
+            "total_ms": 48.141
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 0.0,
+            "mean_ms": 0.0,
+            "total_ms": 0.0
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.031,
+            "mean_ms": 0.031,
+            "total_ms": 0.031
+          }
+        },
+        "total_duration_ms": 4794.376
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 194,
+        "prompt_tokens": 3514,
+        "total_tokens": 3708
+      }
+    },
+    {
+      "email": "email_29",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 9982.983,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 5,
+          "calls": 5,
+          "retries": 0,
+          "successful_calls": 5,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 4,
+            "completion_tokens": 348,
+            "prompt_tokens": 4400,
+            "total_tokens": 4748
+          }
+        },
+        "llm_steps": {
+          "embedding": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 1,
+            "calls_with_usage": 0,
+            "completion_tokens": 0,
+            "prompt_tokens": 0,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 0
+          },
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 81,
+            "prompt_tokens": 1223,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1304
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 87,
+            "prompt_tokens": 1214,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1301
+          },
+          "resolve_product": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 5,
+            "prompt_tokens": 414,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 419
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 175,
+            "prompt_tokens": 1549,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1724
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "8b0e1488a9a249c592010c3c57265f32",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.327,
+            "mean_ms": 0.327,
+            "total_ms": 0.327
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 5526.381,
+            "mean_ms": 5526.381,
+            "total_ms": 5526.381
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 5526.352,
+            "mean_ms": 5526.352,
+            "total_ms": 5526.352
+          },
+          "llm_embedding": {
+            "count": 1,
+            "max_ms": 638.826,
+            "mean_ms": 638.826,
+            "total_ms": 638.826
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 2238.634,
+            "mean_ms": 2238.634,
+            "total_ms": 2238.634
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 2569.757,
+            "mean_ms": 2569.757,
+            "total_ms": 2569.757
+          },
+          "llm_resolve_product": {
+            "count": 1,
+            "max_ms": 1089.319,
+            "mean_ms": 1089.319,
+            "total_ms": 1089.319
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 3286.968,
+            "mean_ms": 3286.968,
+            "total_ms": 3286.968
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.109,
+            "mean_ms": 0.109,
+            "total_ms": 0.109
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 1787.214,
+            "mean_ms": 1787.214,
+            "total_ms": 1787.214
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.398,
+            "mean_ms": 0.398,
+            "total_ms": 0.398
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 2569.938,
+            "mean_ms": 2569.938,
+            "total_ms": 2569.938
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.02,
+            "mean_ms": 0.02,
+            "total_ms": 0.02
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 97.353,
+            "mean_ms": 97.353,
+            "total_ms": 97.353
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 43.569,
+            "mean_ms": 43.569,
+            "total_ms": 43.569
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.064,
+            "mean_ms": 0.064,
+            "total_ms": 0.064
+          }
+        },
+        "total_duration_ms": 9982.005
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 348,
+        "prompt_tokens": 4400,
+        "total_tokens": 4748
+      }
+    },
+    {
+      "email": "email_30",
+      "exact_match": null,
+      "failure_reasons": [],
+      "field_scores": null,
+      "latency_ms": 4652.649,
+      "observability": {
+        "error_counts": {},
+        "estimated_cost": {
+          "basis": "provider-reported token counts; retry attempts without usage are not included",
+          "input_cost_per_million_tokens": null,
+          "output_cost_per_million_tokens": null,
+          "status": "not_configured",
+          "unit": "same currency/unit as configured rates",
+          "value": null
+        },
+        "extraction_iterations": 1,
+        "fallback_reply_used": false,
+        "llm": {
+          "attempts": 3,
+          "calls": 3,
+          "retries": 0,
+          "successful_calls": 3,
+          "tokens": {
+            "attempts_missing_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 3,
+            "completion_tokens": 303,
+            "prompt_tokens": 3683,
+            "total_tokens": 3986
+          }
+        },
+        "llm_steps": {
+          "extract": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 64,
+            "prompt_tokens": 1226,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1290
+          },
+          "reply": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 83,
+            "prompt_tokens": 935,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1018
+          },
+          "verify": {
+            "attempts": 1,
+            "calls": 1,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
+            "completion_tokens": 156,
+            "prompt_tokens": 1522,
+            "retries": 0,
+            "successful_calls": 1,
+            "total_tokens": 1678
+          }
+        },
+        "reply_check_failures": 0,
+        "request_id": "963f062e3e4c4d23b1bab7c93f90fcaa",
+        "steps": {
+          "email_parse": {
+            "count": 1,
+            "max_ms": 0.397,
+            "mean_ms": 0.397,
+            "total_ms": 0.397
+          },
+          "extraction": {
+            "count": 1,
+            "max_ms": 3119.006,
+            "mean_ms": 3119.006,
+            "total_ms": 3119.006
+          },
+          "extraction_iteration": {
+            "count": 1,
+            "max_ms": 3118.949,
+            "mean_ms": 3118.949,
+            "total_ms": 3118.949
+          },
+          "llm_extract": {
+            "count": 1,
+            "max_ms": 1164.483,
+            "mean_ms": 1164.483,
+            "total_ms": 1164.483
+          },
+          "llm_reply": {
+            "count": 1,
+            "max_ms": 1447.933,
+            "mean_ms": 1447.933,
+            "total_ms": 1447.933
+          },
+          "llm_verify": {
+            "count": 1,
+            "max_ms": 1953.805,
+            "mean_ms": 1953.805,
+            "total_ms": 1953.805
+          },
+          "quote_build": {
+            "count": 1,
+            "max_ms": 0.068,
+            "mean_ms": 0.068,
+            "total_ms": 0.068
+          },
+          "rag_resolution": {
+            "count": 1,
+            "max_ms": 0.073,
+            "mean_ms": 0.073,
+            "total_ms": 0.073
+          },
+          "reply_check": {
+            "count": 1,
+            "max_ms": 0.249,
+            "mean_ms": 0.249,
+            "total_ms": 0.249
+          },
+          "reply_generation": {
+            "count": 1,
+            "max_ms": 1448.093,
+            "mean_ms": 1448.093,
+            "total_ms": 1448.093
+          },
+          "status": {
+            "count": 1,
+            "max_ms": 0.014,
+            "mean_ms": 0.014,
+            "total_ms": 0.014
+          },
+          "stock_lookup": {
+            "count": 1,
+            "max_ms": 83.718,
+            "mean_ms": 83.718,
+            "total_ms": 83.718
+          },
+          "stock_query": {
+            "count": 1,
+            "max_ms": 46.345,
+            "mean_ms": 46.345,
+            "total_ms": 46.345
+          },
+          "validation": {
+            "count": 1,
+            "max_ms": 0.117,
+            "mean_ms": 0.117,
+            "total_ms": 0.117
+          }
+        },
+        "total_duration_ms": 4651.958
+      },
+      "scored": false,
+      "token_usage": {
+        "completion_tokens": 303,
+        "prompt_tokens": 3683,
+        "total_tokens": 3986
       }
     }
   ],
   "schema_version": 1,
   "token_usage": {
     "completion_tokens": {
-      "count": 10,
-      "mean": 281.4,
-      "total": 2814
+      "count": 20,
+      "mean": 312.2,
+      "total": 6244
     },
     "prompt_tokens": {
-      "count": 10,
-      "mean": 3317.1,
-      "total": 33171
+      "count": 20,
+      "mean": 3942.45,
+      "total": 78849
     },
     "total_tokens": {
-      "count": 10,
-      "mean": 3598.5,
-      "total": 35985
+      "count": 20,
+      "mean": 4254.65,
+      "total": 85093
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "customer": "Lotus Mobiles",
+  "delivery_city": "Coimbatore",
+  "deadline": "2026-12-04",
+  "items": [
+    {
+      "product_name": "black 128 GB 5G phones",
+      "product_code": "PHN-X9",
+      "requested": 5,
+      "available": 6
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Faisal Khan,\n\nThank you for your order. We can supply all 5 black 128 GB 5G phones (PHN-X9) you requested. The quote in INR is as follows: unit price 34,999, subtotal 174,995, no discount, no delivery charge, total 174,995. The quote is valid until 27 November 2026.\n\nOur team will arrange delivery to Coimbatore by 4 December 2026 as requested.\n\nKind regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "PHN-X9",
+        "quantity": 5,
+        "unit_price_inr": 34999.0,
+        "discount_percent": 0,
+        "line_total_inr": 174995.0
+      }
+    ],
+    "subtotal_inr": 174995.0,
+    "delivery_inr": 0.0,
+    "total_inr": 174995.0,
+    "valid_until": "2026-11-27"
+  }
+}
