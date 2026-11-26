@@ -26,8 +26,6 @@ def valid_quantity(q) -> bool:
 def validate(order: ExtractedOrder, email_date: date | None, lead_time_days: int) -> ValidationResult:
     issues: list[str] = []
 
-    if order.refers_to_previous_order:
-        issues.append("Refers to a previous order")
     if _clean(order.customer) is None:
         issues.append("Missing customer")
     if _clean(order.delivery_city) is None:
@@ -47,7 +45,7 @@ def validate(order: ExtractedOrder, email_date: date | None, lead_time_days: int
             else:
                 issues.append(f"Invalid quantity for {name}: '{raw}'")
             items.append(ValidatedItem(product_name=name, requested=None))
-    if not items:
+    if not items and not order.refers_to_previous_order:
         issues.append("No items listed")
 
     deadline_str: str | None = None

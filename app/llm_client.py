@@ -206,18 +206,38 @@ class LLMClient:
             )
         return text
 
-    def embed(self, text: str) -> list[float]:
-        """Create a 1536-dimension embedding for RAG."""
+    def _embeddings(self, step: str, texts: list[str]):
         if not self._azure_embedding_deployment:
             raise LLMError("embedding deployment is not configured", "configuration")
-        response = self._call(
-            "embedding",
+        return self._call(
+            step,
             lambda: self._client.embeddings.create(
                 model=self._azure_embedding_deployment,
-                input=text,
+                input=texts,
             ),
         )
-        return [float(value) for value in response.data[0].embedding]
+
+    def embed(self, text: str) -> list[float]:
+        """Create a 1536-dimension embedding for RAG."""
+        return self.embed_with_tokens(text)[0]
+
+    def embed_with_tokens(self, text: str) -> tuple[list[float], int | None]:
+        """Like embed(), also returning the prompt tokens the API reported (None if absent)."""
+        response = self._embeddings("embedding", [text])
+        tokens = getattr(response.usage, "prompt_tokens", None) if response.usage else None
+        return [float(v) for v in response.data[0].embedding], tokens
+
+    def embed_many(self, texts: list[str]) -> list[list[float]]:
+        """Embed many texts in ONE API call; tokens and latency are logged by _call like chat calls."""
+        if not texts:
+            return []
+        response = self._embeddings("embedding_batch", list(texts))
+        data = sorted(response.data, key=lambda d: d.index)
+        if len(data) != len(texts):
+            raise LLMError(
+                f"embedding_batch: sent {len(texts)} texts, got {len(data)} embeddings", "invalid_response"
+            )
+        return [[float(v) for v in d.embedding] for d in data]
 
     @staticmethod
     def _record_output_error(step: str, category: str) -> None:

@@ -12,8 +12,10 @@ in the signature or body. If only a person's name is given, return null. Do not 
 email address or domain.
 - delivery_city: the city only, never the street, area, neighbourhood or landmark. Addresses usually \
 read "<area>, <city>": for "Salt Lake Sector V, Kolkata" the city is "Kolkata"; for "our Andheri office \
-in Mumbai" it is "Mumbai". null if the email does not say where to deliver. Do not infer it from \
-anything else.
+in Mumbai" it is "Mumbai". Rule: the delivery city is always the LAST \
+place name in the delivery address, even when it is a region or state and an earlier name looks like a \
+town ("Hosur Road, Karnataka" -> "Karnataka"). null if the email does not say where to deliver. Do not infer \
+it from anything else.
 - deadline: the latest date they need delivery, as YYYY-MM-DD. Resolve relative phrases ("a week from \
 today", "by Thursday", "end of next week") against the email date given. If the email says there \
 is no hurry or gives no date, null. An event date that is not a delivery deadline is not a deadline.

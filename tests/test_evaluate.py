@@ -304,3 +304,15 @@ def test_sp2_quote_score_compares_exact_quote_values():
         "valid_until": "2026-11-27",
     }
     assert score_quote(got, want) is True
+
+
+def test_fail_line_names_quote_and_other_failed_fields(tmp_path, capsys):
+    want = {"status": "Ready", "items": [], "customer": "A", "delivery_city": "B", "deadline": None,
+            "quote": {"lines": [], "subtotal_inr": 1, "delivery_inr": 0, "total_inr": 1, "valid_until": "2026-01-01"}}
+    got = {**want, "customer": "a", "status": "Partial", "quote": None, "reply": "hi"}
+    email = tmp_path / "email_1.txt"
+    email.write_text("x", encoding="utf-8")
+    evaluate_files([email], {"email_1": want}, lambda text: got, tmp_path / "out")
+    out = capsys.readouterr().out
+    assert "FAIL" in out and "wrong: status, quote" in out
+    assert "0/1 fully correct" in out

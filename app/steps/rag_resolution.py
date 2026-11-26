@@ -1,59 +1,65 @@
-"""Small RAG-backed product-code chooser; code validates every model response."""
+"""RAG-backed product matching. The model only filters code-supplied candidates; code validates its answer."""
+import logging
 import re
 
 from app.llm_client import LLMClient
-from app.models import ProductCodeChoice
+from app.models import ProductCodeMatches
 from app.rag import RetrievedChunk
 
+log = logging.getLogger("rag_resolution")
+
 CODE_RE = re.compile(r"\b[A-Z]{3}-[A-Z0-9]+\b")
+BROCHURE_PREFIX = "brochures/"
+
+SYSTEM_PROMPT = (
+    "You match a customer's product description to catalogue products using only the brochure excerpts. "
+    "Return matching_codes: every candidate code whose brochure confirms EVERY detail in the description "
+    "(colour, storage, 5G, size, wattage, ...). Closest is not a match; if a detail isn't confirmed by the "
+    "brochure, exclude that product. Return an empty list if nothing qualifies. "
+    "Valid codes are exactly: {codes}. Never invent a code."
+)
 
 
-def candidate_codes(chunks: list[RetrievedChunk]) -> list[str]:
+def brochure_chunks(chunks: list[RetrievedChunk]) -> list[RetrievedChunk]:
+    return [c for c in chunks if c.source.startswith(BROCHURE_PREFIX)]
+
+
+def candidate_codes(chunks: list[RetrievedChunk], valid_codes: set[str]) -> list[str]:
+    """Codes mentioned in the chunks that also exist in the products table, in first-seen order."""
     codes: list[str] = []
     for chunk in chunks:
         for code in CODE_RE.findall(chunk.chunk + "\n" + chunk.source):
-            if code not in codes:
+            if code in valid_codes and code not in codes:
                 codes.append(code)
     return codes
 
 
-def choose_description_code(
+def matching_codes(
     llm: LLMClient,
     description: str,
     chunks: list[RetrievedChunk],
-) -> str | None:
-    candidates = candidate_codes(chunks)
-    payload = "\n\n".join(
-        f"Source: {chunk.source}\nHeading: {chunk.heading}\n{chunk.chunk}"
-        for chunk in chunks
-    )
-    choice = llm.parse(
+    valid_codes: set[str],
+) -> list[str]:
+    """Returns the final codes (0, 1 or more); the caller turns the count into resolved/ambiguous/unknown."""
+    chunks = brochure_chunks(chunks)
+    log.info("event=rag_query query=%r", description)
+    for c in chunks:
+        log.info("event=rag_chunk source=%s heading=%r score=%.4f", c.source, c.heading, c.score)
+    candidates = candidate_codes(chunks, valid_codes)
+    log.info("event=rag_candidates candidates=%s", candidates)
+    if not candidates:
+        log.info("event=rag_decision query=%r llm_answer=None final=[]", description)
+        return []
+
+    payload = "\n\n".join(f"Source: {c.source}\nHeading: {c.heading}\n{c.chunk}" for c in chunks)
+    answer = llm.parse(
         "resolve_product",
         [
-            {
-                "role": "system",
-                "content": (
-                    "Choose the catalogue product code for the description using only the retrieved chunks. "
-                    f"Valid product_code values are exactly: {', '.join(candidates)}. "
-                    "Return null if it is not a unique match. Never invent a code."
-                ),
-            },
-            {"role": "user", "content": f"Description: {description}\n\nRetrieved chunks:\n{payload}"},
+            {"role": "system", "content": SYSTEM_PROMPT.format(codes=", ".join(candidates))},
+            {"role": "user", "content": f"Description: {description}\n\nBrochure excerpts:\n{payload}"},
         ],
-        ProductCodeChoice,
+        ProductCodeMatches,
     )
-    if choice.product_code not in candidates:
-        return None
-    return choice.product_code
-
-
-def choose_description_candidates(
-    llm: LLMClient,
-    description: str,
-    chunks: list[RetrievedChunk],
-) -> list[str]:
-    candidates = candidate_codes(chunks)
-    if len(candidates) != 1:
-        return candidates
-    code = choose_description_code(llm, description, chunks)
-    return [code] if code else []
+    final = [code for code in dict.fromkeys(answer.matching_codes) if code in candidates]
+    log.info("event=rag_decision query=%r llm_answer=%s final=%s", description, answer.matching_codes, final)
+    return final

@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Callable
 
 DATA = Path(__file__).resolve().parent
+SP2_DATA = DATA / "starter-project-2-data"
 FIELDS = ["status", "items", "customer", "delivery_city", "deadline"]
 EXTRACTION_FIELDS = {"items", "customer", "delivery_city", "deadline"}
 ERROR_CATEGORIES = ("extraction_related", "business_rule_status", "workflow")
@@ -171,17 +172,25 @@ def make_runner(url: str | None):
     from app.config import get_settings
     from app.llm_client import LLMClient
     from app.observability import OrderMetrics
+    from app.rag import DocumentRepository
     from app.steps.stock import StockRepository
     from app.workflow import OrderWorkflow
 
     s = get_settings()
+    llm = LLMClient(s)
+    # Same wiring as app/main.py, so the evaluation exercises RAG and quotes.
     wf = OrderWorkflow(
-        LLMClient(s),
+        llm,
         StockRepository(s),
         s.lead_time_days,
         s.extraction_max_iterations,
         s.llm_input_cost_per_million_tokens,
         s.llm_output_cost_per_million_tokens,
+        DocumentRepository(s, llm),
+        Decimal(str(s.free_delivery_threshold)),
+        Decimal(str(s.delivery_charge)),
+        s.quote_validity_days,
+        s.discount_tiers,
     )
 
     def run(text: str):
@@ -343,6 +352,7 @@ def evaluate_files(
     run: Callable | None,
     out_dir: Path,
     group_errors: bool = False,
+    show_replies: bool = False,
 ) -> dict:
     """Run and score emails; runner results may optionally be ``(output, token_usage)``."""
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -396,14 +406,14 @@ def evaluate_files(
                 exact_matches += exact_match
                 failures = [
                     {
-                        "category": "business_rule_status" if field == "status" else "extraction_related",
+                        "category": "business_rule_status" if field in ("status", "quote") else "extraction_related",
                         "reason": f"{field}_mismatch",
                     }
-                    for field in FIELDS
+                    for field in field_scores
                     if not field_scores[field]
                 ]
                 detail = "" if exact_match else "  wrong: " + ", ".join(
-                    field for field in FIELDS if not field_scores[field]
+                    field for field in field_scores if not field_scores[field]
                 )
                 print(f"{key:10} {'PASS' if exact_match else 'FAIL'}  {got.get('status', 'unknown'):9}{detail}")
             else:
@@ -414,6 +424,11 @@ def evaluate_files(
                     f"customer={got.get('customer')!r} city={got.get('delivery_city')!r} "
                     f"deadline={got.get('deadline')} issues={got.get('issues', [])}"
                 )
+                if show_replies:
+                    reply_lines = str(got.get("reply", "")).splitlines()
+                    print("   reply:")
+                    for line in reply_lines:
+                        print("     " + line)
             per_email.append(
                 {
                     "email": key,
@@ -438,7 +453,7 @@ def evaluate_files(
             if usage:
                 usages.append(usage)
             failure = {"category": "workflow", "reason": "execution_error"}
-            field_scores = dict.fromkeys(FIELDS, False) if is_scored else None
+            field_scores = dict.fromkeys(field_correct, False) if is_scored else None
             if is_scored:
                 scored_count += 1
             print(f"{key:10} ERROR  {type(exc).__name__}: {exc}")
@@ -522,7 +537,7 @@ def evaluate_files(
     if scored_count:
         print(
             f"\nTotal: {exact_matches}/{scored_count} fully correct, "
-            f"field accuracy {sum(field_correct.values())}/{scored_count * len(FIELDS)}"
+            f"field accuracy {sum(field_correct.values())}/{scored_count * len(field_correct)}"
         )
     print(f"Evaluation summary in {out_dir / 'summary.json'}")
     print(f"Full results (with replies) in {out_dir}/")
@@ -531,8 +546,8 @@ def evaluate_files(
 
 def main(argv: list[str] | None = None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--emails", default=str(DATA / "emails" / "labelled"))
-    ap.add_argument("--answers", default=str(DATA / "answer_key.json"), help="'none' to skip scoring")
+    ap.add_argument("--emails", default=str(SP2_DATA / "emails" / "labelled"))
+    ap.add_argument("--answers", default=str(SP2_DATA / "answer_key.json"), help="'none' to skip scoring")
     ap.add_argument("--url", default=None, help="Base URL of the running API (optional)")
     ap.add_argument("--out", default="results", help="Folder for the full JSON results")
     ap.add_argument("--verbose", action="store_true", help="Show workflow logs")
@@ -550,9 +565,13 @@ def main(argv: list[str] | None = None):
         ap.error(str(exc))
 
     files = sorted(Path(args.emails).glob("*.txt"))
-    out_dir = Path(args.out) / Path(args.emails).name
+    emails_dir = Path(args.emails).resolve()
+    # Folders inside the SP2 data pack get an sp2_ prefix: results/sp2_labelled, results/sp2_practice.
+    prefix = "sp2_" if SP2_DATA in emails_dir.parents else ""
+    out_dir = Path(args.out) / (prefix + emails_dir.name)
     run = make_runner(args.url) if files else None
-    evaluate_files(files, answers, run, out_dir, args.group_errors)
+    # Practice (unscored) emails: print the replies so a person can read them.
+    evaluate_files(files, answers, run, out_dir, args.group_errors, show_replies=True)
 
 
 if __name__ == "__main__":

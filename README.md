@@ -1,3 +1,5 @@
+[![tests](https://github.com/adityapichikala-stack/starter-project-1/actions/workflows/tests.yml/badge.svg)](https://github.com/adityapichikala-stack/starter-project-1/actions/workflows/tests.yml)
+
 # Starter Project 1 + 2: Order Desk workflow
 
 Takes one customer order email and returns a structured order, a status and a draft reply via `POST /orders`.

@@ -103,14 +103,15 @@ def resolve_validated_items(
     history_rows: list[tuple[str, str, str, int]],
     rag_candidates: dict[str, list[str]],
 ) -> ResolutionResult:
+    history_items: list[ResolvedItem] = []
+    history_issues: list[str] = []
     if repeat_requested:
         history, issue = history_match(customer, history_rows)
         if issue:
-            return ResolutionResult(items=[], issues=[issue])
-        resolved_history = []
+            history_issues.append(issue)
         for item in history:
-            product = catalogue.get(item.product_code) if item.product_code else None
-            resolved_history.append(
+            product = catalogue_product_by_code(item.product_code, catalogue) if item.product_code else None
+            history_items.append(
                 ResolvedItem(
                     product_name=product.name if product else item.product_code,
                     product_code=item.product_code,
@@ -120,10 +121,11 @@ def resolve_validated_items(
                     resolution="history",
                 )
             )
-        return ResolutionResult(items=resolved_history, issues=[])
+        if not items:
+            return ResolutionResult(items=history_items, issues=history_issues)
 
-    resolved: list[ResolvedItem] = []
-    issues: list[str] = []
+    resolved: list[ResolvedItem] = list(history_items)
+    issues: list[str] = list(history_issues)
     for item in items:
         name = normalize_name(item.product_name)
         exact = exact_catalogue_match(item.product_name, catalogue)

@@ -4,11 +4,11 @@ import time
 from dataclasses import dataclass
 
 import pg8000.dbapi
-from pgvector.pg8000 import register_vector
-from pgvector import Vector
 
 from app.config import Settings
 from app.llm_client import LLMClient
+
+pg8000.dbapi.paramstyle = "pyformat"  # named %(x)s parameters
 
 log = logging.getLogger("rag")
 
@@ -35,17 +35,18 @@ class DocumentRepository:
 
     def _connect(self):
         conn = pg8000.dbapi.connect(**self._conn_args)
-        register_vector(conn)
+
         return conn
 
-    def search(self, query: str, limit: int = 5) -> list[RetrievedChunk]:
+    def search(self, query: str, limit: int = 5, source_prefix: str | None = None) -> list[RetrievedChunk]:
         started = time.perf_counter()
-        embedding = self.llm.embed(query)
+        embedding, tokens = self.llm.embed_with_tokens(query)
         latency_ms = (time.perf_counter() - started) * 1000
         log.info(
-            "event=embedding_completed query_chars=%d dimensions=%d latency_ms=%.3f",
+            "event=embedding_completed query_chars=%d dimensions=%d tokens=%s latency_ms=%.3f",
             len(query),
             len(embedding),
+            tokens,
             latency_ms,
         )
 
@@ -57,10 +58,11 @@ class DocumentRepository:
                 SELECT source, heading, chunk,
                        1 - (embedding <=> %(query_embedding)s::vector) AS score
                 FROM documents
+                WHERE %(prefix)s::text IS NULL OR source LIKE %(prefix)s::text || '%%'
                 ORDER BY embedding <=> %(query_embedding)s::vector
                 LIMIT %(limit)s
                 """,
-                {"query_embedding": Vector(embedding), "limit": limit},
+                {"query_embedding": vector_literal(embedding), "limit": limit, "prefix": source_prefix},
             )
             rows = cur.fetchall()
         finally:
@@ -79,3 +81,8 @@ class DocumentRepository:
             ],
         )
         return chunks
+
+
+def vector_literal(values) -> str:
+    """pgvector text form, cast with ::vector in SQL (pg8000's dbapi connection has no pgvector adapter)."""
+    return "[" + ",".join(repr(float(v)) for v in values) + "]"

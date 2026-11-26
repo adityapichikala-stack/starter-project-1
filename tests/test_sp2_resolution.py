@@ -62,3 +62,49 @@ def test_history_without_customer_match_returns_need_info():
     items, issue = history_match("Kaveri Hospitals", [])
     assert items == []
     assert "no order history" in issue
+
+
+# ---- RAG matching (fake retrieval + fake LLM) ----
+from app.models import ProductCodeMatches
+from app.rag import RetrievedChunk
+from app.steps.rag_resolution import matching_codes
+
+VALID = {"PHN-X9", "PHN-A5", "EAR-01"}
+
+
+def _chunks():
+    return [
+        RetrievedChunk("brochures/PHN-X9.md", "Specs", "PHN-X9 black 128 GB 5G", 0.9),
+        RetrievedChunk("brochures/PHN-A5.md", "Specs", "PHN-A5 blue 64 GB", 0.8),
+        RetrievedChunk("pricing_policy.md", "Tiers", "mentions EAR-01", 0.7),
+    ]
+
+
+class _LLM:
+    def __init__(self, codes):
+        self.codes = codes
+
+    def parse(self, step, messages, schema, **_):
+        return ProductCodeMatches(matching_codes=self.codes)
+
+
+def test_rag_fits_one():
+    assert matching_codes(_LLM(["PHN-X9"]), "black 128 GB 5G phone", _chunks(), VALID) == ["PHN-X9"]
+
+
+def test_rag_fits_two_is_ambiguous():
+    codes = matching_codes(_LLM(["PHN-X9", "PHN-A5"]), "phone", _chunks(), VALID)
+    code, issue = pure_description_match("phone", codes, {
+        "a": CatalogueProduct("PHN-X9", "Astra X9", "1", 1), "b": CatalogueProduct("PHN-A5", "Astra A5", "1", 1)})
+    assert code is None and issue == "Ambiguous product: phone (Astra A5 or Astra X9)"
+
+
+def test_rag_fits_none_is_unknown():
+    codes = matching_codes(_LLM([]), "wireless earbuds", _chunks(), VALID)
+    assert codes == []
+    assert pure_description_match("wireless earbuds", codes, catalogue())[1] == "Unknown product: wireless earbuds"
+
+
+def test_rag_invented_or_non_brochure_code_ignored():
+    # ZZZ-99 invented; EAR-01 only appears in a non-brochure chunk, so it is not a candidate
+    assert matching_codes(_LLM(["ZZZ-99", "EAR-01", "PHN-X9"]), "x", _chunks(), VALID) == ["PHN-X9"]

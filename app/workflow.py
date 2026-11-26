@@ -1,6 +1,7 @@
 """The fixed four-step workflow: extract (LLM, cross-checked, max N iterations) -> validate (code)
 -> check stock (code) -> reply (LLM)."""
 import logging
+import re
 import time
 from decimal import Decimal
 
@@ -16,9 +17,25 @@ from app.steps.stock import CatalogueLookup, check_stock
 from app.steps.validate import validate
 from app.steps.quote import build_quote
 from app.steps.resolve_products import CatalogueProduct, resolve_validated_items
-from app.steps.rag_resolution import candidate_codes, choose_description_code
+from app.steps.rag_resolution import matching_codes
 
 log = logging.getLogger("workflow")
+
+
+def _dedupe_chunks(chunks):
+    seen, out = set(), []
+    for c in chunks:
+        key = (c.source, c.heading, c.chunk)
+        if key not in seen:
+            seen.add(key)
+            out.append(c)
+    return out
+
+
+def customer_questions(body: str) -> str:
+    """The question sentences of the email, used only as a retrieval query (never sent to the reply LLM)."""
+    sentences = re.split(r"(?<=[.?!])\s+|\n+", body)
+    return " ".join(s.strip() for s in sentences if s.strip().endswith("?"))
 
 
 class OrderWorkflow:
@@ -90,15 +107,19 @@ class OrderWorkflow:
                         exact = full_catalogue.get(key)
                         if exact or not self.document_repository:
                             continue
-                        chunks = self.document_repository.search(item.product_name)
-                        candidates = candidate_codes(chunks)
-                        if len(candidates) == 1:
-                            code = choose_description_code(self.llm, item.product_name, chunks)
-                            rag_candidates[item.product_name] = [code] if code else []
-                        elif candidates:
-                            rag_candidates[item.product_name] = candidates
-                        else:
-                            rag_candidates[item.product_name] = []
+                        found = self.document_repository.search(item.product_name, 5, "brochures/")
+                        chunks.extend(found)
+                        rag_candidates[item.product_name] = matching_codes(
+                            self.llm, item.product_name, found,
+                            {p.product_code for p in full_catalogue.values()},
+                        )
+
+                    chunks = _dedupe_chunks(chunks)
+                    if self.document_repository:
+                        questions = customer_questions(parsed.body)
+                        if questions:
+                            policy = self.document_repository.search(questions, 3, "pricing_policy.md")
+                            chunks = _dedupe_chunks(chunks + policy[:3])
 
                     history_rows = []
                     if extracted.refers_to_previous_order and hasattr(self.catalogue, "find_history"):
@@ -181,6 +202,9 @@ class OrderWorkflow:
                         quote = None
 
                 # 4. Draft reply from the computed result only; replace rejected drafts with a template.
+                reply_chunks = [
+                    {"source": c.source, "heading": c.heading, "chunk": c.chunk} for c in chunks
+                ]
                 reply = None
                 for attempt in (1, 2):
                     try:
@@ -190,14 +214,7 @@ class OrderWorkflow:
                                 result,
                                 parsed.sender_name or None,
                                 quote.model_dump(mode="json") if quote else None,
-                                [
-                                    {
-                                        "source": chunk.source,
-                                        "heading": chunk.heading,
-                                        "chunk": chunk.chunk,
-                                    }
-                                    for chunk in (chunks if "chunks" in locals() else [])
-                                ],
+                                reply_chunks,
                             )
                     except LLMError:
                         break
@@ -206,6 +223,7 @@ class OrderWorkflow:
                             draft,
                             result,
                             quote.model_dump(mode="json") if quote else None,
+                            reply_chunks,
                         )
                     if not problems:
                         reply = draft
@@ -213,9 +231,10 @@ class OrderWorkflow:
                     metrics.reply_check_failures += 1
                     metrics.record_error("reply_check")
                     log.warning(
-                        "event=reply_rejected request_id=%s check_attempt=%d error_category=reply_check",
+                        "event=reply_rejected request_id=%s check_attempt=%d error_category=reply_check problems=%s",
                         metrics.request_id,
                         attempt,
+                        problems,
                     )
                 if reply is None:
                     metrics.fallback_reply_used = True
@@ -223,7 +242,8 @@ class OrderWorkflow:
                         "event=fallback_reply request_id=%s outcome=used error_category=reply_unavailable_or_rejected",
                         metrics.request_id,
                     )
-                    reply = fallback_reply(result, parsed.sender_name or None)
+                    reply = fallback_reply(result, parsed.sender_name or None,
+                                           quote.model_dump(mode="json") if quote else None)
 
                 response = OrderResult(**result, reply=reply, quote=quote)
                 completed = True
