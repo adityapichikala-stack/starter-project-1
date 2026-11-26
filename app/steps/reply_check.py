@@ -15,10 +15,12 @@ def _allowed_numbers(result: dict) -> set[int]:
     return nums
 
 
-def check_reply(reply: str, result: dict) -> list[str]:
+def check_reply(reply: str, result: dict, quote: dict | None = None) -> list[str]:
     """Returns problems found; empty means the reply is OK to send."""
     problems = [why for pattern, why in FORBIDDEN if re.search(pattern, reply, re.I)]
     allowed = _allowed_numbers(result)
+    if quote is not None:
+        allowed |= _allowed_numbers(quote)
     extra = sorted({int(n) for n in re.findall(r"\d+", reply)} - allowed)
     if extra:
         problems.append(f"uses numbers not in the result: {extra}")

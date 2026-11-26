@@ -37,7 +37,7 @@ def test_only_extract_and_reply_use_the_llm():
     }
     # llm_client wraps the SDK; extraction_loop/workflow/main only wire it up and handle LLMError
     assert users == {"llm_client.py", "steps/extract.py", "steps/verify.py", "steps/extraction_loop.py",
-                     "steps/reply.py", "workflow.py", "main.py"}
+                     "steps/reply.py", "steps/rag_resolution.py", "rag.py", "workflow.py", "main.py"}
 
 
 def test_extraction_schema_cannot_set_status():

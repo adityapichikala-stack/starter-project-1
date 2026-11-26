@@ -1,4 +1,4 @@
-# Starter Project 1: Order Desk workflow
+# Starter Project 1 + 2: Order Desk workflow
 
 Takes one customer order email and returns a structured order, a status and a draft reply via `POST /orders`.
 The data pack's own README (layout and scoring rules) is in `DATA_PACK_README.md`.
@@ -22,6 +22,9 @@ Nothing about specific emails is hardcoded: any email text works, and `evaluate.
 
 ```
 app/                 the service (config, models, LLM client, steps, workflow, FastAPI)
+docs/                product brochures and pricing policy used by RAG
+scripts/             idempotent document embedding ingestion
+starter-project-2-data/  SP2 seeds, brochures, emails and answer key
 tests/               pytest + tests/robustness_emails/ (messy extra emails)
 emails/labelled/     10 emails with answers in answer_key.json
 emails/practice/     5 emails without answers
@@ -37,12 +40,14 @@ results/             JSON output of the last evaluation runs
 python -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.txt
 copy .env.example .env        # then fill in the Azure OpenAI values
-docker compose up -d --wait   # Postgres 16 on host port 5433, seeded from seed.sql
+docker compose down -v        # required once to recreate pgvector database data
+docker compose up -d --wait   # pgvector/pg16 on host port 5433
+.venv\Scripts\python scripts\ingest_docs.py
 .venv\Scripts\python check_azure.py
 ```
 
-Check the seed loaded (both 15):
-`docker exec sp1-postgres psql -U orders -d orders -c "SELECT (SELECT count(*) FROM products), (SELECT count(*) FROM stock);"`
+Check the seed loaded:
+`docker exec sp1-postgres psql -U orders -d orders -c "SELECT (SELECT count(*) FROM products), (SELECT count(*) FROM stock), (SELECT count(*) FROM order_history), (SELECT extname FROM pg_extension WHERE extname='vector');"`
 If tables are missing you're on an old volume: `docker compose down -v`, then `up` again.
 
 ## Run

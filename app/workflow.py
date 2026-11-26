@@ -2,10 +2,11 @@
 -> check stock (code) -> reply (LLM)."""
 import logging
 import time
+from decimal import Decimal
 
 from app.email_parser import parse_email
 from app.llm_client import LLMClient, LLMError
-from app.models import OrderResult
+from app.models import OrderResult, ResolvedItem
 from app.observability import OrderMetrics, measured_step, metrics_scope
 from app.steps.extraction_loop import run_extraction
 from app.steps.reply_check import check_reply
@@ -13,6 +14,9 @@ from app.steps.reply import draft_reply, fallback_reply
 from app.steps.status import decide_status
 from app.steps.stock import CatalogueLookup, check_stock
 from app.steps.validate import validate
+from app.steps.quote import build_quote
+from app.steps.resolve_products import CatalogueProduct, resolve_validated_items
+from app.steps.rag_resolution import candidate_codes, choose_description_code
 
 log = logging.getLogger("workflow")
 
@@ -20,13 +24,22 @@ log = logging.getLogger("workflow")
 class OrderWorkflow:
     def __init__(self, llm: LLMClient, catalogue: CatalogueLookup, lead_time_days: int,
                  max_extraction_iterations: int = 5, input_cost_per_million: float | None = None,
-                 output_cost_per_million: float | None = None):
+                 output_cost_per_million: float | None = None, document_repository=None,
+                 free_delivery_threshold: Decimal = Decimal("50000"),
+                 delivery_charge: Decimal = Decimal("1500"),
+                 quote_validity_days: int = 7,
+                 discount_tiers: tuple[tuple[int, int], ...] = ((200, 12), (50, 8), (10, 5), (1, 0))):
         self.llm = llm
         self.catalogue = catalogue
         self.lead_time_days = lead_time_days
         self.max_extraction_iterations = max_extraction_iterations
         self.input_cost_per_million = input_cost_per_million
         self.output_cost_per_million = output_cost_per_million
+        self.document_repository = document_repository
+        self.free_delivery_threshold = free_delivery_threshold
+        self.delivery_charge = delivery_charge
+        self.quote_validity_days = quote_validity_days
+        self.discount_tiers = discount_tiers
 
     def run(self, raw_email: str, metrics: OrderMetrics | None = None) -> OrderResult:
         metrics = metrics or OrderMetrics(self.input_cost_per_million, self.output_cost_per_million)
@@ -56,30 +69,144 @@ class OrderWorkflow:
                 with measured_step("stock_lookup"):
                     catalogue = self.catalogue.find_by_names([i.product_name for i in v.items])
                     stock = check_stock(v.items, catalogue)
+                    full_catalogue = {}
+                    if hasattr(self.catalogue, "get_catalogue"):
+                        entries = self.catalogue.get_catalogue()
+                        full_catalogue = {
+                            key: CatalogueProduct(
+                                product_code=entry.product_code,
+                                name=entry.name,
+                                unit_price_inr=entry.unit_price_inr or Decimal("0"),
+                                quantity_available=entry.quantity_available,
+                            )
+                            for key, entry in entries.items()
+                        }
+
+                rag_candidates = {}
+                chunks = []
+                with measured_step("rag_resolution"):
+                    for item in v.items:
+                        key = item.product_name.lower().strip()
+                        exact = full_catalogue.get(key)
+                        if exact or not self.document_repository:
+                            continue
+                        chunks = self.document_repository.search(item.product_name)
+                        candidates = candidate_codes(chunks)
+                        if len(candidates) == 1:
+                            code = choose_description_code(self.llm, item.product_name, chunks)
+                            rag_candidates[item.product_name] = [code] if code else []
+                        elif candidates:
+                            rag_candidates[item.product_name] = candidates
+                        else:
+                            rag_candidates[item.product_name] = []
+
+                    history_rows = []
+                    if extracted.refers_to_previous_order and hasattr(self.catalogue, "find_history"):
+                        history_rows = self.catalogue.find_history(extracted.customer or "")
+
+                    resolution = resolve_validated_items(
+                        v.items,
+                        extracted.customer,
+                        extracted.refers_to_previous_order,
+                        full_catalogue,
+                        history_rows,
+                        rag_candidates,
+                    )
+                    if not full_catalogue:
+                        resolution.items = []
+                        resolution.issues = []
+                        for item in v.items:
+                            entry = catalogue.get(item.product_name.lower().strip())
+                            if entry:
+                                resolution.items.append(
+                                    ResolvedItem(
+                                        product_name=item.product_name,
+                                        product_code=entry.product_code,
+                                        requested=item.requested,
+                                        available=entry.quantity_available,
+                                        unit_price_inr=entry.unit_price_inr,
+                                        resolution="exact",
+                                    )
+                                )
+
+                with measured_step("quote_build"):
+                    quote = build_quote(
+                        resolution.items,
+                        parsed.sent_date,
+                        Decimal(str(self.free_delivery_threshold)),
+                        Decimal(str(self.delivery_charge)),
+                        self.quote_validity_days,
+                        self.discount_tiers,
+                    )
 
                 # Status (code)
                 with measured_step("status"):
-                    need_info = outcome.unresolved + v.issues + stock.unknown_issues
-                    status = decide_status(need_info, stock.shortage_issues)
+                    if full_catalogue:
+                        need_info = outcome.unresolved + v.issues + resolution.issues
+                    else:
+                        need_info = outcome.unresolved + v.issues + stock.unknown_issues + resolution.issues
+                    resolved_shortages = []
+                    resolved_items_out = []
+                    for item in resolution.items:
+                        if item.product_code is None:
+                            resolved_items_out.append({
+                                "product_name": item.product_name,
+                                "product_code": None,
+                                "requested": item.requested,
+                                "available": None,
+                            })
+                            continue
+                        available = item.available or 0
+                        resolved_items_out.append({
+                            "product_name": item.product_name,
+                            "product_code": item.product_code,
+                            "requested": item.requested,
+                            "available": available,
+                        })
+                        if item.requested is not None and item.requested > available:
+                            resolved_shortages.append(
+                                f"{item.product_name}: requested {item.requested}, only {available} in stock"
+                            )
+                    status = decide_status(need_info, resolved_shortages)
                     result = {
                         "customer": " ".join(extracted.customer.split()) if extracted.customer else None,
                         "delivery_city": " ".join(extracted.delivery_city.split()) if extracted.delivery_city else None,
                         "deadline": v.deadline,
-                        "items": [i.model_dump() for i in stock.items],
+                        "items": resolved_items_out if resolution.items else [i.model_dump() for i in stock.items],
                         "status": status,
-                        "issues": need_info + stock.shortage_issues,
+                        "issues": need_info + (resolved_shortages if resolution.items else stock.shortage_issues),
                     }
+
+                    if status == "Need info" or not quote:
+                        quote = None
 
                 # 4. Draft reply from the computed result only; replace rejected drafts with a template.
                 reply = None
                 for attempt in (1, 2):
                     try:
                         with measured_step("reply_generation"):
-                            draft = draft_reply(self.llm, result, parsed.sender_name or None)
+                            draft = draft_reply(
+                                self.llm,
+                                result,
+                                parsed.sender_name or None,
+                                quote.model_dump(mode="json") if quote else None,
+                                [
+                                    {
+                                        "source": chunk.source,
+                                        "heading": chunk.heading,
+                                        "chunk": chunk.chunk,
+                                    }
+                                    for chunk in (chunks if "chunks" in locals() else [])
+                                ],
+                            )
                     except LLMError:
                         break
                     with measured_step("reply_check"):
-                        problems = check_reply(draft, result)
+                        problems = check_reply(
+                            draft,
+                            result,
+                            quote.model_dump(mode="json") if quote else None,
+                        )
                     if not problems:
                         reply = draft
                         break
@@ -98,7 +225,7 @@ class OrderWorkflow:
                     )
                     reply = fallback_reply(result, parsed.sender_name or None)
 
-                response = OrderResult(**result, reply=reply)
+                response = OrderResult(**result, reply=reply, quote=quote)
                 completed = True
                 return response
             finally:

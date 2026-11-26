@@ -1,0 +1,306 @@
+{
+  "email_21": {
+    "customer": "Sunbeam International School",
+    "delivery_city": "Pune",
+    "deadline": "2026-12-11",
+    "items": [
+      {
+        "product_name": "Nimbus Tab 8 Lite",
+        "product_code": "TAB-08",
+        "requested": 60,
+        "available": 60
+      },
+      {
+        "product_name": "Pebble Buds",
+        "product_code": "EAR-01",
+        "requested": 60,
+        "available": 350
+      }
+    ],
+    "status": "Ready",
+    "issues": [],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "TAB-08",
+          "quantity": 60,
+          "unit_price_inr": 9499,
+          "discount_percent": 8,
+          "line_total_inr": 524344.8
+        },
+        {
+          "product_code": "EAR-01",
+          "quantity": 60,
+          "unit_price_inr": 1299,
+          "discount_percent": 8,
+          "line_total_inr": 71704.8
+        }
+      ],
+      "subtotal_inr": 596049.6,
+      "delivery_inr": 0.0,
+      "total_inr": 596049.6,
+      "valid_until": "2026-11-27"
+    }
+  },
+  "email_22": {
+    "customer": "Lotus Mobiles",
+    "delivery_city": "Coimbatore",
+    "deadline": "2026-12-04",
+    "items": [
+      {
+        "product_name": "black 128 GB 5G phone",
+        "product_code": "PHN-X9",
+        "requested": 5,
+        "available": 6
+      }
+    ],
+    "status": "Ready",
+    "issues": [],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "PHN-X9",
+          "quantity": 5,
+          "unit_price_inr": 34999,
+          "discount_percent": 0,
+          "line_total_inr": 174995.0
+        }
+      ],
+      "subtotal_inr": 174995.0,
+      "delivery_inr": 0.0,
+      "total_inr": 174995.0,
+      "valid_until": "2026-11-27"
+    }
+  },
+  "email_23": {
+    "customer": "Sahyadri Tech Solutions",
+    "delivery_city": "Pune",
+    "deadline": "2026-12-08",
+    "items": [
+      {
+        "product_name": "Corelink Book 14",
+        "product_code": "LAP-14",
+        "requested": 5,
+        "available": 12
+      },
+      {
+        "product_name": "Volt 65W Charger",
+        "product_code": "CHG-65",
+        "requested": 5,
+        "available": 200
+      }
+    ],
+    "status": "Ready",
+    "issues": [],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "LAP-14",
+          "quantity": 5,
+          "unit_price_inr": 52000,
+          "discount_percent": 0,
+          "line_total_inr": 260000.0
+        },
+        {
+          "product_code": "CHG-65",
+          "quantity": 5,
+          "unit_price_inr": 1499,
+          "discount_percent": 0,
+          "line_total_inr": 7495.0
+        }
+      ],
+      "subtotal_inr": 267495.0,
+      "delivery_inr": 0.0,
+      "total_inr": 267495.0,
+      "valid_until": "2026-11-28"
+    }
+  },
+  "email_24": {
+    "customer": "Coastline Telecom",
+    "delivery_city": "Kochi",
+    "deadline": "2026-12-15",
+    "items": [
+      {
+        "product_name": "Corelink Book 14",
+        "product_code": "LAP-14",
+        "requested": 30,
+        "available": 12
+      },
+      {
+        "product_name": "Volt 65W Charger",
+        "product_code": "CHG-65",
+        "requested": 20,
+        "available": 200
+      }
+    ],
+    "status": "Partial",
+    "issues": [
+      "Corelink Book 14: requested 30, only 12 in stock"
+    ],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "LAP-14",
+          "quantity": 12,
+          "unit_price_inr": 52000,
+          "discount_percent": 5,
+          "line_total_inr": 592800.0
+        },
+        {
+          "product_code": "CHG-65",
+          "quantity": 20,
+          "unit_price_inr": 1499,
+          "discount_percent": 5,
+          "line_total_inr": 28481.0
+        }
+      ],
+      "subtotal_inr": 621281.0,
+      "delivery_inr": 0.0,
+      "total_inr": 621281.0,
+      "valid_until": "2026-11-27"
+    }
+  },
+  "email_25": {
+    "customer": "Eventora",
+    "delivery_city": "Kolkata",
+    "deadline": "2026-12-09",
+    "items": [
+      {
+        "product_name": "wireless earbuds",
+        "product_code": null,
+        "requested": 20,
+        "available": null
+      }
+    ],
+    "status": "Need info",
+    "issues": [
+      "Ambiguous product: wireless earbuds (could be Pebble Buds or Pebble Buds Pro)"
+    ],
+    "quote": null
+  },
+  "email_26": {
+    "customer": "Callpoint Services",
+    "delivery_city": "Thiruvananthapuram",
+    "deadline": "2026-12-07",
+    "items": [
+      {
+        "product_name": "Quietline Headset",
+        "product_code": "HDS-10",
+        "requested": 4,
+        "available": 45
+      }
+    ],
+    "status": "Ready",
+    "issues": [],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "HDS-10",
+          "quantity": 4,
+          "unit_price_inr": 2299,
+          "discount_percent": 0,
+          "line_total_inr": 9196.0
+        }
+      ],
+      "subtotal_inr": 9196.0,
+      "delivery_inr": 1500.0,
+      "total_inr": 10696.0,
+      "valid_until": "2026-11-28"
+    }
+  },
+  "email_27": {
+    "customer": "Deccan Fiber",
+    "delivery_city": "Nashik",
+    "deadline": "2026-12-10",
+    "items": [
+      {
+        "product_name": "Meshwave AX3000 Router",
+        "product_code": "RTR-AX3",
+        "requested": 12,
+        "available": 30
+      }
+    ],
+    "status": "Ready",
+    "issues": [],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "RTR-AX3",
+          "quantity": 12,
+          "unit_price_inr": 6499,
+          "discount_percent": 5,
+          "line_total_inr": 74088.6
+        }
+      ],
+      "subtotal_inr": 74088.6,
+      "delivery_inr": 0.0,
+      "total_inr": 74088.6,
+      "valid_until": "2026-11-27"
+    }
+  },
+  "email_28": {
+    "customer": "Kaveri Hospitals",
+    "delivery_city": "Bengaluru",
+    "deadline": "2026-12-10",
+    "items": [],
+    "status": "Need info",
+    "issues": [
+      "Refers to a previous order, but there is no order history for Kaveri Hospitals"
+    ],
+    "quote": null
+  },
+  "email_29": {
+    "customer": "Brightline Design",
+    "delivery_city": "Goa",
+    "deadline": "2026-12-12",
+    "items": [
+      {
+        "product_name": "Corelink Book 13",
+        "product_code": null,
+        "requested": 6,
+        "available": null
+      },
+      {
+        "product_name": "Clearview 24 Monitor",
+        "product_code": "MON-24",
+        "requested": 6,
+        "available": 18
+      }
+    ],
+    "status": "Need info",
+    "issues": [
+      "Unknown product: Corelink Book 13"
+    ],
+    "quote": null
+  },
+  "email_30": {
+    "customer": "Shubh Vivah Weddings",
+    "delivery_city": "Jaipur",
+    "deadline": "2026-12-18",
+    "items": [
+      {
+        "product_name": "Pebble Buds",
+        "product_code": "EAR-01",
+        "requested": 250,
+        "available": 350
+      }
+    ],
+    "status": "Ready",
+    "issues": [],
+    "quote": {
+      "lines": [
+        {
+          "product_code": "EAR-01",
+          "quantity": 250,
+          "unit_price_inr": 1299,
+          "discount_percent": 12,
+          "line_total_inr": 285780.0
+        }
+      ],
+      "subtotal_inr": 285780.0,
+      "delivery_inr": 0.0,
+      "total_inr": 285780.0,
+      "valid_until": "2026-11-28"
+    }
+  }
+}

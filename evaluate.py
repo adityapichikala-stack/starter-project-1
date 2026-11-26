@@ -15,6 +15,7 @@ import logging
 import math
 import statistics
 import time
+from decimal import Decimal
 from pathlib import Path
 from typing import Callable
 
@@ -45,6 +46,16 @@ def validate_answer_key(data: object) -> dict:
         missing = [field for field in FIELDS if field not in answer]
         if missing:
             raise AnswerKeyError(f"Answer for {email!r} is missing required fields: {', '.join(missing)}")
+        if "quote" in answer:
+            quote = answer["quote"]
+            if quote is not None:
+                if not isinstance(quote, dict):
+                    raise AnswerKeyError(f"Answer for {email!r} field 'quote' must be an object or null")
+                for field in ("lines", "subtotal_inr", "delivery_inr", "total_inr", "valid_until"):
+                    if field not in quote:
+                        raise AnswerKeyError(
+                            f"Answer for {email!r} quote is missing required field: {field}"
+                        )
         if not isinstance(answer["status"], str):
             raise AnswerKeyError(f"Answer for {email!r} field 'status' must be a string")
         for field in ("customer", "delivery_city", "deadline"):
@@ -101,13 +112,49 @@ def score(got: dict, want: dict) -> dict[str, bool]:
     validate_answer_key({"answer": want})
     actual_items = _item_pairs(got.get("items")) if isinstance(got, dict) else None
     expected_items = _item_pairs(want["items"])
-    return {
+    result = {
         "status": isinstance(got, dict) and got.get("status") == want["status"],
         "items": actual_items is not None and actual_items == expected_items,
         "customer": isinstance(got, dict) and norm_text(got.get("customer")) == norm_text(want["customer"]),
         "delivery_city": isinstance(got, dict) and norm_text(got.get("delivery_city")) == norm_text(want["delivery_city"]),
         "deadline": isinstance(got, dict) and got.get("deadline") == want["deadline"],
     }
+    if "quote" in want:
+        result["quote"] = score_quote(got.get("quote") if isinstance(got, dict) else None, want["quote"])
+    return result
+
+
+def score_quote(got: dict | None, want: dict | None) -> bool:
+    if got is None or want is None:
+        return got is None and want is None
+    if not isinstance(got, dict) or not isinstance(want, dict):
+        return False
+    got_lines = got.get("lines")
+    want_lines = want.get("lines")
+    if not isinstance(got_lines, list) or not isinstance(want_lines, list):
+        return False
+    got_pairs = {
+        (line.get("product_code"), line.get("quantity"), line.get("discount_percent"),
+         Decimal(str(line.get("line_total_inr"))).quantize(Decimal("0.01")))
+        for line in got_lines
+        if isinstance(line, dict)
+    }
+    want_pairs = {
+        (line.get("product_code"), line.get("quantity"), line.get("discount_percent"),
+         Decimal(str(line.get("line_total_inr"))).quantize(Decimal("0.01")))
+        for line in want_lines
+        if isinstance(line, dict)
+    }
+    return (
+        got_pairs == want_pairs
+        and Decimal(str(got.get("subtotal_inr"))).quantize(Decimal("0.01"))
+        == Decimal(str(want.get("subtotal_inr"))).quantize(Decimal("0.01"))
+        and Decimal(str(got.get("delivery_inr"))).quantize(Decimal("0.01"))
+        == Decimal(str(want.get("delivery_inr"))).quantize(Decimal("0.01"))
+        and Decimal(str(got.get("total_inr"))).quantize(Decimal("0.01"))
+        == Decimal(str(want.get("total_inr"))).quantize(Decimal("0.01"))
+        and got.get("valid_until") == want.get("valid_until")
+    )
 
 
 def make_runner(url: str | None):
@@ -302,7 +349,10 @@ def evaluate_files(
     if files and run is None:
         raise ValueError("A runner is required when the email folder is not empty")
 
-    field_correct = dict.fromkeys(FIELDS, 0)
+    field_correct = dict.fromkeys(
+        FIELDS + (["quote"] if any("quote" in answer for answer in answers.values()) else []),
+        0,
+    )
     exact_matches = 0
     scored_count = 0
     latencies: list[float] = []
@@ -406,13 +456,14 @@ def evaluate_files(
                 }
             )
 
+    accuracy_fields = FIELDS + (["quote"] if "quote" in field_correct else [])
     field_accuracy = {
         field: {
             "correct": field_correct[field],
             "total": scored_count,
             "accuracy": round(field_correct[field] / scored_count, 6) if scored_count else None,
         }
-        for field in FIELDS
+        for field in accuracy_fields
     }
     summary = {
         "schema_version": 1,

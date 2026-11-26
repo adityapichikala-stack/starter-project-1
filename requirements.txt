@@ -6,3 +6,5 @@ python-dotenv
 pg8000
 httpx
 pytest
+pgvector
+numpy

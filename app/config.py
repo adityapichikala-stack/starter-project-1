@@ -16,6 +16,7 @@ class Settings:
     azure_api_key: str
     azure_api_version: str
     azure_deployment: str
+    azure_embedding_deployment: str
     db_host: str
     db_port: int
     db_user: str
@@ -28,6 +29,15 @@ class Settings:
     log_level: str
     llm_input_cost_per_million_tokens: float | None = None
     llm_output_cost_per_million_tokens: float | None = None
+    discount_tiers: tuple[tuple[int, int], ...] = (
+        (200, 12),
+        (50, 8),
+        (10, 5),
+        (1, 0),
+    )
+    free_delivery_threshold: int = 50_000
+    delivery_charge: int = 1_500
+    quote_validity_days: int = 7
 
 
 def _optional_float(name: str) -> float | None:
@@ -40,6 +50,15 @@ def _optional_float(name: str) -> float | None:
     return parsed
 
 
+def _discount_tiers() -> tuple[tuple[int, int], ...]:
+    raw = os.getenv("DISCOUNT_TIERS", "200:12,50:8,10:5,1:0")
+    tiers = []
+    for entry in raw.split(","):
+        threshold, discount = entry.strip().split(":", 1)
+        tiers.append((int(threshold), int(discount)))
+    return tuple(sorted(tiers, reverse=True))
+
+
 @lru_cache
 def get_settings() -> Settings:
     return Settings(
@@ -47,6 +66,7 @@ def get_settings() -> Settings:
         azure_api_key=os.getenv("AZURE_OPENAI_API_KEY", ""),
         azure_api_version=os.getenv("AZURE_OPENAI_API_VERSION", ""),
         azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT", ""),
+        azure_embedding_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", ""),
         db_host=os.getenv("POSTGRES_HOST", "localhost"),
         db_port=int(os.getenv("POSTGRES_PORT", "5433")),
         db_user=os.getenv("POSTGRES_USER", "orders"),
@@ -59,4 +79,8 @@ def get_settings() -> Settings:
         log_level=os.getenv("LOG_LEVEL", "INFO"),
         llm_input_cost_per_million_tokens=_optional_float("LLM_INPUT_COST_PER_1M_TOKENS"),
         llm_output_cost_per_million_tokens=_optional_float("LLM_OUTPUT_COST_PER_1M_TOKENS"),
+        discount_tiers=_discount_tiers(),
+        free_delivery_threshold=int(os.getenv("FREE_DELIVERY_THRESHOLD", "50000")),
+        delivery_charge=int(os.getenv("DELIVERY_CHARGE", "1500")),
+        quote_validity_days=int(os.getenv("QUOTE_VALIDITY_DAYS", "7")),
     )

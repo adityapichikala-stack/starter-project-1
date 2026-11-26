@@ -1,7 +1,8 @@
 """Pydantic models passed between the workflow steps."""
+from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_serializer
 
 
 # ---- Step 1 output (LLM extraction). No status, no prices: the model decides nothing. ----
@@ -87,6 +88,7 @@ class CatalogueEntry(BaseModel):
     product_code: str
     name: str
     quantity_available: int
+    unit_price_inr: Decimal | None = None
 
 
 class OrderItem(BaseModel):
@@ -105,6 +107,51 @@ class StockResult(BaseModel):
     shortage_issues: list[str]
 
 
+# ---- Starter Project 2: resolved products and code-built quote ----
+class ResolvedItem(BaseModel):
+    product_name: str
+    product_code: str | None
+    requested: int | None
+    available: int | None
+    unit_price_inr: Decimal | None = None
+    resolution: Literal["exact", "description", "history", "unknown", "ambiguous"] = "unknown"
+
+
+class ResolutionResult(BaseModel):
+    items: list[ResolvedItem]
+    issues: list[str]
+
+
+class QuoteLine(BaseModel):
+    product_code: str
+    quantity: int
+    unit_price_inr: Decimal
+    discount_percent: int
+    line_total_inr: Decimal
+
+    @field_serializer("unit_price_inr", "line_total_inr")
+    def serialize_money(self, value: Decimal) -> float:
+        return float(value)
+
+
+class Quote(BaseModel):
+    lines: list[QuoteLine]
+    subtotal_inr: Decimal
+    delivery_inr: Decimal
+    total_inr: Decimal
+    valid_until: str
+
+    @field_serializer("subtotal_inr", "delivery_inr", "total_inr")
+    def serialize_money(self, value: Decimal) -> float:
+        return float(value)
+
+
+class ProductCodeChoice(BaseModel):
+    product_code: str | None = Field(
+        description="Exactly one valid product code from the supplied candidate list, or null if no candidate matches."
+    )
+
+
 # ---- API contract ----
 class OrderRequest(BaseModel):
     email: str = Field(min_length=1, description="The raw email text, headers included")
@@ -118,3 +165,4 @@ class OrderResult(BaseModel):
     status: Status
     issues: list[str]
     reply: str
+    quote: Quote | None = None
