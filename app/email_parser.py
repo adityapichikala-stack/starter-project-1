@@ -1,5 +1,6 @@
 """Reads a raw email with Python's email module (works with LF or CRLF line endings)."""
 import email
+import email.message
 import re
 from dataclasses import dataclass
 from html.parser import HTMLParser
