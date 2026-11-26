@@ -97,5 +97,5 @@ def test_rejected_reply_attempts_are_counted_before_fallback():
 
 def test_contract_has_every_field():
     r = OrderWorkflow(FakeLLM(extracted()), FakeCatalogue(), 3).run(EMAIL).model_dump()
-    assert set(r) == {"customer", "delivery_city", "deadline", "items", "status", "issues", "reply"}
+    assert set(r) == {"customer", "delivery_city", "deadline", "items", "status", "issues", "reply", "quote"}
     assert set(r["items"][0]) == {"product_name", "product_code", "requested", "available"}

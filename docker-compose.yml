@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:16
+    image: pgvector/pgvector:pg16
     container_name: sp1-postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-orders}
@@ -9,7 +9,8 @@ services:
     ports:
       - "${POSTGRES_PORT:-5433}:5432"   # 5432 on this machine is taken by another project
     volumes:
-      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql:ro
+      - ./seed.sql:/docker-entrypoint-initdb.d/01_seed.sql:ro
+      - ./sp2_seed.sql:/docker-entrypoint-initdb.d/02_sp2_seed.sql:ro
       - sp1_pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]

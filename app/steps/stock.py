@@ -8,6 +8,7 @@ import time
 from typing import Protocol
 
 import pg8000.dbapi
+from decimal import Decimal
 
 from app.config import Settings
 from app.models import CatalogueEntry, StockResult, OrderItem, ValidatedItem
@@ -28,7 +29,7 @@ class CatalogueLookup(Protocol):
 class StockRepository:
     # Fixed, parameterised query. The same normalisation as normalize_name(), done in SQL.
     _SQL = """
-        SELECT p.product_code, p.name, s.quantity_available
+        SELECT p.product_code, p.name, s.quantity_available, p.unit_price_inr
         FROM products p
         JOIN stock s ON s.product_code = p.product_code
         WHERE lower(regexp_replace(btrim(p.name), '\\s+', ' ', 'g')) = ANY(%s)
@@ -102,9 +103,56 @@ class StockRepository:
             len(rows),
         )
         return {
-            normalize_name(name): CatalogueEntry(product_code=code, name=name, quantity_available=qty)
-            for code, name, qty in rows
+            normalize_name(name): CatalogueEntry(
+                product_code=code,
+                name=name,
+                quantity_available=qty,
+                unit_price_inr=Decimal(str(price)),
+            )
+            for code, name, qty, price in rows
         }
+
+    def get_catalogue(self) -> dict[str, CatalogueEntry]:
+        conn = self._connect()
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                """
+                SELECT p.product_code, p.name, s.quantity_available, p.unit_price_inr
+                FROM products p
+                JOIN stock s ON s.product_code = p.product_code
+                """
+            )
+            rows = cur.fetchall()
+        finally:
+            conn.close()
+        return {
+            normalize_name(name): CatalogueEntry(
+                product_code=code,
+                name=name,
+                quantity_available=qty,
+                unit_price_inr=Decimal(str(price)),
+            )
+            for code, name, qty, price in rows
+        }
+
+    def find_history(self, customer: str) -> list[tuple[str, str, str, int]]:
+        conn = self._connect()
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                """
+                SELECT customer, order_date::text, product_code, quantity
+                FROM order_history
+                WHERE lower(btrim(customer)) = lower(btrim(%(customer)s))
+                ORDER BY order_date DESC, order_id DESC
+                """,
+                {"customer": customer},
+            )
+            rows = cur.fetchall()
+        finally:
+            conn.close()
+        return [(str(a), str(b), str(c), int(d)) for a, b, c, d in rows]
 
 
 def check_stock(items: list[ValidatedItem], catalogue: dict[str, CatalogueEntry]) -> StockResult:

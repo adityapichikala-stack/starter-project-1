@@ -1,5 +1,6 @@
 """FastAPI app: POST /orders {"email": "<raw email text>"} -> order result."""
 import logging
+from decimal import Decimal
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
@@ -9,6 +10,7 @@ from app.config import get_settings
 from app.llm_client import LLMClient, LLMError
 from app.models import OrderRequest, OrderResult
 from app.observability import OrderMetrics
+from app.rag import DocumentRepository
 from app.steps.stock import StockRepository
 from app.workflow import OrderWorkflow
 
@@ -105,7 +107,12 @@ async def lifespan(app: FastAPI):
     app.state.workflow = OrderWorkflow(LLMClient(settings), app.state.repo, settings.lead_time_days,
                                        settings.extraction_max_iterations,
                                        settings.llm_input_cost_per_million_tokens,
-                                       settings.llm_output_cost_per_million_tokens)
+                                       settings.llm_output_cost_per_million_tokens,
+                                       DocumentRepository(settings, LLMClient(settings)),
+                                       Decimal(str(settings.free_delivery_threshold)),
+                                       Decimal(str(settings.delivery_charge)),
+                                       settings.quote_validity_days,
+                                       settings.discount_tiers)
     yield
 
 

@@ -6,7 +6,12 @@ from app.llm_client import LLMClient
 SYSTEM_PROMPT = """You write short, polite replies from the order desk of an electronics distributor \
 to a customer who emailed a bulk order.
 
-You are given the computed order result as JSON. It is the only source of truth. Rules:
+You are given the computed order result, a code-built quote (or null), and retrieved policy/brochure \
+chunks as JSON. The quote is the only source of truth for prices, discounts, delivery, totals and \
+validity. Retrieved chunks provide supporting product and policy information. Rules:
+- Never calculate, invent or change prices, discounts, delivery charges, totals or quote validity.
+- If quote is null, do not offer a quote or mention a price, discount or total.
+- When quote is present, repeat only values from quote and say clearly that the quote is in INR.
 - Say only what the result supports. Do not mention prices, totals, discounts, payment terms, delivery \
 dates or anything else that is not in the result. Do not promise anything the result does not contain.
 - Each item has "stock_note": "in_stock" (we can supply the requested quantity), "short" (we only have \
@@ -53,9 +58,16 @@ def _stock_note(item: dict) -> str:
     return "short" if item["requested"] > item["available"] else "in_stock"
 
 
-def draft_reply(llm: LLMClient, result: dict, contact_name: str | None) -> str:
+def draft_reply(llm: LLMClient, result: dict, contact_name: str | None, quote: dict | None = None,
+                retrieved_chunks: list | None = None) -> str:
     items = [{**i, "stock_note": _stock_note(i)} for i in result["items"]]
-    payload = {"contact_name": contact_name or None, **result, "items": items}
+    payload = {
+        "contact_name": contact_name or None,
+        **result,
+        "items": items,
+        "quote": quote,
+        "retrieved_chunks": retrieved_chunks or [],
+    }
     return llm.complete(
         "reply",
         [

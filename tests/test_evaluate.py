@@ -4,6 +4,7 @@ import pytest
 
 from evaluate import AnswerKeyError, evaluate_files, load_answers, score, validate_answer_key
 from evaluate import _latency_stats
+from evaluate import score_quote
 
 
 def expected(**overrides):
@@ -274,3 +275,32 @@ def test_evaluation_aggregates_order_cost_tokens_retries_and_steps(tmp_path):
     assert metrics["step_latency_ms"]["extract"]["count"] == 2
     assert metrics["estimated_cost"]["status"] == "estimated"
     assert metrics["estimated_cost"]["value"] == pytest.approx(0.0012)
+
+
+def test_sp2_quote_null_matches_only_null():
+    assert score_quote(None, None) is True
+    assert score_quote(None, {"lines": []}) is False
+
+
+def test_sp2_quote_score_compares_exact_quote_values():
+    want = {
+        "lines": [
+            {"product_code": "EAR-01", "quantity": 60,
+             "discount_percent": 8, "line_total_inr": 71704.8}
+        ],
+        "subtotal_inr": 71704.8,
+        "delivery_inr": 0.0,
+        "total_inr": 71704.8,
+        "valid_until": "2026-11-27",
+    }
+    got = {
+        "lines": [
+            {"product_code": "EAR-01", "quantity": 60,
+             "discount_percent": 8, "line_total_inr": 71704.8}
+        ],
+        "subtotal_inr": 71704.8,
+        "delivery_inr": 0,
+        "total_inr": 71704.8,
+        "valid_until": "2026-11-27",
+    }
+    assert score_quote(got, want) is True

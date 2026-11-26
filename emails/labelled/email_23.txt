@@ -1,0 +1,11 @@
+From: Meera Kulkarni <meera.k@sahyadritech.example>
+Date: Sat, 21 Nov 2026 09:40:00 +0530
+Subject: Repeat order
+
+Hi,
+
+Five more engineers join next month. Please send the same as our last order, to the Baner Road office in Pune, by 8 December 2026.
+
+Thanks,
+Meera Kulkarni
+Procurement, Sahyadri Tech Solutions

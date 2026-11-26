@@ -45,6 +45,7 @@ class LLMClient:
         if missing:
             raise RuntimeError(f"Missing settings in .env: {', '.join(missing)}")
         self._deployment = settings.azure_deployment
+        self._azure_embedding_deployment = settings.azure_embedding_deployment
         self._max_attempts = settings.llm_max_attempts
         self._usage_callback = usage_callback
         self._client = AzureOpenAI(
@@ -204,6 +205,19 @@ class LLMClient:
                 "empty_output",
             )
         return text
+
+    def embed(self, text: str) -> list[float]:
+        """Create a 1536-dimension embedding for RAG."""
+        if not self._azure_embedding_deployment:
+            raise LLMError("embedding deployment is not configured", "configuration")
+        response = self._call(
+            "embedding",
+            lambda: self._client.embeddings.create(
+                model=self._azure_embedding_deployment,
+                input=text,
+            ),
+        )
+        return [float(value) for value in response.data[0].embedding]
 
     @staticmethod
     def _record_output_error(step: str, category: str) -> None:
