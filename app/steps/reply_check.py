@@ -74,16 +74,24 @@ def check_reply(reply: str, result: dict, quote: dict | None = None, chunks: lis
 
     if quote is not None:
         discounts = {Decimal(str(line["discount_percent"])).normalize() for line in quote.get("lines", [])}
-        # A percentage that the retrieved policy chunks state (e.g. "50% in advance") is fine,
-        # unless it is presented as a discount.
-        chunk_percents = {_num(m) for c in chunks or [] for m in PERCENT_RE.findall(_chunk_text(c))}
+        # A percentage stated in a retrieved chunk is fine ("50% in advance"). It may be phrased as a
+        # discount only if the chunk itself gives that percentage as a discount (e.g. a tier table row).
+        chunk_percents, chunk_discount_percents = set(), set()
+        for c in chunks or []:
+            body = _chunk_text(c)
+            for line in body.splitlines():
+                found = {_num(m) for m in PERCENT_RE.findall(line)}
+                chunk_percents |= found
+                if re.search(r"discount", line, re.I) or (line.lstrip().startswith("|") and re.search(r"discount", body, re.I)):
+                    chunk_discount_percents |= found
         bad = set()
         for m in PERCENT_RE.finditer(text):
             value = _num(m.group(1))
             if value in discounts:
                 continue
             window = text[max(0, m.start() - 25):m.end() + 25]
-            if value in chunk_percents and not re.search(r"discount|off", window, re.I):
+            as_discount = re.search(r"discount|off", window, re.I)
+            if value in chunk_discount_percents or (value in chunk_percents and not as_discount):
                 continue
             bad.add(str(value))
         bad = sorted(bad)
