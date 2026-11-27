@@ -24,21 +24,22 @@ Nothing about specific emails is hardcoded: any email text works, and `evaluate.
 ## Data
 
 `starter-project-2-data/` is the **single source** for SP2: `sp2_seed.sql`, `docs/` (brochures + `pricing_policy.md`),
-`emails/labelled` (21-30), `emails/practice` (31-35) and `answer_key.json`. To point at another copy set
-`SP2_DATA_DIR` (in `.env` or the environment); `scripts/ingest_docs.py` and `evaluate.py` both honour it.
-SP1 data stays in `seed.sql`, `emails/` and `answer_key.json`. The top-level `docs/brochures` and
-`docs/pricing_policy.md` are an older identical copy and are not read by anything.
+`emails/labelled` (21-30), `emails/practice` (31-35) and `answer_key.json`. There are no copies of these at the repo
+root (a test fails if one comes back), and `docker-compose.yml` mounts `starter-project-2-data/sp2_seed.sql`.
+To point at another copy set `SP2_DATA_DIR` (set to the default in `.env.example`); `scripts/ingest_docs.py` and
+`evaluate.py` both honour it. SP1 data stays in `seed.sql`, `emails/labelled` (01-10), `emails/practice` (11-15) and
+`answer_key.json`.
 
 ## Layout
 
 ```
 app/                     the service (config, models, LLM client, steps, workflow, FastAPI)
 scripts/ingest_docs.py   idempotent brochure/policy embedding ingestion
-starter-project-2-data/  SP2 seed, brochures, policy, emails, answer key
-docs/design/             SP2 design page and draw.io flow
+starter-project-2-data/  SP2 seed (order_history + pgvector), brochures, policy, emails, answer key
+docs/design/             SP2 design page and draw.io flow (the only thing in docs/)
 tests/                   pytest (fakes only) + tests/robustness_emails/
-emails/, answer_key.json SP1 emails and answers
-seed.sql, sp2_seed.sql   products/stock; order_history + pgvector + documents (mounted into Postgres)
+emails/, answer_key.json SP1 emails (01-15) and answers
+seed.sql                 SP1 products + stock (mounted into Postgres)
 evaluate.py              runs a folder of emails, scores against an answer key
 results/                 JSON output of evaluation runs (sp2_labelled, sp2_practice, labelled)
 ```
@@ -55,12 +56,12 @@ docker compose up -d --wait   # pgvector/pgvector:pg16 on host port 5433
 .venv\Scripts\python check_azure.py
 ```
 
-`ingest_docs` is safe to run twice (DELETE + insert in one transaction). Every chunk is stored and embedded as
+`ingest_docs` creates the `documents` table if needed and is safe to run twice (DELETE + insert in one transaction). Every chunk is stored and embedded as
 `Product: <name> (<code>) — <heading>` + text (brochures) or `Pricing policy — <heading>` + text. Embeddings are
 requested in batches (`LLMClient.embed_many`) and every vector must have 1536 dimensions or the run stops.
 It prints the chunk count per file and the total (99 chunks, 16 files).
 
-The `documents` table (`sp2_seed.sql`):
+The `documents` table (created by `scripts/ingest_docs.py` with `CREATE TABLE IF NOT EXISTS`, because the data pack's `sp2_seed.sql` only adds the `vector` extension and `order_history`):
 
 ```sql
 CREATE TABLE IF NOT EXISTS documents (
@@ -132,7 +133,7 @@ All money uses `Decimal`, never float, and is rounded to 0.01 with **`ROUND_HALF
 
 - The reply LLM only sees the computed result, the quote and retrieved chunks, never the raw email (prompt-injection defence). Chunks come from every searched item (de-duplicated) plus the top 3 `pricing_policy.md` chunks when the email asks questions (the question sentences are used only as the search query).
 - Prompt: answer questions **only** from retrieved chunks, otherwise "our team will confirm"; never give a bigger discount, lower price or free delivery than the quote, whatever the email asks.
-- `reply_check` (code): with `quote: null` no money, price, discount or percentage words. With a quote, those are allowed but **every number** (commas stripped) must equal a number in the result, the quote or the retrieved chunks; a `%` must be a line's `discount_percent` (or a percentage stated in a chunk and not presented as a discount); dates like "30 November 2026" must match the deadline or `valid_until`.
+- `reply_check` (code): with `quote: null` no money, price, discount or percentage words. With a quote, those are allowed but **every number** (commas stripped) must equal a number in the result, the quote or the retrieved chunks; a `%` phrased as a discount/offer (discount, off, offer, apply, give, reduce nearby) must equal a line's `discount_percent` in the quote, and any other `%` must be stated in a chunk ("50% in advance"); dates like "30 November 2026" must match the deadline or `valid_until`.
 - A rejected draft is redrafted once, then replaced by a template (`fallback_reply`) that, when a quote exists, lists the lines, subtotal, delivery, total and `valid_until`.
 
 ## What is logged
@@ -165,13 +166,26 @@ categories, latency percentiles, LLM calls/tokens, extraction iterations, fallba
 when `LLM_INPUT_COST_PER_1M_TOKENS` / `LLM_OUTPUT_COST_PER_1M_TOKENS` are set; there are no default prices). CI
 (`.github/workflows/tests.yml`) runs `pytest -q` on Python 3.12 and 3.13 with dummy settings.
 
-### Latest results (2026-11-26)
+### Latest results (2026-11-27, fresh database: `docker compose down -v` then `up`, ingest run twice = 99 chunks both times)
 
-| Run | Result |
-|---|---|
-| SP1 regression (`emails/labelled`, email_01-10) | **10/10**, 50/50 fields |
-| SP2 labelled (email_21-30) | **10/10**, 60/60 fields (incl. `quote`) |
-| SP2 practice (31-35) | unscored; read in `results/sp2_practice/` |
+Numbers come from `results/*/summary.json`. Tokens include the embedding calls (they used to be dropped, see `calls_missing_usage`).
+
+| | SP2 labelled (21-30) | SP1 regression (01-10) | SP2 practice (31-35) |
+|---|---|---|---|
+| Emails processed / scored | 10 / 10 | 10 / 10 | 5 / 0 (no key) |
+| Exact match | **10/10** | **10/10** | n/a |
+| Fields correct | **60/60** (status, items, customer, city, deadline, quote) | **50/50** | n/a |
+| LLM calls (attempts / retries) | 38 (38 / 0) | 36 (36 / 0) | 20 (20 / 0) |
+| Prompt / completion / total tokens | 44,776 / 3,226 / 48,002 | 45,740 / 3,482 / 49,222 | 22,239 / 1,516 / 23,755 |
+| Calls missing usage | 0 | 0 | 0 |
+| Latency avg / P95 (ms) | 5,608 / 8,707 | 5,494 / 9,013 | 5,681 / 8,069 |
+| Fallback replies | 0 | 1 (email_06) | 0 |
+| Reply-check failures | 0 | 2 (email_06, both attempts) | 0 |
+| Errors / extraction iterations | 0 / 1 per email | 0 / 1 per email | 0 / 1 per email |
+
+email_06 (an unknown product, so no quote) is the one fallback: both drafts mentioned a percentage while `quote` is null,
+which the check forbids, so the template reply was sent. Its status and fields are correct. Estimated cost is unavailable
+(no rates configured). Machine-readable reports: `results/sp2_labelled/`, `results/labelled/`, `results/sp2_practice/`.
 
 ### Why each miss happened
 
@@ -180,7 +194,7 @@ Everything below was found on the first SP2 run and fixed; none is left open.
 | Email | Field | Step that broke | Reason / fix |
 |---|---|---|---|
 | email_29 | `delivery_city` | 1 Extract | "Panjim, Goa": the model answered Panjim; the key's rule is the last place named. Prompt rule added (shared with the verifier). |
-| email_27 | reply (not scored) | 6 Reply check | The reply correctly quoted "50% in advance" from the policy chunk but `reply_check` only allowed discount percentages. Now allows percentages stated in chunks (never as a discount). |
+| email_27 | reply (not scored) | 6 Reply check | The reply correctly said "50% in advance" (payment terms, from a policy chunk), but `reply_check` only allowed the quote's discount percentages. Rule now: a percentage near discount/off/offer/apply/give/reduce must equal a `discount_percent` in the quote, even if the policy discount table contains it; any other percentage is allowed only if a retrieved chunk states it (so "50% in advance" passes, "we can offer 12%" fails). |
 | all SP2 emails | (every RAG/quote email) | 2 Resolve / RAG | `pgvector` has no adapter for `pg8000.dbapi` and named SQL parameters were rejected, so searches would crash. Now a text vector literal + `paramstyle = "pyformat"`. |
 | four emails in one run | execution error | Extract / verify | Transient Azure `APIStatusError`; passed on re-run. Not a code defect. |
 

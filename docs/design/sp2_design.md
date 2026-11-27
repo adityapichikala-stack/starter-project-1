@@ -21,7 +21,7 @@ Hand-offs: `ExtractedOrder` -> `ValidationResult` -> `ResolutionResult(items[Res
 ## 2. The `documents` table, the ingest script and the search SQL
 ```sql
 CREATE TABLE documents (id BIGSERIAL PRIMARY KEY, source TEXT NOT NULL, heading TEXT NOT NULL,
-                        chunk TEXT NOT NULL, embedding vector(1536) NOT NULL);   -- sp2_seed.sql
+                        chunk TEXT NOT NULL, embedding vector(1536) NOT NULL);   -- created by ingest_docs.py (IF NOT EXISTS)
 ```
 `scripts/ingest_docs.py` reads `starter-project-2-data/docs/` (override: `SP2_DATA_DIR`), splits each Markdown file on `## `
 headings, prefixes every chunk (`Product: <name> (<code>) — <heading>` for brochures, `Pricing policy — <heading>`), embeds the
@@ -64,8 +64,7 @@ It never sees the raw email, so instructions inside the email cannot reach it. S
 - Prompt: repeat only quote values; never give a bigger discount, lower price or free delivery than the quote whatever the
   email asks; answer questions only from the chunks, otherwise "our team will confirm".
 - `reply_check` (code) rejects a draft unless: with `quote: null` it has no money/price/discount/percentage words; with a quote
-  every number equals a number in the result, quote or chunks, every `%` equals a line's `discount_percent` (or a percentage
-  stated in a chunk and not phrased as a discount), and dates match the deadline or `valid_until`.
+  every number equals a number in the result, quote or chunks, a `%` phrased as a discount/offer must equal a line's `discount_percent` in the quote (the policy table does not count), and any other `%` must be stated in a chunk, and dates match the deadline or `valid_until`.
 - A rejected draft is redrafted once, then replaced by a template that lists the quote lines and totals.
 
 ## 6. Logging at each step (every line has a `request_id`)

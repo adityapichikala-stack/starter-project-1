@@ -38,6 +38,22 @@ class DocumentRepository:
 
         return conn
 
+    def chunks_for_source(self, source: str) -> list[RetrievedChunk]:
+        """All chunks of one document, in file order. A plain SELECT, no embedding."""
+        conn = self._connect()
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "SELECT source, heading, chunk FROM documents WHERE source = %(source)s ORDER BY id",
+                {"source": source},
+            )
+            rows = cur.fetchall()
+        finally:
+            conn.close()
+        chunks = [RetrievedChunk(source=str(a), heading=str(b), chunk=str(c), score=1.0) for a, b, c in rows]
+        log.info("event=rag_source_lookup source=%s chunk_count=%d", source, len(chunks))
+        return chunks
+
     def search(self, query: str, limit: int = 5, source_prefix: str | None = None) -> list[RetrievedChunk]:
         started = time.perf_counter()
         embedding, tokens = self.llm.embed_with_tokens(query)

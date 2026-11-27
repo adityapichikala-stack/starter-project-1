@@ -147,3 +147,15 @@ def test_missing_price_rates_do_not_claim_an_estimated_cost():
         "unit": "same currency/unit as configured rates",
         "basis": "provider-reported token counts; retry attempts without usage are not included",
     }
+
+
+def test_embedding_usage_without_completion_tokens_is_counted():
+    metrics = OrderMetrics()
+    call_id = metrics.start_llm_call()
+    metrics.record_llm_attempt(call_id, "embedding", 1, "success", 5.0,
+                               usage={"prompt_tokens": 12, "total_tokens": 12})
+    summary = metrics.to_dict()["llm"]["tokens"]
+    assert summary["prompt_tokens"] == 12 and summary["completion_tokens"] == 0 and summary["total_tokens"] == 12
+    assert summary["calls_with_usage"] == 1 and summary["calls_missing_usage"] == 0
+    step = metrics.to_dict()["llm_steps"]["embedding"]
+    assert step["prompt_tokens"] == 12 and step["calls_with_usage"] == 1 and step["calls_missing_usage"] == 0

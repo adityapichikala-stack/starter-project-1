@@ -56,11 +56,11 @@
   },
   "latency_ms": {
     "count": 10,
-    "max": 10745.226,
-    "mean": 6078.854,
-    "median": 5426.185,
-    "min": 3496.169,
-    "p95": 10745.226
+    "max": 8706.556,
+    "mean": 5607.645,
+    "median": 5402.46,
+    "min": 4023.198,
+    "p95": 8706.556
   },
   "observability": {
     "error_counts": {},
@@ -80,11 +80,11 @@
     "fallback_reply_orders": 0,
     "latency_ms": {
       "count": 10,
-      "max": 10744.28,
-      "mean": 6077.865,
-      "median": 5425.178,
-      "min": 3495.211,
-      "p95": 10744.28
+      "max": 8705.95,
+      "mean": 5607.061,
+      "median": 5401.89,
+      "min": 4022.569,
+      "p95": 8705.95
     },
     "llm": {
       "attempts": 38,
@@ -93,24 +93,24 @@
       "successful_calls": 38,
       "tokens": {
         "attempts_missing_usage": 0,
-        "calls_missing_usage": 5,
-        "calls_with_usage": 33,
-        "completion_tokens": 3011,
-        "prompt_tokens": 40575,
-        "total_tokens": 43586
+        "calls_missing_usage": 0,
+        "calls_with_usage": 38,
+        "completion_tokens": 3226,
+        "prompt_tokens": 44776,
+        "total_tokens": 48002
       }
     },
     "llm_steps": {
       "embedding": {
         "attempts": 5,
         "calls": 5,
-        "calls_missing_usage": 5,
-        "calls_with_usage": 0,
+        "calls_missing_usage": 0,
+        "calls_with_usage": 5,
         "completion_tokens": 0,
-        "prompt_tokens": 0,
+        "prompt_tokens": 52,
         "retries": 0,
         "successful_calls": 5,
-        "total_tokens": 0
+        "total_tokens": 52
       },
       "extract": {
         "attempts": 10,
@@ -128,11 +128,11 @@
         "calls": 10,
         "calls_missing_usage": 0,
         "calls_with_usage": 10,
-        "completion_tokens": 951,
-        "prompt_tokens": 11033,
+        "completion_tokens": 1208,
+        "prompt_tokens": 15182,
         "retries": 0,
         "successful_calls": 10,
-        "total_tokens": 11984
+        "total_tokens": 16390
       },
       "resolve_product": {
         "attempts": 3,
@@ -150,111 +150,117 @@
         "calls": 10,
         "calls_missing_usage": 0,
         "calls_with_usage": 10,
-        "completion_tokens": 1368,
+        "completion_tokens": 1326,
         "prompt_tokens": 15605,
         "retries": 0,
         "successful_calls": 10,
-        "total_tokens": 16973
+        "total_tokens": 16931
       }
     },
     "orders_with_metrics": 10,
     "reply_check_failures": 0,
     "step_latency_ms": {
+      "brochure_lookup": {
+        "count": 10,
+        "max_ms": 43.618,
+        "mean_ms": 20.816,
+        "total_ms": 208.157
+      },
       "email_parse": {
         "count": 10,
-        "max_ms": 0.456,
-        "mean_ms": 0.363,
-        "total_ms": 3.632
+        "max_ms": 0.613,
+        "mean_ms": 0.286,
+        "total_ms": 2.861
       },
       "extraction": {
         "count": 10,
-        "max_ms": 8178.063,
-        "mean_ms": 3637.265,
-        "total_ms": 36372.649
+        "max_ms": 5493.131,
+        "mean_ms": 3272.724,
+        "total_ms": 32727.236
       },
       "extraction_iteration": {
         "count": 10,
-        "max_ms": 8178.031,
-        "mean_ms": 3637.219,
-        "total_ms": 36372.186
+        "max_ms": 5493.105,
+        "mean_ms": 3272.704,
+        "total_ms": 32727.036
       },
       "llm_embedding": {
         "count": 5,
-        "max_ms": 1106.922,
-        "mean_ms": 572.97,
-        "total_ms": 2864.848
+        "max_ms": 597.219,
+        "mean_ms": 506.779,
+        "total_ms": 2533.896
       },
       "llm_extract": {
         "count": 10,
-        "max_ms": 6046.812,
-        "mean_ms": 1823.893,
-        "total_ms": 18238.929
+        "max_ms": 1921.608,
+        "mean_ms": 1360.895,
+        "total_ms": 13608.954
       },
       "llm_reply": {
         "count": 10,
-        "max_ms": 2512.326,
-        "mean_ms": 1608.406,
-        "total_ms": 16084.057
+        "max_ms": 2355.135,
+        "mean_ms": 1562.727,
+        "total_ms": 15627.268
       },
       "llm_resolve_product": {
         "count": 3,
-        "max_ms": 2742.303,
-        "mean_ms": 1429.938,
-        "total_ms": 4289.814
+        "max_ms": 2275.21,
+        "mean_ms": 1428.16,
+        "total_ms": 4284.479
       },
       "llm_verify": {
         "count": 10,
-        "max_ms": 2256.232,
-        "mean_ms": 1812.323,
-        "total_ms": 18123.228
+        "max_ms": 3570.559,
+        "mean_ms": 1911.344,
+        "total_ms": 19113.442
       },
       "quote_build": {
         "count": 10,
-        "max_ms": 0.475,
-        "mean_ms": 0.189,
-        "total_ms": 1.895
+        "max_ms": 0.097,
+        "mean_ms": 0.06,
+        "total_ms": 0.602
       },
       "rag_resolution": {
         "count": 10,
-        "max_ms": 4391.071,
-        "mean_ms": 754.674,
-        "total_ms": 7546.737
+        "max_ms": 3341.674,
+        "mean_ms": 703.727,
+        "total_ms": 7037.271
       },
       "reply_check": {
         "count": 10,
-        "max_ms": 1.217,
-        "mean_ms": 0.567,
-        "total_ms": 5.668
+        "max_ms": 0.645,
+        "mean_ms": 0.425,
+        "total_ms": 4.254
       },
       "reply_generation": {
         "count": 10,
-        "max_ms": 2512.649,
-        "mean_ms": 1608.635,
-        "total_ms": 16086.349
+        "max_ms": 2355.617,
+        "mean_ms": 1562.893,
+        "total_ms": 15628.928
       },
       "status": {
         "count": 10,
-        "max_ms": 0.038,
-        "mean_ms": 0.019,
-        "total_ms": 0.187
+        "max_ms": 0.012,
+        "mean_ms": 0.009,
+        "total_ms": 0.091
       },
       "stock_lookup": {
         "count": 10,
-        "max_ms": 117.723,
-        "mean_ms": 75.824,
-        "total_ms": 758.238
+        "max_ms": 66.748,
+        "mean_ms": 45.876,
+        "total_ms": 458.764
       },
       "stock_query": {
         "count": 10,
-        "max_ms": 59.61,
-        "mean_ms": 35.867,
-        "total_ms": 358.674
+        "max_ms": 46.844,
+        "mean_ms": 25.702,
+        "total_ms": 257.017
       },
       "validation": {
         "count": 10,
-        "max_ms": 0.085,
-        "mean_ms": 0.059,
-        "total_ms": 0.587
+        "max_ms": 0.048,
+        "mean_ms": 0.032,
+        "total_ms": 0.316
       }
     }
   },
@@ -271,7 +277,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 9644.476,
+      "latency_ms": 7244.158,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -293,9 +299,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 344,
-            "prompt_tokens": 3920,
-            "total_tokens": 4264
+            "completion_tokens": 378,
+            "prompt_tokens": 4697,
+            "total_tokens": 5075
           }
         },
         "llm_steps": {
@@ -315,119 +321,125 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 106,
-            "prompt_tokens": 1038,
+            "completion_tokens": 136,
+            "prompt_tokens": 1815,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1144
+            "total_tokens": 1951
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 157,
+            "completion_tokens": 161,
             "prompt_tokens": 1604,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1761
+            "total_tokens": 1765
           }
         },
         "reply_check_failures": 0,
-        "request_id": "fcbacdc648864bad878bc5c7620e0380",
+        "request_id": "f0feebb622124bc5b97af0fab580eca7",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 31.527,
+            "mean_ms": 31.527,
+            "total_ms": 31.527
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.308,
-            "mean_ms": 0.308,
-            "total_ms": 0.308
+            "max_ms": 0.329,
+            "mean_ms": 0.329,
+            "total_ms": 0.329
           },
           "extraction": {
             "count": 1,
-            "max_ms": 8178.063,
-            "mean_ms": 8178.063,
-            "total_ms": 8178.063
+            "max_ms": 5493.131,
+            "mean_ms": 5493.131,
+            "total_ms": 5493.131
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 8178.031,
-            "mean_ms": 8178.031,
-            "total_ms": 8178.031
+            "max_ms": 5493.105,
+            "mean_ms": 5493.105,
+            "total_ms": 5493.105
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 6046.812,
-            "mean_ms": 6046.812,
-            "total_ms": 6046.812
+            "max_ms": 1921.608,
+            "mean_ms": 1921.608,
+            "total_ms": 1921.608
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1387.226,
-            "mean_ms": 1387.226,
-            "total_ms": 1387.226
+            "max_ms": 1667.179,
+            "mean_ms": 1667.179,
+            "total_ms": 1667.179
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2128.299,
-            "mean_ms": 2128.299,
-            "total_ms": 2128.299
+            "max_ms": 3570.559,
+            "mean_ms": 3570.559,
+            "total_ms": 3570.559
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.242,
-            "mean_ms": 0.242,
-            "total_ms": 0.242
+            "max_ms": 0.093,
+            "mean_ms": 0.093,
+            "total_ms": 0.093
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 0.574,
-            "mean_ms": 0.574,
-            "total_ms": 0.574
+            "max_ms": 0.15,
+            "mean_ms": 0.15,
+            "total_ms": 0.15
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.321,
-            "mean_ms": 0.321,
-            "total_ms": 0.321
+            "max_ms": 0.426,
+            "mean_ms": 0.426,
+            "total_ms": 0.426
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1387.449,
-            "mean_ms": 1387.449,
-            "total_ms": 1387.449
+            "max_ms": 1667.309,
+            "mean_ms": 1667.309,
+            "total_ms": 1667.309
           },
           "status": {
             "count": 1,
-            "max_ms": 0.017,
-            "mean_ms": 0.017,
-            "total_ms": 0.017
+            "max_ms": 0.011,
+            "mean_ms": 0.011,
+            "total_ms": 0.011
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 76.245,
-            "mean_ms": 76.245,
-            "total_ms": 76.245
+            "max_ms": 50.584,
+            "mean_ms": 50.584,
+            "total_ms": 50.584
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 37.264,
-            "mean_ms": 37.264,
-            "total_ms": 37.264
+            "max_ms": 30.148,
+            "mean_ms": 30.148,
+            "total_ms": 30.148
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.085,
-            "mean_ms": 0.085,
-            "total_ms": 0.085
+            "max_ms": 0.048,
+            "mean_ms": 0.048,
+            "total_ms": 0.048
           }
         },
-        "total_duration_ms": 9643.554
+        "total_duration_ms": 7243.765
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 344,
-        "prompt_tokens": 3920,
-        "total_tokens": 4264
+        "completion_tokens": 378,
+        "prompt_tokens": 4697,
+        "total_tokens": 5075
       }
     },
     {
@@ -442,7 +454,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 10745.226,
+      "latency_ms": 8706.556,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -462,24 +474,24 @@
           "successful_calls": 6,
           "tokens": {
             "attempts_missing_usage": 0,
-            "calls_missing_usage": 2,
-            "calls_with_usage": 4,
-            "completion_tokens": 337,
-            "prompt_tokens": 4951,
-            "total_tokens": 5288
+            "calls_missing_usage": 0,
+            "calls_with_usage": 6,
+            "completion_tokens": 331,
+            "prompt_tokens": 5219,
+            "total_tokens": 5550
           }
         },
         "llm_steps": {
           "embedding": {
             "attempts": 2,
             "calls": 2,
-            "calls_missing_usage": 2,
-            "calls_with_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 2,
             "completion_tokens": 0,
-            "prompt_tokens": 0,
+            "prompt_tokens": 24,
             "retries": 0,
             "successful_calls": 2,
-            "total_tokens": 0
+            "total_tokens": 24
           },
           "extract": {
             "attempts": 1,
@@ -497,11 +509,11 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 104,
-            "prompt_tokens": 1638,
+            "completion_tokens": 118,
+            "prompt_tokens": 1882,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1742
+            "total_tokens": 2000
           },
           "resolve_product": {
             "attempts": 1,
@@ -519,120 +531,126 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 155,
+            "completion_tokens": 135,
             "prompt_tokens": 1562,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1717
+            "total_tokens": 1697
           }
         },
         "reply_check_failures": 0,
-        "request_id": "649a4fb0196548b6afce21463c6e695b",
+        "request_id": "054cffb4d96a495eba82c7bd5707edfc",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 16.733,
+            "mean_ms": 16.733,
+            "total_ms": 16.733
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.353,
-            "mean_ms": 0.353,
-            "total_ms": 0.353
+            "max_ms": 0.222,
+            "mean_ms": 0.222,
+            "total_ms": 0.222
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3783.975,
-            "mean_ms": 3783.975,
-            "total_ms": 3783.975
+            "max_ms": 3698.82,
+            "mean_ms": 3698.82,
+            "total_ms": 3698.82
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3783.951,
-            "mean_ms": 3783.951,
-            "total_ms": 3783.951
+            "max_ms": 3698.803,
+            "mean_ms": 3698.803,
+            "total_ms": 3698.803
           },
           "llm_embedding": {
             "count": 2,
-            "max_ms": 1106.922,
-            "mean_ms": 757.381,
-            "total_ms": 1514.762
+            "max_ms": 514.778,
+            "mean_ms": 490.801,
+            "total_ms": 981.602
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1706.109,
-            "mean_ms": 1706.109,
-            "total_ms": 1706.109
+            "max_ms": 1287.776,
+            "mean_ms": 1287.776,
+            "total_ms": 1287.776
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 2512.326,
-            "mean_ms": 2512.326,
-            "total_ms": 2512.326
+            "max_ms": 1580.076,
+            "mean_ms": 1580.076,
+            "total_ms": 1580.076
           },
           "llm_resolve_product": {
             "count": 1,
-            "max_ms": 2742.303,
-            "mean_ms": 2742.303,
-            "total_ms": 2742.303
+            "max_ms": 2275.21,
+            "mean_ms": 2275.21,
+            "total_ms": 2275.21
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2076.988,
-            "mean_ms": 2076.988,
-            "total_ms": 2076.988
+            "max_ms": 2410.36,
+            "mean_ms": 2410.36,
+            "total_ms": 2410.36
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.475,
-            "mean_ms": 0.475,
-            "total_ms": 0.475
+            "max_ms": 0.072,
+            "mean_ms": 0.072,
+            "total_ms": 0.072
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 4391.071,
-            "mean_ms": 4391.071,
-            "total_ms": 4391.071
+            "max_ms": 3341.674,
+            "mean_ms": 3341.674,
+            "total_ms": 3341.674
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 1.217,
-            "mean_ms": 1.217,
-            "total_ms": 1.217
+            "max_ms": 0.637,
+            "mean_ms": 0.637,
+            "total_ms": 0.637
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 2512.649,
-            "mean_ms": 2512.649,
-            "total_ms": 2512.649
+            "max_ms": 1580.223,
+            "mean_ms": 1580.223,
+            "total_ms": 1580.223
           },
           "status": {
             "count": 1,
-            "max_ms": 0.038,
-            "mean_ms": 0.038,
-            "total_ms": 0.038
+            "max_ms": 0.012,
+            "mean_ms": 0.012,
+            "total_ms": 0.012
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 53.993,
-            "mean_ms": 53.993,
-            "total_ms": 53.993
+            "max_ms": 66.748,
+            "mean_ms": 66.748,
+            "total_ms": 66.748
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 28.84,
-            "mean_ms": 28.84,
-            "total_ms": 28.84
+            "max_ms": 46.844,
+            "mean_ms": 46.844,
+            "total_ms": 46.844
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.038,
-            "mean_ms": 0.038,
-            "total_ms": 0.038
+            "max_ms": 0.044,
+            "mean_ms": 0.044,
+            "total_ms": 0.044
           }
         },
-        "total_duration_ms": 10744.28
+        "total_duration_ms": 8705.95
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 337,
-        "prompt_tokens": 4951,
-        "total_tokens": 5288
+        "completion_tokens": 331,
+        "prompt_tokens": 5219,
+        "total_tokens": 5550
       }
     },
     {
@@ -647,7 +665,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 3861.07,
+      "latency_ms": 4850.101,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -669,9 +687,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 237,
-            "prompt_tokens": 3825,
-            "total_tokens": 4062
+            "completion_tokens": 335,
+            "prompt_tokens": 4617,
+            "total_tokens": 4952
           }
         },
         "llm_steps": {
@@ -691,98 +709,104 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 94,
-            "prompt_tokens": 1046,
+            "completion_tokens": 189,
+            "prompt_tokens": 1838,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1140
+            "total_tokens": 2027
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 96,
+            "completion_tokens": 99,
             "prompt_tokens": 1522,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1618
+            "total_tokens": 1621
           }
         },
         "reply_check_failures": 0,
-        "request_id": "1d5f53a9eac041d7822dea5e7da32f15",
+        "request_id": "43b804de9a314a5f9b9a13e134e10356",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 34.11,
+            "mean_ms": 34.11,
+            "total_ms": 34.11
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.372,
-            "mean_ms": 0.372,
-            "total_ms": 0.372
+            "max_ms": 0.613,
+            "mean_ms": 0.613,
+            "total_ms": 0.613
           },
           "extraction": {
             "count": 1,
-            "max_ms": 2279.254,
-            "mean_ms": 2279.254,
-            "total_ms": 2279.254
+            "max_ms": 2529.716,
+            "mean_ms": 2529.716,
+            "total_ms": 2529.716
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 2279.224,
-            "mean_ms": 2279.224,
-            "total_ms": 2279.224
+            "max_ms": 2529.701,
+            "mean_ms": 2529.701,
+            "total_ms": 2529.701
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 935.282,
-            "mean_ms": 935.282,
-            "total_ms": 935.282
+            "max_ms": 915.552,
+            "mean_ms": 915.552,
+            "total_ms": 915.552
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1472.723,
-            "mean_ms": 1472.723,
-            "total_ms": 1472.723
+            "max_ms": 2236.475,
+            "mean_ms": 2236.475,
+            "total_ms": 2236.475
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1343.061,
-            "mean_ms": 1343.061,
-            "total_ms": 1343.061
+            "max_ms": 1613.765,
+            "mean_ms": 1613.765,
+            "total_ms": 1613.765
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.217,
-            "mean_ms": 0.217,
-            "total_ms": 0.217
+            "max_ms": 0.066,
+            "mean_ms": 0.066,
+            "total_ms": 0.066
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 61.448,
-            "mean_ms": 61.448,
-            "total_ms": 61.448
+            "max_ms": 25.662,
+            "mean_ms": 25.662,
+            "total_ms": 25.662
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.344,
-            "mean_ms": 0.344,
-            "total_ms": 0.344
+            "max_ms": 0.645,
+            "mean_ms": 0.645,
+            "total_ms": 0.645
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1472.998,
-            "mean_ms": 1472.998,
-            "total_ms": 1472.998
+            "max_ms": 2236.616,
+            "mean_ms": 2236.616,
+            "total_ms": 2236.616
           },
           "status": {
             "count": 1,
-            "max_ms": 0.022,
-            "mean_ms": 0.022,
-            "total_ms": 0.022
+            "max_ms": 0.009,
+            "mean_ms": 0.009,
+            "total_ms": 0.009
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 45.156,
-            "mean_ms": 45.156,
-            "total_ms": 45.156
+            "max_ms": 21.794,
+            "mean_ms": 21.794,
+            "total_ms": 21.794
           },
           "stock_query": {
             "count": 1,
@@ -792,18 +816,18 @@
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.055,
-            "mean_ms": 0.055,
-            "total_ms": 0.055
+            "max_ms": 0.016,
+            "mean_ms": 0.016,
+            "total_ms": 0.016
           }
         },
-        "total_duration_ms": 3860.126
+        "total_duration_ms": 4849.411
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 237,
-        "prompt_tokens": 3825,
-        "total_tokens": 4062
+        "completion_tokens": 335,
+        "prompt_tokens": 4617,
+        "total_tokens": 4952
       }
     },
     {
@@ -818,7 +842,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 5935.078,
+      "latency_ms": 5417.814,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -840,9 +864,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 373,
-            "prompt_tokens": 3923,
-            "total_tokens": 4296
+            "completion_tokens": 441,
+            "prompt_tokens": 4715,
+            "total_tokens": 5156
           }
         },
         "llm_steps": {
@@ -862,62 +886,68 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 115,
-            "prompt_tokens": 1063,
+            "completion_tokens": 199,
+            "prompt_tokens": 1855,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1178
+            "total_tokens": 2054
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 175,
+            "completion_tokens": 159,
             "prompt_tokens": 1594,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1769
+            "total_tokens": 1753
           }
         },
         "reply_check_failures": 0,
-        "request_id": "fc25d05bc45140d1b509ff10a7faf029",
+        "request_id": "0dc3f881300e475fbf3a1095cb007a9c",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 35.115,
+            "mean_ms": 35.115,
+            "total_ms": 35.115
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.364,
-            "mean_ms": 0.364,
-            "total_ms": 0.364
+            "max_ms": 0.275,
+            "mean_ms": 0.275,
+            "total_ms": 0.275
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3730.697,
-            "mean_ms": 3730.697,
-            "total_ms": 3730.697
+            "max_ms": 2973.791,
+            "mean_ms": 2973.791,
+            "total_ms": 2973.791
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3730.677,
-            "mean_ms": 3730.677,
-            "total_ms": 3730.677
+            "max_ms": 2973.768,
+            "mean_ms": 2973.768,
+            "total_ms": 2973.768
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1559.087,
-            "mean_ms": 1559.087,
-            "total_ms": 1559.087
+            "max_ms": 1275.607,
+            "mean_ms": 1275.607,
+            "total_ms": 1275.607
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 2126.522,
-            "mean_ms": 2126.522,
-            "total_ms": 2126.522
+            "max_ms": 2355.135,
+            "mean_ms": 2355.135,
+            "total_ms": 2355.135
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2170.901,
-            "mean_ms": 2170.901,
-            "total_ms": 2170.901
+            "max_ms": 1697.572,
+            "mean_ms": 1697.572,
+            "total_ms": 1697.572
           },
           "quote_build": {
             "count": 1,
@@ -927,54 +957,54 @@
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 0.086,
-            "mean_ms": 0.086,
-            "total_ms": 0.086
+            "max_ms": 0.046,
+            "mean_ms": 0.046,
+            "total_ms": 0.046
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.494,
-            "mean_ms": 0.494,
-            "total_ms": 0.494
+            "max_ms": 0.444,
+            "mean_ms": 0.444,
+            "total_ms": 0.444
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 2126.705,
-            "mean_ms": 2126.705,
-            "total_ms": 2126.705
+            "max_ms": 2355.617,
+            "mean_ms": 2355.617,
+            "total_ms": 2355.617
           },
           "status": {
             "count": 1,
-            "max_ms": 0.011,
-            "mean_ms": 0.011,
-            "total_ms": 0.011
+            "max_ms": 0.009,
+            "mean_ms": 0.009,
+            "total_ms": 0.009
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 75.374,
-            "mean_ms": 75.374,
-            "total_ms": 75.374
+            "max_ms": 51.611,
+            "mean_ms": 51.611,
+            "total_ms": 51.611
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 47.469,
-            "mean_ms": 47.469,
-            "total_ms": 47.469
+            "max_ms": 32.184,
+            "mean_ms": 32.184,
+            "total_ms": 32.184
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.059,
-            "mean_ms": 0.059,
-            "total_ms": 0.059
+            "max_ms": 0.047,
+            "mean_ms": 0.047,
+            "total_ms": 0.047
           }
         },
-        "total_duration_ms": 5934.044
+        "total_duration_ms": 5417.185
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 373,
-        "prompt_tokens": 3923,
-        "total_tokens": 4296
+        "completion_tokens": 441,
+        "prompt_tokens": 4715,
+        "total_tokens": 5156
       }
     },
     {
@@ -989,7 +1019,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 6243.692,
+      "latency_ms": 5914.367,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1009,24 +1039,24 @@
           "successful_calls": 5,
           "tokens": {
             "attempts_missing_usage": 0,
-            "calls_missing_usage": 1,
-            "calls_with_usage": 4,
-            "completion_tokens": 289,
-            "prompt_tokens": 4389,
-            "total_tokens": 4678
+            "calls_missing_usage": 0,
+            "calls_with_usage": 5,
+            "completion_tokens": 260,
+            "prompt_tokens": 4394,
+            "total_tokens": 4654
           }
         },
         "llm_steps": {
           "embedding": {
             "attempts": 1,
             "calls": 1,
-            "calls_missing_usage": 1,
-            "calls_with_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
             "completion_tokens": 0,
-            "prompt_tokens": 0,
+            "prompt_tokens": 5,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 0
+            "total_tokens": 5
           },
           "extract": {
             "attempts": 1,
@@ -1044,11 +1074,11 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 79,
+            "completion_tokens": 78,
             "prompt_tokens": 1182,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1261
+            "total_tokens": 1260
           },
           "resolve_product": {
             "attempts": 1,
@@ -1066,120 +1096,126 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 136,
+            "completion_tokens": 108,
             "prompt_tokens": 1538,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1674
+            "total_tokens": 1646
           }
         },
         "reply_check_failures": 0,
-        "request_id": "8626b5c7dddd4583bcb4d641a45b8736",
+        "request_id": "f7b3f9a8f2b74e4980262df979621fe8",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 0.009,
+            "mean_ms": 0.009,
+            "total_ms": 0.009
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.401,
-            "mean_ms": 0.401,
-            "total_ms": 0.401
+            "max_ms": 0.331,
+            "mean_ms": 0.331,
+            "total_ms": 0.331
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3299.512,
-            "mean_ms": 3299.512,
-            "total_ms": 3299.512
+            "max_ms": 2845.136,
+            "mean_ms": 2845.136,
+            "total_ms": 2845.136
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3299.483,
-            "mean_ms": 3299.483,
-            "total_ms": 3299.483
+            "max_ms": 2845.119,
+            "mean_ms": 2845.119,
+            "total_ms": 2845.119
           },
           "llm_embedding": {
             "count": 1,
-            "max_ms": 674.141,
-            "mean_ms": 674.141,
-            "total_ms": 674.141
+            "max_ms": 384.857,
+            "mean_ms": 384.857,
+            "total_ms": 384.857
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1429.371,
-            "mean_ms": 1429.371,
-            "total_ms": 1429.371
+            "max_ms": 1254.724,
+            "mean_ms": 1254.724,
+            "total_ms": 1254.724
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1270.911,
-            "mean_ms": 1270.911,
-            "total_ms": 1270.911
+            "max_ms": 1168.172,
+            "mean_ms": 1168.172,
+            "total_ms": 1168.172
           },
           "llm_resolve_product": {
             "count": 1,
-            "max_ms": 822.364,
-            "mean_ms": 822.364,
-            "total_ms": 822.364
+            "max_ms": 1426.611,
+            "mean_ms": 1426.611,
+            "total_ms": 1426.611
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1869.429,
-            "mean_ms": 1869.429,
-            "total_ms": 1869.429
+            "max_ms": 1590.056,
+            "mean_ms": 1590.056,
+            "total_ms": 1590.056
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.025,
-            "mean_ms": 0.025,
-            "total_ms": 0.025
+            "max_ms": 0.013,
+            "mean_ms": 0.013,
+            "total_ms": 0.013
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 1552.435,
-            "mean_ms": 1552.435,
-            "total_ms": 1552.435
+            "max_ms": 1840.847,
+            "mean_ms": 1840.847,
+            "total_ms": 1840.847
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 1.136,
-            "mean_ms": 1.136,
-            "total_ms": 1.136
+            "max_ms": 0.622,
+            "mean_ms": 0.622,
+            "total_ms": 0.622
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1271.085,
-            "mean_ms": 1271.085,
-            "total_ms": 1271.085
+            "max_ms": 1168.287,
+            "mean_ms": 1168.287,
+            "total_ms": 1168.287
           },
           "status": {
             "count": 1,
-            "max_ms": 0.014,
-            "mean_ms": 0.014,
-            "total_ms": 0.014
+            "max_ms": 0.011,
+            "mean_ms": 0.011,
+            "total_ms": 0.011
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 117.723,
-            "mean_ms": 117.723,
-            "total_ms": 117.723
+            "max_ms": 58.159,
+            "mean_ms": 58.159,
+            "total_ms": 58.159
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 56.159,
-            "mean_ms": 56.159,
-            "total_ms": 56.159
+            "max_ms": 41.547,
+            "mean_ms": 41.547,
+            "total_ms": 41.547
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.051,
-            "mean_ms": 0.051,
-            "total_ms": 0.051
+            "max_ms": 0.029,
+            "mean_ms": 0.029,
+            "total_ms": 0.029
           }
         },
-        "total_duration_ms": 6242.609
+        "total_duration_ms": 5913.576
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 289,
-        "prompt_tokens": 4389,
-        "total_tokens": 4678
+        "completion_tokens": 260,
+        "prompt_tokens": 4394,
+        "total_tokens": 4654
       }
     },
     {
@@ -1194,7 +1230,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 5343.264,
+      "latency_ms": 4023.198,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1216,9 +1252,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 316,
-            "prompt_tokens": 3776,
-            "total_tokens": 4092
+            "completion_tokens": 290,
+            "prompt_tokens": 4151,
+            "total_tokens": 4441
           }
         },
         "llm_steps": {
@@ -1238,119 +1274,125 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 102,
-            "prompt_tokens": 941,
+            "completion_tokens": 110,
+            "prompt_tokens": 1316,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1043
+            "total_tokens": 1426
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 147,
+            "completion_tokens": 113,
             "prompt_tokens": 1567,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1714
+            "total_tokens": 1680
           }
         },
         "reply_check_failures": 0,
-        "request_id": "a79da4678a8a4b46a1939509e0fc1d7f",
+        "request_id": "3f39765a6e064232908c520c6c507522",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 14.672,
+            "mean_ms": 14.672,
+            "total_ms": 14.672
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.366,
-            "mean_ms": 0.366,
-            "total_ms": 0.366
+            "max_ms": 0.181,
+            "mean_ms": 0.181,
+            "total_ms": 0.181
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3685.186,
-            "mean_ms": 3685.186,
-            "total_ms": 3685.186
+            "max_ms": 2518.174,
+            "mean_ms": 2518.174,
+            "total_ms": 2518.174
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3685.146,
-            "mean_ms": 3685.146,
-            "total_ms": 3685.146
+            "max_ms": 2518.163,
+            "mean_ms": 2518.163,
+            "total_ms": 2518.163
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1428.025,
-            "mean_ms": 1428.025,
-            "total_ms": 1428.025
+            "max_ms": 1168.922,
+            "mean_ms": 1168.922,
+            "total_ms": 1168.922
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1565.355,
-            "mean_ms": 1565.355,
-            "total_ms": 1565.355
+            "max_ms": 1440.633,
+            "mean_ms": 1440.633,
+            "total_ms": 1440.633
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 2256.232,
-            "mean_ms": 2256.232,
-            "total_ms": 2256.232
+            "max_ms": 1348.832,
+            "mean_ms": 1348.832,
+            "total_ms": 1348.832
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.117,
-            "mean_ms": 0.117,
-            "total_ms": 0.117
+            "max_ms": 0.097,
+            "mean_ms": 0.097,
+            "total_ms": 0.097
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 0.131,
-            "mean_ms": 0.131,
-            "total_ms": 0.131
+            "max_ms": 0.043,
+            "mean_ms": 0.043,
+            "total_ms": 0.043
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.238,
-            "mean_ms": 0.238,
-            "total_ms": 0.238
+            "max_ms": 0.396,
+            "mean_ms": 0.396,
+            "total_ms": 0.396
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1565.618,
-            "mean_ms": 1565.618,
-            "total_ms": 1565.618
+            "max_ms": 1440.762,
+            "mean_ms": 1440.762,
+            "total_ms": 1440.762
           },
           "status": {
             "count": 1,
-            "max_ms": 0.013,
-            "mean_ms": 0.013,
-            "total_ms": 0.013
+            "max_ms": 0.007,
+            "mean_ms": 0.007,
+            "total_ms": 0.007
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 90.476,
-            "mean_ms": 90.476,
-            "total_ms": 90.476
+            "max_ms": 48.09,
+            "mean_ms": 48.09,
+            "total_ms": 48.09
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 51.7,
-            "mean_ms": 51.7,
-            "total_ms": 51.7
+            "max_ms": 32.151,
+            "mean_ms": 32.151,
+            "total_ms": 32.151
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.075,
-            "mean_ms": 0.075,
-            "total_ms": 0.075
+            "max_ms": 0.02,
+            "mean_ms": 0.02,
+            "total_ms": 0.02
           }
         },
-        "total_duration_ms": 5342.456
+        "total_duration_ms": 4022.569
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 316,
-        "prompt_tokens": 3776,
-        "total_tokens": 4092
+        "completion_tokens": 290,
+        "prompt_tokens": 4151,
+        "total_tokens": 4441
       }
     },
     {
@@ -1365,7 +1407,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 4893.922,
+      "latency_ms": 5387.106,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1385,24 +1427,24 @@
           "successful_calls": 4,
           "tokens": {
             "attempts_missing_usage": 0,
-            "calls_missing_usage": 1,
-            "calls_with_usage": 3,
-            "completion_tokens": 339,
-            "prompt_tokens": 4014,
-            "total_tokens": 4353
+            "calls_missing_usage": 0,
+            "calls_with_usage": 4,
+            "completion_tokens": 332,
+            "prompt_tokens": 4451,
+            "total_tokens": 4783
           }
         },
         "llm_steps": {
           "embedding": {
             "attempts": 1,
             "calls": 1,
-            "calls_missing_usage": 1,
-            "calls_with_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
             "completion_tokens": 0,
-            "prompt_tokens": 0,
+            "prompt_tokens": 18,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 0
+            "total_tokens": 18
           },
           "extract": {
             "attempts": 1,
@@ -1420,125 +1462,131 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 142,
-            "prompt_tokens": 1177,
+            "completion_tokens": 128,
+            "prompt_tokens": 1596,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1319
+            "total_tokens": 1724
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 132,
+            "completion_tokens": 139,
             "prompt_tokens": 1567,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1699
+            "total_tokens": 1706
           }
         },
         "reply_check_failures": 0,
-        "request_id": "e48b687c26b646dabc794bb2cac3ec21",
+        "request_id": "6781cb5bc5164be696e402fd02ceb316",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 43.618,
+            "mean_ms": 43.618,
+            "total_ms": 43.618
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.249,
-            "mean_ms": 0.249,
-            "total_ms": 0.249
+            "max_ms": 0.285,
+            "mean_ms": 0.285,
+            "total_ms": 0.285
           },
           "extraction": {
             "count": 1,
-            "max_ms": 2648.466,
-            "mean_ms": 2648.466,
-            "total_ms": 2648.466
+            "max_ms": 3178.591,
+            "mean_ms": 3178.591,
+            "total_ms": 3178.591
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 2648.446,
-            "mean_ms": 2648.446,
-            "total_ms": 2648.446
+            "max_ms": 3178.578,
+            "mean_ms": 3178.578,
+            "total_ms": 3178.578
           },
           "llm_embedding": {
             "count": 1,
-            "max_ms": 343.297,
-            "mean_ms": 343.297,
-            "total_ms": 343.297
+            "max_ms": 570.218,
+            "mean_ms": 570.218,
+            "total_ms": 570.218
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1207.239,
-            "mean_ms": 1207.239,
-            "total_ms": 1207.239
+            "max_ms": 1533.559,
+            "mean_ms": 1533.559,
+            "total_ms": 1533.559
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1778.258,
-            "mean_ms": 1778.258,
-            "total_ms": 1778.258
+            "max_ms": 1532.189,
+            "mean_ms": 1532.189,
+            "total_ms": 1532.189
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1440.739,
-            "mean_ms": 1440.739,
-            "total_ms": 1440.739
+            "max_ms": 1644.732,
+            "mean_ms": 1644.732,
+            "total_ms": 1644.732
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.293,
-            "mean_ms": 0.293,
-            "total_ms": 0.293
+            "max_ms": 0.066,
+            "mean_ms": 0.066,
+            "total_ms": 0.066
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 391.961,
-            "mean_ms": 391.961,
-            "total_ms": 391.961
+            "max_ms": 593.336,
+            "mean_ms": 593.336,
+            "total_ms": 593.336
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.907,
-            "mean_ms": 0.907,
-            "total_ms": 0.907
+            "max_ms": 0.218,
+            "mean_ms": 0.218,
+            "total_ms": 0.218
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1778.506,
-            "mean_ms": 1778.506,
-            "total_ms": 1778.506
+            "max_ms": 1532.44,
+            "mean_ms": 1532.44,
+            "total_ms": 1532.44
           },
           "status": {
             "count": 1,
-            "max_ms": 0.02,
-            "mean_ms": 0.02,
-            "total_ms": 0.02
+            "max_ms": 0.008,
+            "mean_ms": 0.008,
+            "total_ms": 0.008
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 72.3,
-            "mean_ms": 72.3,
-            "total_ms": 72.3
+            "max_ms": 37.892,
+            "mean_ms": 37.892,
+            "total_ms": 37.892
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 39.247,
-            "mean_ms": 39.247,
-            "total_ms": 39.247
+            "max_ms": 21.841,
+            "mean_ms": 21.841,
+            "total_ms": 21.841
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.046,
-            "mean_ms": 0.046,
-            "total_ms": 0.046
+            "max_ms": 0.021,
+            "mean_ms": 0.021,
+            "total_ms": 0.021
           }
         },
-        "total_duration_ms": 4892.996
+        "total_duration_ms": 5386.596
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 339,
-        "prompt_tokens": 4014,
-        "total_tokens": 4353
+        "completion_tokens": 332,
+        "prompt_tokens": 4451,
+        "total_tokens": 4783
       }
     },
     {
@@ -1553,7 +1601,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 3496.169,
+      "latency_ms": 4120.864,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1575,9 +1623,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 185,
+            "completion_tokens": 186,
             "prompt_tokens": 3574,
-            "total_tokens": 3759
+            "total_tokens": 3760
           }
         },
         "llm_steps": {
@@ -1597,98 +1645,104 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 43,
+            "completion_tokens": 49,
             "prompt_tokens": 799,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 842
+            "total_tokens": 848
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 95,
+            "completion_tokens": 90,
             "prompt_tokens": 1520,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1615
+            "total_tokens": 1610
           }
         },
         "reply_check_failures": 0,
-        "request_id": "524cddf120914d419d622c0ba86263da",
+        "request_id": "02dd920fdf38448a98f0eb1c62975a3a",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 0.006,
+            "mean_ms": 0.006,
+            "total_ms": 0.006
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.351,
-            "mean_ms": 0.351,
-            "total_ms": 0.351
+            "max_ms": 0.145,
+            "mean_ms": 0.145,
+            "total_ms": 0.145
           },
           "extraction": {
             "count": 1,
-            "max_ms": 2492.477,
-            "mean_ms": 2492.477,
-            "total_ms": 2492.477
+            "max_ms": 3106.396,
+            "mean_ms": 3106.396,
+            "total_ms": 3106.396
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 2492.279,
-            "mean_ms": 2492.279,
-            "total_ms": 2492.279
+            "max_ms": 3106.381,
+            "mean_ms": 3106.381,
+            "total_ms": 3106.381
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1120.933,
-            "mean_ms": 1120.933,
-            "total_ms": 1120.933
+            "max_ms": 1584.832,
+            "mean_ms": 1584.832,
+            "total_ms": 1584.832
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 932.502,
-            "mean_ms": 932.502,
-            "total_ms": 932.502
+            "max_ms": 950.8,
+            "mean_ms": 950.8,
+            "total_ms": 950.8
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1370.54,
-            "mean_ms": 1370.54,
-            "total_ms": 1370.54
+            "max_ms": 1521.216,
+            "mean_ms": 1521.216,
+            "total_ms": 1521.216
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.019,
-            "mean_ms": 0.019,
-            "total_ms": 0.019
+            "max_ms": 0.009,
+            "mean_ms": 0.009,
+            "total_ms": 0.009
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 32.377,
-            "mean_ms": 32.377,
-            "total_ms": 32.377
+            "max_ms": 27.231,
+            "mean_ms": 27.231,
+            "total_ms": 27.231
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.256,
-            "mean_ms": 0.256,
-            "total_ms": 0.256
+            "max_ms": 0.109,
+            "mean_ms": 0.109,
+            "total_ms": 0.109
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 932.626,
-            "mean_ms": 932.626,
-            "total_ms": 932.626
+            "max_ms": 950.854,
+            "mean_ms": 950.854,
+            "total_ms": 950.854
           },
           "status": {
             "count": 1,
-            "max_ms": 0.013,
-            "mean_ms": 0.013,
-            "total_ms": 0.013
+            "max_ms": 0.007,
+            "mean_ms": 0.007,
+            "total_ms": 0.007
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 36.826,
-            "mean_ms": 36.826,
-            "total_ms": 36.826
+            "max_ms": 35.612,
+            "mean_ms": 35.612,
+            "total_ms": 35.612
           },
           "stock_query": {
             "count": 1,
@@ -1698,18 +1752,18 @@
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.054,
-            "mean_ms": 0.054,
-            "total_ms": 0.054
+            "max_ms": 0.025,
+            "mean_ms": 0.025,
+            "total_ms": 0.025
           }
         },
-        "total_duration_ms": 3495.211
+        "total_duration_ms": 4120.509
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 185,
+        "completion_tokens": 186,
         "prompt_tokens": 3574,
-        "total_tokens": 3759
+        "total_tokens": 3760
       }
     },
     {
@@ -1724,7 +1778,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 5509.106,
+      "latency_ms": 5889.207,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1744,24 +1798,24 @@
           "successful_calls": 5,
           "tokens": {
             "attempts_missing_usage": 0,
-            "calls_missing_usage": 1,
-            "calls_with_usage": 4,
-            "completion_tokens": 325,
-            "prompt_tokens": 4460,
-            "total_tokens": 4785
+            "calls_missing_usage": 0,
+            "calls_with_usage": 5,
+            "completion_tokens": 324,
+            "prompt_tokens": 4837,
+            "total_tokens": 5161
           }
         },
         "llm_steps": {
           "embedding": {
             "attempts": 1,
             "calls": 1,
-            "calls_missing_usage": 1,
-            "calls_with_usage": 0,
+            "calls_missing_usage": 0,
+            "calls_with_usage": 1,
             "completion_tokens": 0,
-            "prompt_tokens": 0,
+            "prompt_tokens": 5,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 0
+            "total_tokens": 5
           },
           "extract": {
             "attempts": 1,
@@ -1779,11 +1833,11 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 82,
-            "prompt_tokens": 1214,
+            "completion_tokens": 81,
+            "prompt_tokens": 1586,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1296
+            "total_tokens": 1667
           },
           "resolve_product": {
             "attempts": 1,
@@ -1809,112 +1863,118 @@
           }
         },
         "reply_check_failures": 0,
-        "request_id": "6707fa40578843558f286416dbfa4d60",
+        "request_id": "9ac1c66fd3144684b3f5a5251931dabf",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 14.581,
+            "mean_ms": 14.581,
+            "total_ms": 14.581
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.456,
-            "mean_ms": 0.456,
-            "total_ms": 0.456
+            "max_ms": 0.202,
+            "mean_ms": 0.202,
+            "total_ms": 0.202
           },
           "extraction": {
             "count": 1,
-            "max_ms": 2968.962,
-            "mean_ms": 2968.962,
-            "total_ms": 2968.962
+            "max_ms": 3363.497,
+            "mean_ms": 3363.497,
+            "total_ms": 3363.497
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 2968.927,
-            "mean_ms": 2968.927,
-            "total_ms": 2968.927
+            "max_ms": 3363.449,
+            "mean_ms": 3363.449,
+            "total_ms": 3363.449
           },
           "llm_embedding": {
             "count": 1,
-            "max_ms": 332.648,
-            "mean_ms": 332.648,
-            "total_ms": 332.648
+            "max_ms": 597.219,
+            "mean_ms": 597.219,
+            "total_ms": 597.219
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1272.756,
-            "mean_ms": 1272.756,
-            "total_ms": 1272.756
+            "max_ms": 1455.36,
+            "mean_ms": 1455.36,
+            "total_ms": 1455.36
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1321.172,
-            "mean_ms": 1321.172,
-            "total_ms": 1321.172
+            "max_ms": 1250.707,
+            "mean_ms": 1250.707,
+            "total_ms": 1250.707
           },
           "llm_resolve_product": {
             "count": 1,
-            "max_ms": 725.147,
-            "mean_ms": 725.147,
-            "total_ms": 725.147
+            "max_ms": 582.658,
+            "mean_ms": 582.658,
+            "total_ms": 582.658
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1695.23,
-            "mean_ms": 1695.23,
-            "total_ms": 1695.23
+            "max_ms": 1907.681,
+            "mean_ms": 1907.681,
+            "total_ms": 1907.681
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.132,
-            "mean_ms": 0.132,
-            "total_ms": 0.132
+            "max_ms": 0.059,
+            "mean_ms": 0.059,
+            "total_ms": 0.059
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 1116.512,
-            "mean_ms": 1116.512,
-            "total_ms": 1116.512
+            "max_ms": 1208.222,
+            "mean_ms": 1208.222,
+            "total_ms": 1208.222
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.465,
-            "mean_ms": 0.465,
-            "total_ms": 0.465
+            "max_ms": 0.423,
+            "mean_ms": 0.423,
+            "total_ms": 0.423
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1321.44,
-            "mean_ms": 1321.44,
-            "total_ms": 1321.44
+            "max_ms": 1250.81,
+            "mean_ms": 1250.81,
+            "total_ms": 1250.81
           },
           "status": {
             "count": 1,
-            "max_ms": 0.023,
-            "mean_ms": 0.023,
-            "total_ms": 0.023
+            "max_ms": 0.009,
+            "mean_ms": 0.009,
+            "total_ms": 0.009
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 99.577,
-            "mean_ms": 99.577,
-            "total_ms": 99.577
+            "max_ms": 50.64,
+            "mean_ms": 50.64,
+            "total_ms": 50.64
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 59.61,
-            "mean_ms": 59.61,
-            "total_ms": 59.61
+            "max_ms": 31.953,
+            "mean_ms": 31.953,
+            "total_ms": 31.953
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.073,
-            "mean_ms": 0.073,
-            "total_ms": 0.073
+            "max_ms": 0.045,
+            "mean_ms": 0.045,
+            "total_ms": 0.045
           }
         },
-        "total_duration_ms": 5507.901
+        "total_duration_ms": 5888.621
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 325,
-        "prompt_tokens": 4460,
-        "total_tokens": 4785
+        "completion_tokens": 324,
+        "prompt_tokens": 4837,
+        "total_tokens": 5161
       }
     },
     {
@@ -1929,7 +1989,7 @@
         "quote": true,
         "status": true
       },
-      "latency_ms": 5116.533,
+      "latency_ms": 4523.079,
       "observability": {
         "error_counts": {},
         "estimated_cost": {
@@ -1951,9 +2011,9 @@
             "attempts_missing_usage": 0,
             "calls_missing_usage": 0,
             "calls_with_usage": 3,
-            "completion_tokens": 266,
-            "prompt_tokens": 3743,
-            "total_tokens": 4009
+            "completion_tokens": 349,
+            "prompt_tokens": 4121,
+            "total_tokens": 4470
           }
         },
         "llm_steps": {
@@ -1973,119 +2033,125 @@
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 84,
-            "prompt_tokens": 935,
+            "completion_tokens": 120,
+            "prompt_tokens": 1313,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1019
+            "total_tokens": 1433
           },
           "verify": {
             "attempts": 1,
             "calls": 1,
             "calls_missing_usage": 0,
             "calls_with_usage": 1,
-            "completion_tokens": 118,
+            "completion_tokens": 165,
             "prompt_tokens": 1552,
             "retries": 0,
             "successful_calls": 1,
-            "total_tokens": 1670
+            "total_tokens": 1717
           }
         },
         "reply_check_failures": 0,
-        "request_id": "01d07dd6387d444b9a4408664c5362af",
+        "request_id": "a8ae3dad48044b59b872df6cf27fe903",
         "steps": {
+          "brochure_lookup": {
+            "count": 1,
+            "max_ms": 17.786,
+            "mean_ms": 17.786,
+            "total_ms": 17.786
+          },
           "email_parse": {
             "count": 1,
-            "max_ms": 0.412,
-            "mean_ms": 0.412,
-            "total_ms": 0.412
+            "max_ms": 0.278,
+            "mean_ms": 0.278,
+            "total_ms": 0.278
           },
           "extraction": {
             "count": 1,
-            "max_ms": 3306.057,
-            "mean_ms": 3306.057,
-            "total_ms": 3306.057
+            "max_ms": 3019.984,
+            "mean_ms": 3019.984,
+            "total_ms": 3019.984
           },
           "extraction_iteration": {
             "count": 1,
-            "max_ms": 3306.022,
-            "mean_ms": 3306.022,
-            "total_ms": 3306.022
+            "max_ms": 3019.969,
+            "mean_ms": 3019.969,
+            "total_ms": 3019.969
           },
           "llm_extract": {
             "count": 1,
-            "max_ms": 1533.315,
-            "mean_ms": 1533.315,
-            "total_ms": 1533.315
+            "max_ms": 1211.014,
+            "mean_ms": 1211.014,
+            "total_ms": 1211.014
           },
           "llm_reply": {
             "count": 1,
-            "max_ms": 1717.062,
-            "mean_ms": 1717.062,
-            "total_ms": 1717.062
+            "max_ms": 1445.902,
+            "mean_ms": 1445.902,
+            "total_ms": 1445.902
           },
           "llm_verify": {
             "count": 1,
-            "max_ms": 1771.809,
-            "mean_ms": 1771.809,
-            "total_ms": 1771.809
+            "max_ms": 1808.669,
+            "mean_ms": 1808.669,
+            "total_ms": 1808.669
           },
           "quote_build": {
             "count": 1,
-            "max_ms": 0.306,
-            "mean_ms": 0.306,
-            "total_ms": 0.306
+            "max_ms": 0.058,
+            "mean_ms": 0.058,
+            "total_ms": 0.058
           },
           "rag_resolution": {
             "count": 1,
-            "max_ms": 0.142,
-            "mean_ms": 0.142,
-            "total_ms": 0.142
+            "max_ms": 0.06,
+            "mean_ms": 0.06,
+            "total_ms": 0.06
           },
           "reply_check": {
             "count": 1,
-            "max_ms": 0.29,
-            "mean_ms": 0.29,
-            "total_ms": 0.29
+            "max_ms": 0.334,
+            "mean_ms": 0.334,
+            "total_ms": 0.334
           },
           "reply_generation": {
             "count": 1,
-            "max_ms": 1717.273,
-            "mean_ms": 1717.273,
-            "total_ms": 1717.273
+            "max_ms": 1446.01,
+            "mean_ms": 1446.01,
+            "total_ms": 1446.01
           },
           "status": {
             "count": 1,
-            "max_ms": 0.016,
-            "mean_ms": 0.016,
-            "total_ms": 0.016
+            "max_ms": 0.008,
+            "mean_ms": 0.008,
+            "total_ms": 0.008
           },
           "stock_lookup": {
             "count": 1,
-            "max_ms": 90.568,
-            "mean_ms": 90.568,
-            "total_ms": 90.568
+            "max_ms": 37.634,
+            "mean_ms": 37.634,
+            "total_ms": 37.634
           },
           "stock_query": {
             "count": 1,
-            "max_ms": 38.385,
-            "mean_ms": 38.385,
-            "total_ms": 38.385
+            "max_ms": 20.349,
+            "mean_ms": 20.349,
+            "total_ms": 20.349
           },
           "validation": {
             "count": 1,
-            "max_ms": 0.051,
-            "mean_ms": 0.051,
-            "total_ms": 0.051
+            "max_ms": 0.021,
+            "mean_ms": 0.021,
+            "total_ms": 0.021
           }
         },
-        "total_duration_ms": 5115.471
+        "total_duration_ms": 4522.431
       },
       "scored": true,
       "token_usage": {
-        "completion_tokens": 266,
-        "prompt_tokens": 3743,
-        "total_tokens": 4009
+        "completion_tokens": 349,
+        "prompt_tokens": 4121,
+        "total_tokens": 4470
       }
     }
   ],
@@ -2093,18 +2159,18 @@
   "token_usage": {
     "completion_tokens": {
       "count": 10,
-      "mean": 301.1,
-      "total": 3011
+      "mean": 322.6,
+      "total": 3226
     },
     "prompt_tokens": {
       "count": 10,
-      "mean": 4057.5,
-      "total": 40575
+      "mean": 4477.6,
+      "total": 44776
     },
     "total_tokens": {
       "count": 10,
-      "mean": 4358.6,
-      "total": 43586
+      "mean": 4800.2,
+      "total": 48002
     }
   }
 }

@@ -77,11 +77,58 @@ def test_email_27_reply_is_accepted():
     assert check_reply(EMAIL_27_REPLY, EMAIL_27_RESULT, EMAIL_27_QUOTE, EMAIL_27_CHUNKS) == []
 
 
-def test_policy_discount_tier_stated_in_chunks_is_accepted():
+def test_policy_discount_tier_is_not_a_license_to_offer_it():
+    # 8% appears in the policy table, but it is not this quote's discount, so it cannot be offered.
     reply = EMAIL_27_REPLY + " Our tier for 50 to 199 units is an 8% discount."
-    assert check_reply(reply, EMAIL_27_RESULT, EMAIL_27_QUOTE, EMAIL_27_CHUNKS) == []
+    assert check_reply(reply, EMAIL_27_RESULT, EMAIL_27_QUOTE, EMAIL_27_CHUNKS)
 
 
 def test_invented_discount_still_fails_even_with_policy_chunks():
     for bad in ("We can give you a 15% discount.", "We can give you a 50% discount.", "Enjoy 20% off."):
         assert check_reply(EMAIL_27_REPLY + " " + bad, EMAIL_27_RESULT, EMAIL_27_QUOTE, EMAIL_27_CHUNKS), bad
+
+
+# ---- the real pricing policy: its discount table must not let invented discounts through ----
+from pathlib import Path
+
+from scripts.ingest_docs import chunk_markdown
+
+POLICY = Path(__file__).resolve().parents[1] / "starter-project-2-data" / "docs" / "pricing_policy.md"
+POLICY_CHUNKS = [{"source": "pricing_policy.md", "heading": h, "chunk": body} for h, body in chunk_markdown(POLICY)]
+TAB_RESULT = {"customer": "Greenfield Public School", "delivery_city": "Nagpur", "deadline": "2026-12-14",
+              "items": [{"product_name": "Nimbus Tab 8 Lite", "product_code": "TAB-08", "requested": 20,
+                         "available": 60}], "status": "Ready", "issues": []}
+TAB_QUOTE = {"lines": [{"product_code": "TAB-08", "quantity": 20, "unit_price_inr": 8999.0, "discount_percent": 5,
+                        "line_total_inr": 170981.0}],
+             "subtotal_inr": 170981.0, "delivery_inr": 0.0, "total_inr": 170981.0, "valid_until": "2026-11-28"}
+TAB_BASE = "We can supply 20 Nimbus Tab 8 Lite to Nagpur by 14 December 2026. "
+
+
+def _tab(text):
+    return check_reply(TAB_BASE + text, TAB_RESULT, TAB_QUOTE, POLICY_CHUNKS)
+
+
+def test_real_policy_chunk_contains_the_bulk_discount_table():
+    assert any("12%" in c["chunk"] and "8%" in c["chunk"] for c in POLICY_CHUNKS)
+
+
+import pytest
+
+
+@pytest.mark.parametrize("phrase", [
+    "Good news, we can give you a 12% discount on this order.",
+    "As a special favour we'll apply 8% off your tablets.",
+    "We can offer 12% if you confirm today.",
+    "We will reduce the price by 8%.",
+])
+def test_discount_not_in_quote_fails_even_when_in_policy_table(phrase):
+    assert _tab(phrase), phrase
+
+
+@pytest.mark.parametrize("phrase", [
+    "Your quote includes a 5% discount.",
+    "50% is payable in advance.",
+    "Payment terms: 50% in advance; we offer free delivery on this order.",
+])
+def test_quote_discount_and_non_discount_percentages_pass(phrase):
+    assert _tab(phrase) == [], phrase

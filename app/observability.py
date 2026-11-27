@@ -92,7 +92,9 @@ class OrderMetrics:
         if outcome == "success":
             self.successful_llm_calls += 1
             step_metrics["successful_calls"] += 1
-            if usage and "prompt_tokens" in usage and "completion_tokens" in usage:
+            if usage and "prompt_tokens" in usage:
+                # Embedding responses report no completion_tokens: that means 0, not "usage missing".
+                usage = {**usage, "completion_tokens": usage.get("completion_tokens", 0)}
                 self.prompt_tokens += usage["prompt_tokens"]
                 self.completion_tokens += usage["completion_tokens"]
                 total_tokens = usage.get(

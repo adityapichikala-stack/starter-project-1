@@ -150,6 +150,14 @@ class OrderWorkflow:
                                     )
                                 )
 
+                # Every resolved item (exact matches too) gets its own brochure chunks for the reply:
+                # a plain SELECT by source, no embedding.
+                if self.document_repository and hasattr(self.document_repository, "chunks_for_source"):
+                    with measured_step("brochure_lookup"):
+                        for code in dict.fromkeys(i.product_code for i in resolution.items if i.product_code):
+                            chunks.extend(self.document_repository.chunks_for_source(f"brochures/{code}.md"))
+                        chunks = _dedupe_chunks(chunks)
+
                 with measured_step("quote_build"):
                     quote = build_quote(
                         resolution.items,
