@@ -7,11 +7,13 @@ Run twice safely: the documents table is emptied and refilled in one transaction
 """
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Iterator
 
 import pg8000.dbapi
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # so `python scripts/ingest_docs.py` finds `app`
 from app.config import get_settings
 from app.llm_client import LLMClient
 from app.rag import vector_literal

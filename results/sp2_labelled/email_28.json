@@ -7,6 +7,6 @@
   "issues": [
     "Repeat our previous order, but there is no order history for Kaveri Hospitals"
   ],
-  "reply": "Dear Dr. Anil Menon,\n\nWe noticed that your order refers to a previous order with Kaveri Hospitals, but we have no record of any prior orders from your organization. Could you please provide the list of products and quantities you would like to order?\n\nThank you for your cooperation.\n\nBest regards,  \nOrder Desk",
+  "reply": "Dear Dr. Anil Menon,\n\nWe could not find any previous orders from Kaveri Hospitals to repeat. Kindly provide a list of the products and quantities you wish to order.\n\nLooking forward to your response.\n\nBest regards,  \nOrder Desk",
   "quote": null
 }

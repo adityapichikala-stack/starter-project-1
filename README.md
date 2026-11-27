@@ -166,13 +166,26 @@ categories, latency percentiles, LLM calls/tokens, extraction iterations, fallba
 when `LLM_INPUT_COST_PER_1M_TOKENS` / `LLM_OUTPUT_COST_PER_1M_TOKENS` are set; there are no default prices). CI
 (`.github/workflows/tests.yml`) runs `pytest -q` on Python 3.12 and 3.13 with dummy settings.
 
-### Latest results (2026-11-26)
+### Latest results (2026-11-27, fresh database: `docker compose down -v` then `up`, ingest run twice = 99 chunks both times)
 
-| Run | Result |
-|---|---|
-| SP1 regression (`emails/labelled`, email_01-10) | **10/10**, 50/50 fields |
-| SP2 labelled (email_21-30) | **10/10**, 60/60 fields (incl. `quote`) |
-| SP2 practice (31-35) | unscored; read in `results/sp2_practice/` |
+Numbers come from `results/*/summary.json`. Tokens include the embedding calls (they used to be dropped, see `calls_missing_usage`).
+
+| | SP2 labelled (21-30) | SP1 regression (01-10) | SP2 practice (31-35) |
+|---|---|---|---|
+| Emails processed / scored | 10 / 10 | 10 / 10 | 5 / 0 (no key) |
+| Exact match | **10/10** | **10/10** | n/a |
+| Fields correct | **60/60** (status, items, customer, city, deadline, quote) | **50/50** | n/a |
+| LLM calls (attempts / retries) | 38 (38 / 0) | 36 (36 / 0) | 20 (20 / 0) |
+| Prompt / completion / total tokens | 44,776 / 3,226 / 48,002 | 45,740 / 3,482 / 49,222 | 22,239 / 1,516 / 23,755 |
+| Calls missing usage | 0 | 0 | 0 |
+| Latency avg / P95 (ms) | 5,608 / 8,707 | 5,494 / 9,013 | 5,681 / 8,069 |
+| Fallback replies | 0 | 1 (email_06) | 0 |
+| Reply-check failures | 0 | 2 (email_06, both attempts) | 0 |
+| Errors / extraction iterations | 0 / 1 per email | 0 / 1 per email | 0 / 1 per email |
+
+email_06 (an unknown product, so no quote) is the one fallback: both drafts mentioned a percentage while `quote` is null,
+which the check forbids, so the template reply was sent. Its status and fields are correct. Estimated cost is unavailable
+(no rates configured). Machine-readable reports: `results/sp2_labelled/`, `results/labelled/`, `results/sp2_practice/`.
 
 ### Why each miss happened
 
