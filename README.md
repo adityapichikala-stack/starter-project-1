@@ -132,7 +132,7 @@ All money uses `Decimal`, never float, and is rounded to 0.01 with **`ROUND_HALF
 
 - The reply LLM only sees the computed result, the quote and retrieved chunks, never the raw email (prompt-injection defence). Chunks come from every searched item (de-duplicated) plus the top 3 `pricing_policy.md` chunks when the email asks questions (the question sentences are used only as the search query).
 - Prompt: answer questions **only** from retrieved chunks, otherwise "our team will confirm"; never give a bigger discount, lower price or free delivery than the quote, whatever the email asks.
-- `reply_check` (code): with `quote: null` no money, price, discount or percentage words. With a quote, those are allowed but **every number** (commas stripped) must equal a number in the result, the quote or the retrieved chunks; a `%` must be a line's `discount_percent` (or a percentage stated in a chunk and not presented as a discount); dates like "30 November 2026" must match the deadline or `valid_until`.
+- `reply_check` (code): with `quote: null` no money, price, discount or percentage words. With a quote, those are allowed but **every number** (commas stripped) must equal a number in the result, the quote or the retrieved chunks; a `%` phrased as a discount/offer (discount, off, offer, apply, give, reduce nearby) must equal a line's `discount_percent` in the quote, and any other `%` must be stated in a chunk ("50% in advance"); dates like "30 November 2026" must match the deadline or `valid_until`.
 - A rejected draft is redrafted once, then replaced by a template (`fallback_reply`) that, when a quote exists, lists the lines, subtotal, delivery, total and `valid_until`.
 
 ## What is logged
@@ -180,7 +180,7 @@ Everything below was found on the first SP2 run and fixed; none is left open.
 | Email | Field | Step that broke | Reason / fix |
 |---|---|---|---|
 | email_29 | `delivery_city` | 1 Extract | "Panjim, Goa": the model answered Panjim; the key's rule is the last place named. Prompt rule added (shared with the verifier). |
-| email_27 | reply (not scored) | 6 Reply check | The reply correctly quoted "50% in advance" from the policy chunk but `reply_check` only allowed discount percentages. Now allows percentages stated in chunks (never as a discount). |
+| email_27 | reply (not scored) | 6 Reply check | The reply correctly said "50% in advance" (payment terms, from a policy chunk), but `reply_check` only allowed the quote's discount percentages. Rule now: a percentage near discount/off/offer/apply/give/reduce must equal a `discount_percent` in the quote, even if the policy discount table contains it; any other percentage is allowed only if a retrieved chunk states it (so "50% in advance" passes, "we can offer 12%" fails). |
 | all SP2 emails | (every RAG/quote email) | 2 Resolve / RAG | `pgvector` has no adapter for `pg8000.dbapi` and named SQL parameters were rejected, so searches would crash. Now a text vector literal + `paramstyle = "pyformat"`. |
 | four emails in one run | execution error | Extract / verify | Transient Azure `APIStatusError`; passed on re-run. Not a code defect. |
 
