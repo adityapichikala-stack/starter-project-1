@@ -18,8 +18,9 @@
   ],
   "status": "Need info",
   "issues": [
+    "Could not verify delivery city: City should be the last place name in the delivery address which is 'Goa' (correct), but check rules: Goa is a state, so correct city is 'Goa' per rules. Extraction uses 'Goa' which is correct.",
     "Unknown product: Corelink Book 13"
   ],
-  "reply": "Dear Pooja Nair,\n\nThank you for your order from Brightline Design. We noticed that \"Corelink Book 13\" is not in our catalogue. Could you please check the product name? We can supply the requested 6 units of \"Clearview 24 Monitor\" and will arrange delivery to Goa by 12 December 2026 once the issue is resolved.\n\nBest regards,  \nOrder Desk",
+  "reply": "Dear Pooja Nair,\n\nThank you for your order inquiry from Brightline Design.\n\nWe noticed the item \"Corelink Book 13\" is not recognized in our catalogue. Could you please verify the product name or provide further details? We can supply the \"Clearview 24 Monitor\" in the quantity of 6 as requested.\n\nPlease confirm whether you would like to proceed with the available item or make changes to your order. Delivery will be arranged to Goa city once we have full order details.\n\nLooking forward to your response.\n\nBest regards,  \nOrder Desk",
   "quote": null
 }
