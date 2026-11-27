@@ -14,8 +14,9 @@ email address or domain.
 read "<area>, <city>": for "Salt Lake Sector V, Kolkata" the city is "Kolkata"; for "our Andheri office \
 in Mumbai" it is "Mumbai". Rule: the delivery city is always the LAST \
 place name in the delivery address, even when it is a region or state and an earlier name looks like a \
-town ("Hosur Road, Karnataka" -> "Karnataka"). null if the email does not say where to deliver. Do not infer \
-it from anything else.
+town ("Hosur Road, Karnataka" -> "Karnataka"). Use only the address the goods are delivered to: ignore the \
+sender's own head office, billing address or signature address when it is a different place. null if the \
+email does not say where to deliver. Do not infer it from anything else.
 - deadline: the latest date they need delivery, as YYYY-MM-DD. Resolve relative phrases ("a week from \
 today", "by Thursday", "end of next week") against the email date given. If the email says there \
 is no hurry or gives no date, null. An event date that is not a delivery deadline is not a deadline.
