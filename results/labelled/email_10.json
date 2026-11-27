@@ -5,8 +5,8 @@
   "items": [],
   "status": "Need info",
   "issues": [
-    "Refers to a previous order",
-    "No items listed"
+    "Repeat our previous order, but there is no order history for Northgate Logistics"
   ],
-  "reply": "Dear Prakash Jain,\n\nThank you for your message. Please provide a list of the products and quantities you need, as your request either refers to a previous order or does not list any items. This information is necessary to process your order for Northgate Logistics. \n\nWe look forward to your reply.\n\nBest regards,  \nOrder Desk"
+  "reply": "Dear Prakash Jain,\n\nWe noticed your request to repeat a previous order, but there is no order history for Northgate Logistics. Could you please provide the details of the products and quantities you wish to order? This will help us process your order smoothly.\n\nThank you for your cooperation.\n\nBest regards,  \nOrder Desk",
+  "quote": null
 }

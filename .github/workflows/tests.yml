@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main, starter-project-2]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    # No secrets: dummy values only so config loads. Every test uses fakes (no DB, no LLM).
+    env:
+      AZURE_OPENAI_ENDPOINT: https://dummy.openai.azure.com
+      AZURE_OPENAI_API_KEY: dummy-key
+      AZURE_OPENAI_API_VERSION: "2024-10-21"
+      AZURE_OPENAI_DEPLOYMENT: dummy-deployment
+      AZURE_OPENAI_EMBEDDING_DEPLOYMENT: dummy-embedding
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - run: pytest -q

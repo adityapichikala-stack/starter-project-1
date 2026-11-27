@@ -1,0 +1,31 @@
+{
+  "customer": "Callpoint Services",
+  "delivery_city": "Thiruvananthapuram",
+  "deadline": "2026-12-07",
+  "items": [
+    {
+      "product_name": "Quietline Headset",
+      "product_code": "HDS-10",
+      "requested": 4,
+      "available": 45
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Manoj Pillai,\n\nWe confirm that we can supply 4 units of Quietline Headset as requested. The quote is valid until 28 November 2026. The total amount in INR is 10,696, including delivery charges to Thiruvananthapuram. Our team will arrange delivery by 7 December 2026.\n\nThank you for your order.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "HDS-10",
+        "quantity": 4,
+        "unit_price_inr": 2299.0,
+        "discount_percent": 0,
+        "line_total_inr": 9196.0
+      }
+    ],
+    "subtotal_inr": 9196.0,
+    "delivery_inr": 1500.0,
+    "total_inr": 10696.0,
+    "valid_until": "2026-11-28"
+  }
+}

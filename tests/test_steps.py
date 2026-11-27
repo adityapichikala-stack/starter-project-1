@@ -66,7 +66,7 @@ def test_no_items():
 
 def test_previous_order():
     v = validate(order(items=[], refers_to_previous_order=True), date(2026, 11, 18), 3)
-    assert v.issues == ["Refers to a previous order", "No items listed"]
+    assert v.issues == []  # the workflow decides after checking order history
 
 
 @pytest.mark.parametrize("qty,text", [(None, "a few"), (0, "0"), (-2, "-2"), (None, None)])

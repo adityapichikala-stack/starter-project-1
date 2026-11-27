@@ -1,0 +1,25 @@
+{
+  "customer": "Brightline Design",
+  "delivery_city": "Goa",
+  "deadline": "2026-12-12",
+  "items": [
+    {
+      "product_name": "Corelink Book 13",
+      "product_code": null,
+      "requested": 6,
+      "available": null
+    },
+    {
+      "product_name": "Clearview 24 Monitor",
+      "product_code": "MON-24",
+      "requested": 6,
+      "available": 18
+    }
+  ],
+  "status": "Need info",
+  "issues": [
+    "Unknown product: Corelink Book 13"
+  ],
+  "reply": "Dear Pooja Nair,\n\nThank you for your order from Brightline Design. We could not find the product \"Corelink Book 13\" in our catalogue. Could you please confirm the exact product name or code? We have the Clearview 24 Monitor available in the quantity of 6 as requested. \n\nPlease advise so we can proceed with your order.\n\nBest regards,  \nOrder Desk",
+  "quote": null
+}

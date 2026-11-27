@@ -146,9 +146,9 @@ class Quote(BaseModel):
         return float(value)
 
 
-class ProductCodeChoice(BaseModel):
-    product_code: str | None = Field(
-        description="Exactly one valid product code from the supplied candidate list, or null if no candidate matches."
+class ProductCodeMatches(BaseModel):
+    matching_codes: list[str] = Field(
+        description="Every candidate product code whose brochure confirms EVERY detail of the description. Empty if none."
     )
 
 

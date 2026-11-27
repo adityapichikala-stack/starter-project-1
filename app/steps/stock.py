@@ -14,6 +14,8 @@ from app.config import Settings
 from app.models import CatalogueEntry, StockResult, OrderItem, ValidatedItem
 from app.observability import current_metrics
 
+pg8000.dbapi.paramstyle = "pyformat"  # named %(x)s parameters
+
 log = logging.getLogger("stock")
 
 

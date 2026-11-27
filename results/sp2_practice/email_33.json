@@ -1,0 +1,31 @@
+{
+  "customer": "Trailblaze Adventures",
+  "delivery_city": "Manali",
+  "deadline": "2026-12-05",
+  "items": [
+    {
+      "product_name": "Volt 20000 Power Bank",
+      "product_code": "PWB-20",
+      "requested": 3,
+      "available": 120
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Ishaan Gupta,\n\nWe can supply the 3 units of Volt 20000 Power Bank you requested for Trailblaze Adventures. The total quote is INR 7,497, including delivery charges, valid until 27 November 2026. Our team will arrange delivery to Manali by 5 December 2026.\n\nPlease note delivery charges apply as the subtotal is below INR 50,000. Payment terms are 50% advance and the rest on delivery.\n\nThank you for your order.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "PWB-20",
+        "quantity": 3,
+        "unit_price_inr": 1999.0,
+        "discount_percent": 0,
+        "line_total_inr": 5997.0
+      }
+    ],
+    "subtotal_inr": 5997.0,
+    "delivery_inr": 1500.0,
+    "total_inr": 7497.0,
+    "valid_until": "2026-11-27"
+  }
+}

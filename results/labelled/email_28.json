@@ -1,0 +1,12 @@
+{
+  "customer": "Kaveri Hospitals",
+  "delivery_city": "Bengaluru",
+  "deadline": "2026-12-10",
+  "items": [],
+  "status": "Need info",
+  "issues": [
+    "Repeat our previous order, but there is no order history for Kaveri Hospitals"
+  ],
+  "reply": "Dear Dr. Anil Menon,\n\nWe noticed your request refers to a previous order, but there is no order history for Kaveri Hospitals in our system. Could you please provide the list of products and quantities you need? This will help us process your order promptly.\n\nLooking forward to your reply.\n\nBest regards,  \nOrder Desk",
+  "quote": null
+}

@@ -1,0 +1,31 @@
+{
+  "customer": "FleetFix",
+  "delivery_city": "Hyderabad",
+  "deadline": "2026-12-07",
+  "items": [
+    {
+      "product_name": "Volt 65W Charger",
+      "product_code": "CHG-65",
+      "requested": 50,
+      "available": 200
+    }
+  ],
+  "status": "Ready",
+  "issues": [],
+  "reply": "Dear Harish Rao,\n\nThank you for your order from FleetFix. We can supply 50 units of Volt 65W Charger as requested. The quote total is INR 68,954, including an 8% discount, with free delivery. This quote is valid until 28 November 2026. Our team will arrange delivery to Hyderabad by 7 December 2026.\n\nBest regards,  \nOrder Desk",
+  "quote": {
+    "lines": [
+      {
+        "product_code": "CHG-65",
+        "quantity": 50,
+        "unit_price_inr": 1499.0,
+        "discount_percent": 8,
+        "line_total_inr": 68954.0
+      }
+    ],
+    "subtotal_inr": 68954.0,
+    "delivery_inr": 0.0,
+    "total_inr": 68954.0,
+    "valid_until": "2026-11-28"
+  }
+}
