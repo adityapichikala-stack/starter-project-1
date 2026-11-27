@@ -21,7 +21,7 @@ Hand-offs: `ExtractedOrder` -> `ValidationResult` -> `ResolutionResult(items[Res
 ## 2. The `documents` table, the ingest script and the search SQL
 ```sql
 CREATE TABLE documents (id BIGSERIAL PRIMARY KEY, source TEXT NOT NULL, heading TEXT NOT NULL,
-                        chunk TEXT NOT NULL, embedding vector(1536) NOT NULL);   -- sp2_seed.sql
+                        chunk TEXT NOT NULL, embedding vector(1536) NOT NULL);   -- created by ingest_docs.py (IF NOT EXISTS)
 ```
 `scripts/ingest_docs.py` reads `starter-project-2-data/docs/` (override: `SP2_DATA_DIR`), splits each Markdown file on `## `
 headings, prefixes every chunk (`Product: <name> (<code>) — <heading>` for brochures, `Pricing policy — <heading>`), embeds the

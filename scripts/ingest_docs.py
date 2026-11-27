@@ -22,6 +22,15 @@ SP2_DATA_DIR = Path(os.getenv("SP2_DATA_DIR") or Path(__file__).resolve().parent
 DOCS_DIR = SP2_DATA_DIR / "docs"
 EMBEDDING_DIMENSIONS = 1536
 BATCH_SIZE = 64
+CREATE_DOCUMENTS = """
+CREATE TABLE IF NOT EXISTS documents (
+    id        BIGSERIAL PRIMARY KEY,
+    source    TEXT NOT NULL,
+    heading   TEXT NOT NULL,
+    chunk     TEXT NOT NULL,
+    embedding vector(1536) NOT NULL
+)
+"""
 
 
 def chunk_markdown(path: Path) -> Iterator[tuple[str, str]]:
@@ -105,6 +114,7 @@ def main() -> None:
             check_dimensions(vectors, [f"{s} / {h}" for s, h, _ in batch])
             embeddings.extend(vectors)
 
+        cur.execute(CREATE_DOCUMENTS)  # sp2_seed.sql only creates the extension and order_history
         cur.execute("DELETE FROM documents")
         per_file: dict[str, int] = {}
         for (source, heading, text), vector in zip(chunks, embeddings):

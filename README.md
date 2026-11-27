@@ -24,21 +24,22 @@ Nothing about specific emails is hardcoded: any email text works, and `evaluate.
 ## Data
 
 `starter-project-2-data/` is the **single source** for SP2: `sp2_seed.sql`, `docs/` (brochures + `pricing_policy.md`),
-`emails/labelled` (21-30), `emails/practice` (31-35) and `answer_key.json`. To point at another copy set
-`SP2_DATA_DIR` (in `.env` or the environment); `scripts/ingest_docs.py` and `evaluate.py` both honour it.
-SP1 data stays in `seed.sql`, `emails/` and `answer_key.json`. The top-level `docs/brochures` and
-`docs/pricing_policy.md` are an older identical copy and are not read by anything.
+`emails/labelled` (21-30), `emails/practice` (31-35) and `answer_key.json`. There are no copies of these at the repo
+root (a test fails if one comes back), and `docker-compose.yml` mounts `starter-project-2-data/sp2_seed.sql`.
+To point at another copy set `SP2_DATA_DIR` (set to the default in `.env.example`); `scripts/ingest_docs.py` and
+`evaluate.py` both honour it. SP1 data stays in `seed.sql`, `emails/labelled` (01-10), `emails/practice` (11-15) and
+`answer_key.json`.
 
 ## Layout
 
 ```
 app/                     the service (config, models, LLM client, steps, workflow, FastAPI)
 scripts/ingest_docs.py   idempotent brochure/policy embedding ingestion
-starter-project-2-data/  SP2 seed, brochures, policy, emails, answer key
-docs/design/             SP2 design page and draw.io flow
+starter-project-2-data/  SP2 seed (order_history + pgvector), brochures, policy, emails, answer key
+docs/design/             SP2 design page and draw.io flow (the only thing in docs/)
 tests/                   pytest (fakes only) + tests/robustness_emails/
-emails/, answer_key.json SP1 emails and answers
-seed.sql, sp2_seed.sql   products/stock; order_history + pgvector + documents (mounted into Postgres)
+emails/, answer_key.json SP1 emails (01-15) and answers
+seed.sql                 SP1 products + stock (mounted into Postgres)
 evaluate.py              runs a folder of emails, scores against an answer key
 results/                 JSON output of evaluation runs (sp2_labelled, sp2_practice, labelled)
 ```
@@ -55,12 +56,12 @@ docker compose up -d --wait   # pgvector/pgvector:pg16 on host port 5433
 .venv\Scripts\python check_azure.py
 ```
 
-`ingest_docs` is safe to run twice (DELETE + insert in one transaction). Every chunk is stored and embedded as
+`ingest_docs` creates the `documents` table if needed and is safe to run twice (DELETE + insert in one transaction). Every chunk is stored and embedded as
 `Product: <name> (<code>) — <heading>` + text (brochures) or `Pricing policy — <heading>` + text. Embeddings are
 requested in batches (`LLMClient.embed_many`) and every vector must have 1536 dimensions or the run stops.
 It prints the chunk count per file and the total (99 chunks, 16 files).
 
-The `documents` table (`sp2_seed.sql`):
+The `documents` table (created by `scripts/ingest_docs.py` with `CREATE TABLE IF NOT EXISTS`, because the data pack's `sp2_seed.sql` only adds the `vector` extension and `order_history`):
 
 ```sql
 CREATE TABLE IF NOT EXISTS documents (
